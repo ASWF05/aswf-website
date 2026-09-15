@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ayesha Social Welfare Foundation | From Injustice to Empowerment</title>
+
+<meta name="description" content="Ayesha Social Welfare Foundation is a student-led social welfare organisation working for education, healthcare, legal awareness, women empowerment, youth development and community welfare.">
+<meta name="keywords" content="Ayesha Social Welfare Foundation, ASWF, NGO Deoria, social welfare, legal awareness, education, health, women empowerment">
+<meta name="author" content="Ayesha Social Welfare Foundation">
+
+<meta property="og:title" content="Ayesha Social Welfare Foundation">
+<meta property="og:description" content="From Injustice to Empowerment. Building stronger communities through responsible social action.">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/png" href="assets/favicon.png">
+
+<style>
+:root{
+    --navy:#071426;
+    --navy2:#0c1d33;
+    --red:#b51f2a;
+    --red-dark:#8f1520;
+    --gold:#c9a45c;
+    --gold-light:#e2c98c;
+    --white:#ffffff;
+    --cream:#f6f3ed;
+    --text:#1b2735;
+    --muted:#667383;
+    --line:#e4e7eb;
+    --shadow:0 20px 55px rgba(7,20,38,.12);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:var(--text);
+    line-height:1.7;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* TOP BAR */
+.topbar{
+    background:var(--navy);
+    color:#dce3eb;
+    font-size:13px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.topbar-inner{
+    min-height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.topbar span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.topbar strong{
+    color:var(--gold-light);
+    font-weight:600;
+}
+
+/* NAVIGATION */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+    min-height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    min-width:0;
+}
+
+.brand img{
+    width:56px;
+    height:56px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid #ddd;
+}
+
+.brand-text{
+    min-width:0;
+}
+
+.brand-title{
+    font-size:17px;
+    font-weight:800;
+    color:var(--navy);
+    line-height:1.2;
+}
+
+.brand-sub{
+    font-size:10px;
+    color:var(--red);
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    margin-top:4px;
+    font-weight:700;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.nav-links a{
+    font-size:13px;
+    font-weight:700;
+    color:#273445;
+    position:relative;
+    transition:.25s ease;
+}
+
+.nav-links a:hover{
+    color:var(--red);
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    background:var(--red);
+    transition:.25s ease;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-cta{
+    background:var(--red)!important;
+    color:#fff!important;
+    padding:11px 16px;
+    border-radius:4px;
+}
+
+.nav-cta::after{
+    display:none;
+}
+
+.menu-toggle{
+    display:none;
+    border:0;
+    background:none;
+    font-size:28px;
+    color:var(--navy);
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    min-height:690px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:
+        linear-gradient(90deg,rgba(5,16,31,.96) 0%,rgba(5,16,31,.84) 43%,rgba(5,16,31,.34) 100%),
+        url("assets/legal-awareness.jpg") center center/cover no-repeat;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,transparent 70%,rgba(5,16,31,.55));
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:760px;
+    padding:90px 0;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:22px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:35px;
+    height:2px;
+    background:var(--red);
+}
+
+.hero h1{
+    color:#fff;
+    font-size:clamp(42px,6vw,74px);
+    line-height:1.03;
+    letter-spacing:-2.5px;
+    max-width:800px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:var(--gold-light);
+}
+
+.hero p{
+    color:#e0e7ef;
+    max-width:650px;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:34px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:50px;
+    padding:0 23px;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.3px;
+    border-radius:4px;
+    transition:.25s ease;
+}
+
+.btn-primary{
+    background:var(--red);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:var(--red-dark);
+    transform:translateY(-2px);
+}
+
+.btn-outline{
+    color:#fff;
+    border:1px solid rgba(255,255,255,.5);
+}
+
+.btn-outline:hover{
+    border-color:var(--gold-light);
+    color:var(--gold-light);
+}
+
+.hero-note{
+    margin-top:45px;
+    padding-left:18px;
+    border-left:2px solid var(--gold);
+    color:#cbd4df;
+    font-size:13px;
+    max-width:560px;
+}
+
+/* SECTION */
+.section{
+    padding:95px 0;
+}
+
+.section-soft{
+    background:var(--cream);
+}
+
+.section-dark{
+    background:var(--navy);
+    color:#fff;
+}
+
+.section-heading{
+    max-width:760px;
+    margin-bottom:50px;
+}
+
+.section-label{
+    color:var(--red);
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:2.5px;
+    margin-bottom:12px;
+}
+
+.section-dark .section-label{
+    color:var(--gold-light);
+}
+
+.section-heading h2{
+    font-size:clamp(30px,4vw,48px);
+    line-height:1.15;
+    color:var(--navy);
+    letter-spacing:-1.2px;
+}
+
+.section-dark .section-heading h2{
+    color:#fff;
+}
+
+.section-heading p{
+    margin-top:17px;
+    color:var(--muted);
+    font-size:16px;
+}
+
+.section-dark .section-heading p{
+    color:#bac5d2;
+}
+
+/* IMPACT STRIP */
+.impact-strip{
+    background:#fff;
+    margin-top:-1px;
+    position:relative;
+    z-index:5;
+    box-shadow:0 15px 40px rgba(7,20,38,.08);
+}
+
+.impact-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.impact-item{
+    padding:30px 25px;
+    border-right:1px solid var(--line);
+}
+
+.impact-item:last-child{
+    border-right:0;
+}
+
+.impact-number{
+    color:var(--red);
+    font-size:26px;
+    font-weight:900;
+    margin-bottom:3px;
+}
+
+.impact-title{
+    font-size:13px;
+    font-weight:800;
+    color:var(--navy);
+}
+
+.impact-desc{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:5px;
+}
+
+/* ABOUT */
+.about-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:70px;
+    align-items:center;
+}
+
+.about-copy h3{
+    font-size:30px;
+    color:var(--navy);
+    margin-bottom:18px;
+}
+
+.about-copy p{
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+.about-list{
+    display:grid;
+    gap:14px;
+    margin-top:25px;
+}
+
+.about-list div{
+    display:flex;
+    gap:13px;
+    align-items:flex-start;
+    font-size:14px;
+    font-weight:700;
+}
+
+.about-list span{
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:rgba(181,31,42,.1);
+    color:var(--red);
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    flex:none;
+}
+
+.about-card{
+    background:var(--navy);
+    color:#fff;
+    padding:42px;
+    border-radius:4px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+}
+
+.about-card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border:1px solid rgba(201,164,92,.35);
+    border-radius:50%;
+    right:-75px;
+    top:-75px;
+}
+
+.about-card .mini-label{
+    color:var(--gold-light);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:14px;
+}
+
+.about-card h3{
+    font-size:27px;
+    line-height:1.25;
+    margin-bottom:15px;
+}
+
+.about-card p{
+    color:#c4cfdb;
+    font-size:14px;
+}
+
+/* PHOTO FEATURE */
+.photo-feature{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+    margin-top:45px;
+}
+
+.photo-card{
+    position:relative;
+    min-height:370px;
+    overflow:hidden;
+    border-radius:5px;
+    background:#ddd;
+    box-shadow:var(--shadow);
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    min-height:370px;
+    object-fit:cover;
+    transition:.5s ease;
+}
+
+.photo-card:hover img{
+    transform:scale(1.04);
+}
+
+.photo-overlay{
+    position:absolute;
+    inset:auto 0 0;
+    padding:30px;
+    background:linear-gradient(transparent,rgba(4,15,29,.92));
+    color:#fff;
+}
+
+.photo-overlay small{
+    color:var(--gold-light);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:10px;
+    font-weight:800;
+}
+
+.photo-overlay h3{
+    font-size:24px;
+    margin-top:6px;
+}
+
+/* PROGRAMS */
+.program-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.program-card{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:32px 28px;
+    min-height:245px;
+    transition:.3s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.program-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow);
+    border-color:rgba(201,164,92,.45);
+}
+
+.program-number{
+    color:var(--gold);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:22px;
+}
+
+.program-card h3{
+    color:var(--navy);
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.program-card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.program-link{
+    position:absolute;
+    bottom:25px;
+    color:var(--red);
+    font-size:12px;
+    font-weight:800;
+}
+
+/* PHOTO PROGRAMS */
+.program-photo-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:40px;
+}
+
+.program-photo{
+    position:relative;
+    height:290px;
+    overflow:hidden;
+    border-radius:4px;
+}
+
+.program-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.45s ease;
+}
+
+.program-photo:hover img{
+    transform:scale(1.05);
+}
+
+.program-photo-caption{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:22px;
+    color:#fff;
+    background:linear-gradient(transparent,rgba(5,16,31,.9));
+}
+
+.program-photo-caption h3{
+    font-size:19px;
+}
+
+/* APPROACH */
+.approach-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.approach-card{
+    padding:35px 30px;
+    border-top:3px solid var(--red);
+    background:rgba(255,255,255,.05);
+}
+
+.approach-number{
+    color:var(--gold-light);
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.approach-card h3{
+    font-size:25px;
+    margin:12px 0;
+}
+
+.approach-card p{
+    color:#bac5d2;
+    font-size:14px;
+}
+
+/* SOCIAL */
+.social-section{
+    background:#fff;
+    padding:65px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.social-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.social-box h3{
+    color:var(--navy);
+    font-size:27px;
+    margin-bottom:7px;
+}
+
+.social-box p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.social-items{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.social-item{
+    border:1px solid var(--line);
+    padding:14px 18px;
+    border-radius:4px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+    background:#fafafa;
+}
+
+.social-item strong{
+    color:var(--red);
+}
+
+/* CTA */
+.cta{
+    background:
+        linear-gradient(100deg,rgba(7,20,38,.97),rgba(7,20,38,.88)),
+        url("assets/youth-survey.jpg") center/cover;
+    padding:90px 0;
+    color:#fff;
+}
+
+.cta-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:35px;
+}
+
+.cta h2{
+    font-size:clamp(30px,4vw,48px);
+    line-height:1.15;
+    max-width:700px;
+}
+
+.cta p{
+    color:#c4cfdb;
+    max-width:650px;
+    margin-top:15px;
+}
+
+/* FOOTER */
+footer{
+    background:#040d19;
+    color:#aeb9c6;
+    padding:60px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:45px;
+    padding-bottom:45px;
+}
+
+.footer-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.footer-brand img{
+    width:48px;
+    height:48px;
+    object-fit:cover;
+    border-radius:7px;
+}
+
+.footer-brand strong{
+    color:#fff;
+    font-size:15px;
+}
+
+.footer-column h4{
+    color:#fff;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:18px;
+}
+
+.footer-column a{
+    display:block;
+    font-size:13px;
+    margin-bottom:9px;
+    transition:.2s ease;
+}
+
+.footer-column a:hover{
+    color:var(--gold-light);
+}
+
+.footer-column p{
+    font-size:13px;
+    line-height:1.8;
+}
+
+.footer-social{
+    margin-top:16px;
+}
+
+.footer-social div{
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.footer-social strong{
+    color:var(--gold-light);
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.09);
+    padding-top:22px;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    font-size:11px;
+    color:#7f8b98;
+}
+
+/* REVEAL */
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity .7s ease, transform .7s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+    .nav-links{
+        gap:13px;
+    }
+
+    .nav-links a{
+        font-size:12px;
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:850px){
+    .topbar-inner{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .topbar-inner span:last-child{
+        display:none;
+    }
+
+    .nav-inner{
+        min-height:72px;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:72px;
+        left:0;
+        right:0;
+        background:#fff;
+        border-bottom:1px solid var(--line);
+        box-shadow:0 15px 30px rgba(0,0,0,.08);
+        padding:18px 5%;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:13px 0;
+        border-bottom:1px solid #eee;
+    }
+
+    .nav-links a::after{
+        display:none;
+    }
+
+    .nav-cta{
+        text-align:center;
+        margin-top:8px;
+    }
+
+    .hero{
+        min-height:620px;
+        background-position:center;
+    }
+
+    .hero-content{
+        padding:70px 0;
+    }
+
+    .impact-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .impact-item:nth-child(2){
+        border-right:0;
+    }
+
+    .impact-item:nth-child(-n+2){
+        border-bottom:1px solid var(--line);
+    }
+
+    .about-grid,
+    .photo-feature{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .program-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .program-photo-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .approach-grid{
+        grid-template-columns:1fr;
+    }
+
+    .social-box,
+    .cta-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+@media(max-width:600px){
+    .brand-title{
+        font-size:14px;
+    }
+
+    .brand-sub{
+        font-size:8px;
+    }
+
+    .brand img{
+        width:47px;
+        height:47px;
+    }
+
+    .hero h1{
+        font-size:43px;
+        letter-spacing:-1.5px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .section{
+        padding:70px 0;
+    }
+
+    .impact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .impact-item{
+        border-right:0!important;
+        border-bottom:1px solid var(--line)!important;
+    }
+
+    .impact-item:last-child{
+        border-bottom:0!important;
+    }
+
+    .program-grid,
+    .program-photo-grid{
+        grid-template-columns:1fr;
+    }
+
+    .program-card{
+        min-height:220px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:32px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .btn{
+        width:100%;
+    }
+}
+</style>
+<link rel="canonical" href="https://aswf.org.in/">
+<meta property="og:url" content="https://aswf.org.in/">
+<meta property="og:site_name" content="Ayesha Social Welfare Foundation">
+<meta property="og:image" content="https://aswf.org.in/assets/logo.jpg">
+<meta property="og:image:alt" content="Ayesha Social Welfare Foundation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ayesha Social Welfare Foundation | From Injustice to Empowerment">
+<meta name="twitter:description" content="Ayesha Social Welfare Foundation is a student-led social welfare organisation working for education, healthcare, legal awareness, women empowerment, youth development and community welfare.">
+<meta name="twitter:image" content="https://aswf.org.in/assets/logo.jpg">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"NGO",
+  "name":"Ayesha Social Welfare Foundation",
+  "alternateName":"ASWF",
+  "url":"https://aswf.org.in/",
+  "logo":"https://aswf.org.in/assets/logo.jpg",
+  "email":"mailto:info@aswf.org.in",
+  "telephone":"+91 7007824532",
+  "address":{"@type":"PostalAddress","streetAddress":"Ramjan Nagar, Madanpur","addressLocality":"Deoria","addressRegion":"Uttar Pradesh","postalCode":"274205","addressCountry":"IN"},
+  "slogan":"From Injustice to Empowerment"
+}
+</script>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span>
+            <strong>ASWF</strong>
+            From Injustice to Empowerment
+        </span>
+
+        <span>
+            <strong>Contact:</strong> +91 7007824532
+        </span>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<header class="navbar">
+    <div class="container nav-inner">
+
+        <a href="index.html" class="brand">
+            <img src="assets/logo.jpg" alt="Ayesha Social Welfare Foundation Logo">
+
+            <div class="brand-text">
+                <div class="brand-title">Ayesha Social Welfare Foundation</div>
+                <div class="brand-sub">From Injustice to Empowerment</div>
+            </div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+            ☰
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="impact.html">Impact</a>
+            <a href="team.html">Our Team</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="news.html">News</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html" class="nav-cta">Support</a>
+        </nav>
+
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="container hero-content reveal">
+
+        <div class="eyebrow">
+            Legal Awareness • Social Justice
+        </div>
+
+        <h1>
+            From <span>Injustice</span><br>
+            to Empowerment.
+        </h1>
+
+        <p>
+            Ayesha Social Welfare Foundation works to strengthen communities
+            through education, health support, legal awareness, women empowerment,
+            social justice, youth development and meaningful community action.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="programs.html" class="btn btn-primary">
+                Explore Our Work
+            </a>
+
+            <a href="get-involved.html" class="btn btn-outline">
+                Get Involved
+            </a>
+        </div>
+
+        <div class="hero-note">
+            Building awareness, access and opportunity with dignity,
+            responsibility and community participation.
+        </div>
+
+    </div>
+
+</section>
+
+<!-- IMPACT STRIP -->
+<section class="impact-strip">
+    <div class="container impact-grid">
+
+        <div class="impact-item reveal">
+            <div class="impact-number">01</div>
+            <div class="impact-title">Education</div>
+            <div class="impact-desc">Supporting learning and awareness.</div>
+        </div>
+
+        <div class="impact-item reveal">
+            <div class="impact-number">02</div>
+            <div class="impact-title">Health</div>
+            <div class="impact-desc">Promoting access to essential support.</div>
+        </div>
+
+        <div class="impact-item reveal">
+            <div class="impact-number">03</div>
+            <div class="impact-title">Justice</div>
+            <div class="impact-desc">Strengthening legal awareness.</div>
+        </div>
+
+        <div class="impact-item reveal">
+            <div class="impact-number">04</div>
+            <div class="impact-title">Community</div>
+            <div class="impact-desc">Encouraging meaningful participation.</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <div class="section-label">Who We Are</div>
+
+            <h2>
+                Purpose-led work for stronger communities.
+            </h2>
+
+            <p>
+                ASWF is a Section 8 nonprofit organisation focused on creating
+                awareness, opportunity and practical support across communities.
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-copy reveal">
+
+                <h3>
+                    Listening first. Acting responsibly.
+                </h3>
+
+                <p>
+                    We believe meaningful social change begins with understanding
+                    people, recognising community needs and creating responsible
+                    pathways towards empowerment.
+                </p>
+
+                <p>
+                    Our work brings together education, health, legal awareness,
+                    women empowerment, social justice, community development and
+                    youth engagement.
+                </p>
+
+                <div class="about-list">
+
+                    <div>
+                        <span>✓</span>
+                        Community-focused programmes
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Awareness and empowerment
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Responsible collaboration
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Respect for dignity and inclusion
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="about-card reveal">
+
+                <div class="mini-label">
+                    Our Commitment
+                </div>
+
+                <h3>
+                    Turning awareness into meaningful action.
+                </h3>
+
+                <p>
+                    From community awareness to practical support, we aim to
+                    contribute to a more informed, capable and empowered society.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- REAL ACTIVITY PHOTOS -->
+<section class="section section-soft">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <div class="section-label">ASWF In Action</div>
+
+            <h2>
+                Real work. Real communities. Meaningful action.
+            </h2>
+
+            <p>
+                A glimpse into the areas where awareness, support and community
+                participation come together.
+            </p>
+        </div>
+
+        <div class="photo-feature">
+
+            <div class="photo-card reveal">
+                <img src="assets/education.jpg"
+                     alt="ASWF education activity"
+                     loading="lazy">
+
+                <div class="photo-overlay">
+                    <small>Education</small>
+                    <h3>Creating pathways through learning.</h3>
+                </div>
+            </div>
+
+            <div class="photo-card reveal">
+                <img src="assets/medical.jpg"
+                     alt="ASWF medical assistance activity"
+                     loading="lazy">
+
+                <div class="photo-overlay">
+                    <small>Health & Medical Assistance</small>
+                    <h3>Supporting access to essential care.</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROGRAMS -->
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <div class="section-label">Our Programmes</div>
+
+            <h2>
+                Areas where we work to create meaningful change.
+            </h2>
+
+            <p>
+                Our programme areas are designed around awareness, empowerment,
+                support and community development.
+            </p>
+        </div>
+
+        <div class="program-grid">
+
+            <article class="program-card reveal">
+                <div class="program-number">01</div>
+                <h3>Education</h3>
+                <p>
+                    Supporting learning, educational awareness and opportunities
+                    for individuals and communities.
+                </p>
+                <a href="programs.html" class="program-link">Explore →</a>
+            </article>
+
+            <article class="program-card reveal">
+                <div class="program-number">02</div>
+                <h3>Health & Medical Assistance</h3>
+                <p>
+                    Promoting health awareness and helping connect communities
+                    with appropriate support.
+                </p>
+                <a href="programs.html" class="program-link">Explore →</a>
+            </article>
+
+            <article class="program-card reveal">
+                <div class="program-number">03</div>
+                <h3>Legal Awareness</h3>
+                <p>
+                    Building awareness around rights, responsibilities and access
+                    to legal information.
+                </p>
+                <a href="programs.html" class="program-link">Explore →</a>
+            </article>
+
+            <article class="program-card reveal">
+                <div class="program-number">04</div>
+                <h3>Women Empowerment</h3>
+                <p>
+                    Encouraging awareness, participation, confidence and
+                    opportunities for women.
+                </p>
+                <a href="programs.html" class="program-link">Explore →</a>
+            </article>
+
+            <article class="program-card reveal">
+                <div class="program-number">05</div>
+                <h3>Social Justice</h3>
+                <p>
+                    Supporting awareness, dignity, inclusion and responsible
+                    community action.
+                </p>
+                <a href="programs.html" class="program-link">Explore →</a>
+            </article>
+
+            <article class="program-card reveal">
+                <div class="program-number">06</div>
+                <h3>Community Development</h3>
+                <p>
+                    Encouraging local participation and practical community
+                    development initiatives.
+                </p>
+                <a href="programs.html" class="program-link">Explore →</a>
+            </article>
+
+        </div>
+
+        <!-- THIRD PHOTO -->
+        <div class="program-photo-grid">
+
+            <div class="program-photo reveal">
+                <img src="assets/legal-awareness.jpg"
+                     alt="ASWF legal awareness activity"
+                     loading="lazy">
+
+                <div class="program-photo-caption">
+                    <h3>Legal Awareness</h3>
+                </div>
+            </div>
+
+            <div class="program-photo reveal">
+                <img src="assets/education.jpg"
+                     alt="ASWF education activity"
+                     loading="lazy">
+
+                <div class="program-photo-caption">
+                    <h3>Education</h3>
+                </div>
+            </div>
+
+            <div class="program-photo reveal">
+                <img src="assets/medical.jpg"
+                     alt="ASWF medical assistance activity"
+                     loading="lazy">
+
+                <div class="program-photo-caption">
+                    <h3>Health & Medical Support</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- YOUTH / COMMUNITY -->
+<section class="section section-dark">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <div class="section-label">Youth & Community</div>
+
+            <h2>
+                Young people can help communities understand their needs.
+            </h2>
+
+            <p>
+                Community surveys and field engagement can help build better
+                understanding and encourage informed action.
+            </p>
+        </div>
+
+        <div class="photo-feature">
+
+            <div class="photo-card reveal">
+
+                <img src="assets/youth-survey.jpg"
+                     alt="ASWF youth conducting community survey"
+                     loading="lazy">
+
+                <div class="photo-overlay">
+                    <small>Youth & Community Development</small>
+                    <h3>Listening to communities on the ground.</h3>
+                </div>
+
+            </div>
+
+            <div class="about-card reveal">
+
+                <div class="mini-label">
+                    Community First
+                </div>
+
+                <h3>
+                    Understand the need before designing the response.
+                </h3>
+
+                <p>
+                    Responsible community work begins by listening. Field
+                    engagement and surveys can help identify concerns,
+                    perspectives and areas where support may be meaningful.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- APPROACH -->
+<section class="section section-dark">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <div class="section-label">Our Approach</div>
+
+            <h2>
+                Listen. Act. Empower.
+            </h2>
+
+            <p>
+                We aim to keep our approach practical, respectful and
+                community-focused.
+            </p>
+        </div>
+
+        <div class="approach-grid">
+
+            <div class="approach-card reveal">
+                <div class="approach-number">01 — LISTEN</div>
+                <h3>Understand</h3>
+                <p>
+                    Listen to community experiences, concerns and priorities
+                    before deciding how to respond.
+                </p>
+            </div>
+
+            <div class="approach-card reveal">
+                <div class="approach-number">02 — ACT</div>
+                <h3>Support</h3>
+                <p>
+                    Develop responsible activities around awareness, support,
+                    participation and collaboration.
+                </p>
+            </div>
+
+            <div class="approach-card reveal">
+                <div class="approach-number">03 — EMPOWER</div>
+                <h3>Strengthen</h3>
+                <p>
+                    Encourage knowledge, confidence, participation and
+                    opportunities for long-term community development.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SOCIAL -->
+<section class="social-section">
+
+    <div class="container social-box">
+
+        <div class="reveal">
+
+            <h3>Stay Connected with ASWF</h3>
+
+            <p>
+                Follow our work and stay connected with the ASWF community.
+            </p>
+
+        </div>
+
+        <div class="social-items reveal">
+
+            <div class="social-item">
+                Facebook:
+                <strong>Ayesha Social Welfare Foundation</strong>
+            </div>
+
+            <div class="social-item">
+                Instagram:
+                <strong>@ayeshafoundation.in</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+    <div class="container cta-inner">
+
+        <div class="reveal">
+
+            <h2>
+                Your time, skills and support can strengthen community action.
+            </h2>
+
+            <p>
+                Whether you want to volunteer, collaborate, contribute your
+                skills or support our work, there is a meaningful way to get involved.
+            </p>
+
+        </div>
+
+        <div class="reveal">
+            <a href="get-involved.html" class="btn btn-primary">
+                Get Involved
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-column">
+
+                <div class="footer-brand">
+                    <img src="assets/logo.jpg"
+                         alt="Ayesha Social Welfare Foundation Logo">
+
+                    <strong>Ayesha Social Welfare Foundation</strong>
+                </div>
+
+                <p>
+                    A Section 8 nonprofit organisation working towards
+                    education, health, legal awareness, social justice,
+                    women empowerment and community development.
+                </p>
+
+                <div class="footer-social">
+                    <div>
+                        Facebook:
+                        <strong>Ayesha Social Welfare Foundation</strong>
+                    </div>
+
+                    <div>
+                        Instagram:
+                        <strong>@ayeshafoundation.in</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h4>Explore</h4>
+
+                <a href="about.html">About ASWF</a>
+                <a href="programs.html">Our Programs</a>
+                <a href="impact.html">Our Impact</a>
+                <a href="team.html">Our Team</a>
+                <a href="gallery.html">Gallery</a>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h4>Get Involved</h4>
+
+                <a href="get-involved.html">Get Involved</a>
+                <a href="volunteer.html">Volunteer</a>
+                <a href="collaboration.html">Partner With Us</a>
+                <a href="donate.html">Support / Donate</a>
+                <a href="contact.html">Contact Us</a>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h4>Contact</h4>
+
+                <p>
+                    Ramjan Nagar, Madanpur,<br>
+                    Deoria, Uttar Pradesh – 274205,<br>
+                    India
+                </p>
+
+                <p style="margin-top:12px;">
+                    info@aswf.org.in
+                </p>
+
+                <p style="margin-top:8px;">
+                    +91 7007824532<br>
+                    +91 7368-032471
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div>
+                © 2026 Ayesha Social Welfare Foundation. All rights reserved.
+            </div>
+
+            <div>
+                <a href="privacy.html">Privacy Policy</a>
+                &nbsp; • &nbsp;
+                <a href="terms.html">Terms & Conditions</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+    });
+});
+
+/* Scroll Reveal */
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+
+    });
+
+},{
+    threshold:0.12
+});
+
+revealElements.forEach(element => {
+    observer.observe(element);
+});
+</script>
+
+</body>
+</html>

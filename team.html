@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Team | Ayesha Social Welfare Foundation</title>
+<meta name="description" content="Meet the leadership and office bearers of Ayesha Social Welfare Foundation.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+:root{
+  --navy:#0b1730; --navy2:#12264b; --gold:#b78a35; --gold2:#d7b66a;
+  --cream:#f7f4ed; --white:#fff; --ink:#172033; --muted:#667085;
+  --line:#e7e5df; --shadow:0 18px 50px rgba(11,23,48,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fbfaf7;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.container{width:min(1180px,92%);margin:auto}
+.top{background:var(--navy);color:#dfe6f3;font-size:13px;padding:8px 0}
+.top .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}
+.navin{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy)}
+.brand img{width:48px;height:48px;object-fit:contain;border-radius:10px}
+.brand span{font-size:15px;line-height:1.2}
+.links{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:650;color:#39445a}
+.links a:hover{color:var(--gold)}
+.cta{background:var(--navy);color:#fff!important;padding:11px 17px;border-radius:999px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy),#19345f);color:#fff;padding:88px 0 82px}
+.hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(215,182,106,.24);border-radius:50%;right:-110px;top:-180px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--gold2);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--gold2)}
+h1{font-family:Georgia,serif;font-size:clamp(42px,6vw,70px);line-height:1.02;max-width:760px}
+.hero p{max-width:700px;color:#dce5f3;margin-top:20px;font-size:17px}
+.section{padding:78px 0}
+.section.alt{background:#f5f2eb}
+.heading{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:30px}
+.heading h2{font-family:Georgia,serif;color:var(--navy);font-size:38px;line-height:1.1}
+.heading p{max-width:560px;color:var(--muted)}
+.badge{font-size:12px;color:#80601f;background:#f4ead2;border:1px solid #ead7aa;padding:7px 11px;border-radius:999px;white-space:nowrap;font-weight:800}
+.grid-directors{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.director,.member{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.director{display:grid;grid-template-columns:170px 1fr;border-radius:20px;min-height:220px}
+.photo{background:linear-gradient(135deg,#e9e4d8,#f7f4ed);overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.initials{width:100%;height:100%;display:grid;place-items:center;background:linear-gradient(145deg,#14284d,#263e6b);color:#e6c77c;font-family:Georgia,serif;font-size:48px;font-weight:700}
+.director .content{padding:28px;display:flex;flex-direction:column;justify-content:center}
+.role{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:900;margin-bottom:8px}
+.name{font-family:Georgia,serif;font-size:25px;color:var(--navy);line-height:1.2}
+.desc{color:var(--muted);font-size:14px;margin-top:12px}
+.grid-office{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.member{border-radius:18px}
+.member .photo{height:255px}
+.member .content{padding:18px 19px 21px}
+.member .name{font-size:20px}
+.member .desc{margin-top:8px}
+.number{color:#b5aa91;font-size:11px;font-weight:800;letter-spacing:.12em;margin-top:13px}
+.empty{grid-column:1/-1;padding:35px;border:1px dashed #cfc8b9;border-radius:16px;text-align:center;color:var(--muted);background:#fff}
+.responsibilities{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.resp{background:#fff;border:1px solid var(--line);padding:24px;border-radius:16px}
+.resp strong{display:block;color:var(--navy);margin-bottom:7px}
+.resp span{font-size:14px;color:var(--muted)}
+footer{background:var(--navy);color:#dbe3ef;padding:45px 0 25px}
+.footerin{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.footerbrand{font-family:Georgia,serif;font-size:24px;color:#fff}
+footer p{font-size:13px;color:#aebbd0;max-width:560px;margin-top:8px}
+.copy{border-top:1px solid rgba(255,255,255,.12);margin-top:28px;padding-top:18px;font-size:12px;color:#8e9db6}
+@media(max-width:900px){
+ .links{display:none}.grid-office{grid-template-columns:repeat(2,1fr)}
+ .grid-directors{grid-template-columns:1fr}.responsibilities{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ .hero{padding:65px 0}.section{padding:55px 0}.heading{display:block}.heading p{margin-top:12px}
+ .grid-office{grid-template-columns:1fr}.director{grid-template-columns:115px 1fr;min-height:170px}
+ .director .content{padding:18px}.director .name{font-size:20px}.member .photo{height:300px}
+ .top .container{display:block}.top .container span{display:block;margin:2px 0}
+}
+</style>
+<link rel="canonical" href="https://aswf.org.in/team.html">
+<meta property="og:url" content="https://aswf.org.in/team.html">
+<meta property="og:site_name" content="Ayesha Social Welfare Foundation">
+<meta property="og:image" content="https://aswf.org.in/assets/logo.jpg">
+<meta property="og:image:alt" content="Ayesha Social Welfare Foundation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Our Team | Ayesha Social Welfare Foundation">
+<meta name="twitter:description" content="Meet the leadership and office bearers of Ayesha Social Welfare Foundation.">
+<meta name="twitter:image" content="https://aswf.org.in/assets/logo.jpg">
+</head>
+<body>
+
+<div class="top">
+  <div class="container">
+    <span>Section 8 Company · Incorporated under Companies Act, 2013</span>
+    <span>Deoria, Uttar Pradesh · +91 7007824532</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="container navin">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.jpg" alt="ASWF logo">
+      <span>Ayesha Social Welfare<br>Foundation</span>
+    </a>
+    <nav class="links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="impact.html">Impact</a>
+      <a href="team.html">Team</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta" href="donate.html">Support ASWF</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Leadership & Team</div>
+    <h1>The people behind the mission.</h1>
+    <p>Meet the leadership and office bearers working together to advance Ayesha Social Welfare Foundation's mission of education, justice, healthcare, empowerment and community development.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="heading">
+      <div>
+        <div class="eyebrow">Leadership</div>
+        <h2>Board of Directors</h2>
+      </div>
+      <span class="badge" id="directorCount">2 Directors</span>
+    </div>
+    <div class="grid-directors" id="directorsGrid"></div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="heading">
+      <div>
+        <div class="eyebrow">Our Team</div>
+        <h2>Office Bearers</h2>
+      </div>
+      <span class="badge" id="officeCount">16 Office Bearers</span>
+    </div>
+    <div class="grid-office" id="officeGrid"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="heading">
+      <div>
+        <div class="eyebrow">How we work</div>
+        <h2>Shared responsibility.</h2>
+      </div>
+      <p>ASWF brings together leadership, programme coordination, outreach, media, legal awareness, fundraising and regional representation to support meaningful community work.</p>
+    </div>
+    <div class="responsibilities">
+      <div class="resp"><strong>Community Development</strong><span>Connecting programmes with local needs and community participation.</span></div>
+      <div class="resp"><strong>Education & Youth</strong><span>Encouraging students and young people to participate in social action.</span></div>
+      <div class="resp"><strong>Awareness & Justice</strong><span>Supporting legal awareness, rights awareness and responsible citizenship.</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footerin">
+      <div>
+        <div class="footerbrand">Ayesha Social Welfare Foundation</div>
+        <p>From Injustice to Empowerment · Student-led social welfare organisation · Deoria, Uttar Pradesh, India.</p>
+      </div>
+      <div>
+        <p>info@aswf.org.in<br>+91 7007824532 · +91 7368-032471</p>
+      </div>
+    </div>
+    <div class="copy">© 2026 Ayesha Social Welfare Foundation. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const LOCAL_TEAM = [
+  {name:"Sameer Khan", designation:"Director", category:"director", photo:"assets/sameer-khan.jpg"},
+  {name:"Mizan Ahmed", designation:"Director", category:"director", photo:""},
+  {name:"Danish Shaikh", designation:"President", category:"office", photo:"assets/danish-shaikh.jpg"},
+  {name:"Sabir Shaikh", designation:"Vice-President", category:"office", photo:"assets/sabir-shaikh.jpg"},
+  {name:"Sameer Imteyaz Khan", designation:"Secretary", category:"office", photo:"assets/sameer-imteyaz-khan.jpg"},
+  {name:"Adv. Akhtar Ali", designation:"Joint-Secretary", category:"office", photo:"assets/akhtar-ali.jpg"},
+  {name:"Adnan Shaikh", designation:"Treasurer", category:"office", photo:"assets/adnan-shaikh.jpg"},
+  {name:"Ausaf Shaikh", designation:"Joint-Treasurer", category:"office", photo:"assets/ausaf-shaikh.jpg"},
+  {name:"Syed Waleed Ahmed", designation:"Public Relation Officer (PRO)", category:"office", photo:"assets/syed-waleed-ahmed.jpg"},
+  {name:"Altaf Hussain", designation:"Program Coordinator", category:"office", photo:"assets/altaf-hussain.jpg"},
+  {name:"Ubaid Khan", designation:"Promoter", category:"office", photo:"assets/ubaid-khan.jpg"},
+  {name:"Aiman Khan", designation:"Media Person", category:"office", photo:"assets/aiman-khan.jpg"},
+  {name:"Hifzur Khan", designation:"Regional Head (Deoria)", category:"office", photo:"assets/hifzur-khan.jpg"},
+  {name:"Abdul Hannan Khan", designation:"Regional Head (Aligarh)", category:"office", photo:"assets/abdul-hannan-khan.jpg"},
+  {name:"Sajid Farooque", designation:"Regional Head (Seemanchal)", category:"office", photo:"assets/sajid-farooque.jpg"},
+  {name:"Zishan Shaikh", designation:"Membership Coordinator", category:"office", photo:"assets/zishan-shaikh.jpg"},
+  {name:"Faisal Khan", designation:"Fundraiser", category:"office", photo:"assets/faisal-khan.jpg"},
+  {name:"Adv. Zishan Khan", designation:"Legal Representative", category:"office", photo:"assets/adv-zishan-khan.jpg"}
+];
+
+function initials(name){
+  return name.split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join("").toUpperCase();
+}
+function esc(v){
+  return String(v ?? "").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function imageBlock(person, cls="photo"){
+  const src=person.photo || person.photo_url || "";
+  if(src){
+    return `<div class="${cls}"><img src="${esc(src)}" alt="${esc(person.name)}" onerror="this.parentElement.innerHTML='<div class=\\'initials\\'>${esc(initials(person.name))}</div>'"></div>`;
+  }
+  return `<div class="${cls}"><div class="initials">${esc(initials(person.name))}</div></div>`;
+}
+function render(team){
+  const directors=team.filter(x=>String(x.category||"").toLowerCase()==="director");
+  const office=team.filter(x=>String(x.category||"").toLowerCase()!=="director");
+
+  document.getElementById("directorCount").textContent=directors.length+" Director"+(directors.length===1?"":"s");
+  document.getElementById("officeCount").textContent=office.length+" Office Bearer"+(office.length===1?"":"s");
+
+  document.getElementById("directorsGrid").innerHTML=directors.length ? directors.map(p=>`
+    <article class="director">
+      ${imageBlock(p)}
+      <div class="content">
+        <div class="role">${esc(p.designation || "Director")}</div>
+        <div class="name">${esc(p.name)}</div>
+        <div class="desc">${esc(p.bio || "Leadership at Ayesha Social Welfare Foundation.")}</div>
+      </div>
+    </article>`).join("") : `<div class="empty">No directors available.</div>`;
+
+  document.getElementById("officeGrid").innerHTML=office.length ? office.map((p,i)=>`
+    <article class="member">
+      ${imageBlock(p)}
+      <div class="content">
+        <div class="role">${esc(p.designation || "Office Bearer")}</div>
+        <div class="name">${esc(p.name)}</div>
+        <div class="desc">${esc(p.bio || "Office Bearer at Ayesha Social Welfare Foundation.")}</div>
+        <div class="number">TEAM MEMBER ${String(i+1).padStart(2,"0")}</div>
+      </div>
+    </article>`).join("") : `<div class="empty">No office bearers available.</div>`;
+}
+
+function mergeCmsWithLocal(rows){
+  const byName=new Map(LOCAL_TEAM.map(x=>[x.name.toLowerCase(),x]));
+  const cms=Array.isArray(rows)?rows:[];
+  const merged=cms.map(r=>{
+    const local=byName.get(String(r.name||"").trim().toLowerCase());
+    return {
+      ...(local||{}), ...r,
+      photo_url: r.photo_url || (local ? local.photo : ""),
+      category: r.category || (local ? local.category : "office")
+    };
+  });
+  // If CMS is incomplete, retain official local members that are absent.
+  const seen=new Set(merged.map(x=>String(x.name||"").trim().toLowerCase()));
+  LOCAL_TEAM.forEach(x=>{if(!seen.has(x.name.toLowerCase())) merged.push(x);});
+  return merged;
+}
+
+render(LOCAL_TEAM);
+
+(async()=>{
+  try{
+    const script=document.createElement("script");
+    script.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+    script.onload=async()=>{
+      try{
+        const sb=window.supabase.createClient(
+          "https://zdvfcyxmrvaosqazicjl.supabase.co",
+          "sb_publishable_4w34BGktLYB0E0G0Pb8v63g_XxR4sqq4"
+        );
+        const {data,error}=await sb.from("team").select("*").in("status",["published","Published"]).order("display_order",{ascending:true});
+        if(!error && Array.isArray(data) && data.length){
+          render(mergeCmsWithLocal(data));
+        }
+      }catch(e){}
+    };
+    script.onerror=()=>{};
+    document.head.appendChild(script);
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

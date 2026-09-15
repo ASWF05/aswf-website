@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Programs | Ayesha Social Welfare Foundation</title>
+
+<meta name="description" content="Explore ASWF initiatives in education, healthcare, legal awareness, environmental conservation, women empowerment and community development.">
+<meta name="keywords" content="ASWF programs, Ayesha Social Welfare Foundation programs, NGO Deoria, education camp, medical camp, legal awareness, women empowerment, tree plantation">
+<meta name="author" content="Ayesha Social Welfare Foundation">
+
+<meta property="og:title" content="Our Programs | Ayesha Social Welfare Foundation">
+<meta property="og:description" content="Real community initiatives of Ayesha Social Welfare Foundation across education, healthcare, legal awareness, environment and women empowerment.">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/png" href="assets/favicon.png">
+
+<style>
+:root{
+    --navy:#07152d;
+    --navy2:#0b2042;
+    --red:#b51f2a;
+    --red2:#8f1620;
+    --gold:#c9a227;
+    --gold2:#e1c45a;
+    --white:#ffffff;
+    --text:#1b2433;
+    --muted:#667085;
+    --light:#f5f7fa;
+    --border:#e6e9ef;
+    --shadow:0 18px 50px rgba(7,21,45,.10);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.7;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* TOP BAR */
+.topbar{
+    background:var(--navy);
+    color:#dbe4f2;
+    font-size:13px;
+    padding:9px 0;
+}
+
+.topbar-inner{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+}
+
+/* NAVIGATION */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(7,21,45,.08);
+}
+
+.nav-inner{
+    min-height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    min-width:0;
+}
+
+.brand img{
+    width:52px;
+    height:52px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.brand-text{
+    min-width:0;
+}
+
+.brand-title{
+    font-size:17px;
+    font-weight:800;
+    color:var(--navy);
+    white-space:nowrap;
+}
+
+.brand-sub{
+    font-size:10px;
+    color:var(--red);
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.nav-links a{
+    font-size:13px;
+    font-weight:700;
+    color:#344054;
+    transition:.25s ease;
+    white-space:nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:var(--red);
+}
+
+.nav-cta{
+    background:var(--red);
+    color:#fff!important;
+    padding:11px 16px;
+    border-radius:7px;
+    box-shadow:0 8px 20px rgba(181,31,42,.18);
+}
+
+.nav-cta:hover{
+    background:var(--red2);
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:var(--navy);
+    color:#fff;
+    width:43px;
+    height:43px;
+    border-radius:8px;
+    font-size:21px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    background:
+        linear-gradient(120deg,rgba(7,21,45,.99),rgba(11,32,66,.96));
+    color:#fff;
+    padding:105px 0 95px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:480px;
+    height:480px;
+    border:1px solid rgba(201,162,39,.20);
+    border-radius:50%;
+    right:-190px;
+    top:-230px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:50%;
+    left:-140px;
+    bottom:-150px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    color:var(--gold2);
+    text-transform:uppercase;
+    letter-spacing:2.5px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:34px;
+    height:2px;
+    background:var(--gold);
+}
+
+.hero h1{
+    font-size:clamp(42px,6vw,72px);
+    line-height:1.06;
+    letter-spacing:-2px;
+    margin-bottom:22px;
+}
+
+.hero h1 span{
+    color:var(--gold2);
+}
+
+.hero p{
+    color:#dbe4f2;
+    font-size:18px;
+    max-width:760px;
+}
+
+.hero-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:28px;
+}
+
+.hero-tag{
+    padding:9px 14px;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.05);
+    border-radius:50px;
+    font-size:12px;
+    color:#e6ebf4;
+}
+
+/* SECTION */
+.section{
+    padding:90px 0;
+}
+
+.section-light{
+    background:var(--light);
+}
+
+.section-head{
+    max-width:780px;
+    margin-bottom:45px;
+}
+
+.kicker{
+    color:var(--red);
+    text-transform:uppercase;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.section-head h2{
+    color:var(--navy);
+    font-size:clamp(32px,4vw,48px);
+    line-height:1.15;
+    letter-spacing:-1px;
+    margin-bottom:15px;
+}
+
+.section-head p{
+    color:var(--muted);
+    font-size:16px;
+}
+
+/* PROGRAM CATEGORY */
+.category{
+    margin-bottom:90px;
+}
+
+.category:last-child{
+    margin-bottom:0;
+}
+
+.category-header{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:30px;
+    margin-bottom:28px;
+}
+
+.category-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.category-number{
+    width:48px;
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--navy);
+    color:var(--gold2);
+    border-radius:10px;
+    font-size:13px;
+    font-weight:800;
+}
+
+.category-title h2{
+    color:var(--navy);
+    font-size:31px;
+    line-height:1.15;
+}
+
+.category-intro{
+    max-width:600px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* PROGRAM CARDS */
+.program-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.program-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(7,21,45,.05);
+    transition:.3s ease;
+}
+
+.program-card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+}
+
+.program-image{
+    height:225px;
+    background:
+        linear-gradient(135deg,#0b2042,#182e51);
+    position:relative;
+    overflow:hidden;
+}
+
+.program-image::before{
+    content:"";
+    position:absolute;
+    width:190px;
+    height:190px;
+    border:1px solid rgba(225,196,90,.25);
+    border-radius:50%;
+    right:-70px;
+    top:-80px;
+}
+
+.program-image::after{
+    content:"PROGRAMME";
+    position:absolute;
+    bottom:18px;
+    left:20px;
+    color:rgba(255,255,255,.16);
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.program-image.has-photo{
+    background-size:cover;
+    background-position:center;
+}
+
+.program-image.has-photo::after{
+    display:none;
+}
+
+.photo-note{
+    position:absolute;
+    left:20px;
+    top:18px;
+    padding:7px 10px;
+    background:rgba(7,21,45,.78);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:6px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-weight:700;
+}
+
+.program-body{
+    padding:28px;
+}
+
+.program-meta{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:12px;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:5px;
+    background:#f7f1dc;
+    color:#80660c;
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+.location{
+    color:#7a8495;
+    font-size:11px;
+}
+
+.program-body h3{
+    color:var(--navy);
+    font-size:22px;
+    line-height:1.3;
+    margin-bottom:12px;
+}
+
+.program-body p{
+    color:#475467;
+    font-size:14px;
+    line-height:1.75;
+}
+
+.program-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:20px;
+}
+
+.info{
+    background:#f7f8fa;
+    border-radius:8px;
+    padding:11px 12px;
+}
+
+.info small{
+    display:block;
+    color:#7a8495;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-weight:800;
+    margin-bottom:3px;
+}
+
+.info strong{
+    display:block;
+    color:var(--navy);
+    font-size:12px;
+}
+
+/* SINGLE FULL CARD */
+.program-card.full{
+    grid-column:1/-1;
+}
+
+/* IMPACT STRIP */
+.impact-strip{
+    background:var(--navy);
+    color:#fff;
+    padding:55px 0;
+}
+
+.impact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.impact-item{
+    padding:25px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:12px;
+    background:rgba(255,255,255,.035);
+}
+
+.impact-item .num{
+    color:var(--gold2);
+    font-size:31px;
+    font-weight:900;
+    line-height:1;
+    margin-bottom:8px;
+}
+
+.impact-item h3{
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.impact-item p{
+    color:#aebbd0;
+    font-size:12px;
+}
+
+/* APPROACH */
+.approach-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.approach-card{
+    padding:30px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:#fff;
+}
+
+.approach-no{
+    color:var(--red);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:17px;
+}
+
+.approach-card h3{
+    color:var(--navy);
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.approach-card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* RESPONSIBLE */
+.responsible{
+    background:#f8f9fb;
+    border-top:1px solid var(--border);
+}
+
+.responsible-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:40px;
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:40px;
+}
+
+.responsible-box h2{
+    color:var(--navy);
+    font-size:31px;
+    line-height:1.2;
+}
+
+.responsible-box p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.responsible-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.responsible-item{
+    padding:16px;
+    border-radius:9px;
+    background:#f6f7f9;
+    color:#475467;
+    font-size:13px;
+}
+
+/* CONNECT */
+.connect{
+    padding:75px 0;
+    background:var(--light);
+}
+
+.connect-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.connect-box h3{
+    color:var(--navy);
+    font-size:23px;
+    margin-bottom:7px;
+}
+
+.connect-box p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.social-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:15px;
+}
+
+.social{
+    background:#f4f6f8;
+    border-radius:7px;
+    padding:8px 11px;
+    color:#344054;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* CTA */
+.cta{
+    padding:85px 0;
+    background:var(--red);
+    color:#fff;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.cta::before{
+    content:"";
+    position:absolute;
+    width:360px;
+    height:360px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+    left:-170px;
+    top:-160px;
+}
+
+.cta-content{
+    position:relative;
+    z-index:1;
+    max-width:760px;
+    margin:auto;
+}
+
+.cta h2{
+    font-size:clamp(32px,4vw,48px);
+    line-height:1.15;
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:#f8dfe2;
+    margin-bottom:28px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 21px;
+    border-radius:7px;
+    font-size:13px;
+    font-weight:800;
+    transition:.25s ease;
+}
+
+.btn-light{
+    background:#fff;
+    color:var(--red);
+}
+
+.btn-light:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+/* FOOTER */
+footer{
+    background:#050f21;
+    color:#aebbd0;
+    padding:60px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr 1fr;
+    gap:35px;
+}
+
+.footer-brand{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.footer-brand img{
+    width:48px;
+    height:48px;
+    object-fit:cover;
+    border-radius:9px;
+}
+
+.footer-brand strong{
+    color:#fff;
+    display:block;
+    font-size:16px;
+}
+
+.footer-brand span{
+    color:var(--gold2);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.footer-col h4{
+    color:#fff;
+    font-size:13px;
+    margin-bottom:15px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.footer-col a,
+.footer-col p{
+    display:block;
+    color:#9eabc0;
+    font-size:13px;
+    margin-bottom:9px;
+}
+
+.footer-col a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    margin-top:45px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+    font-size:12px;
+}
+
+.footer-social{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.footer-social span{
+    border:1px solid rgba(255,255,255,.10);
+    padding:6px 9px;
+    border-radius:6px;
+}
+
+/* REVEAL */
+.reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .7s ease,transform .7s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+
+    .nav-links{
+        gap:11px;
+    }
+
+    .program-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:900px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        left:4%;
+        right:4%;
+        top:75px;
+        background:#fff;
+        border:1px solid var(--border);
+        border-radius:12px;
+        padding:15px;
+        box-shadow:0 18px 45px rgba(7,21,45,.13);
+        flex-direction:column;
+        align-items:stretch;
+        gap:3px;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:11px 12px;
+        border-radius:7px;
+    }
+
+    .nav-links a:hover{
+        background:#f6f7f9;
+    }
+
+    .nav-cta{
+        text-align:center;
+        margin-top:5px;
+    }
+
+    .category-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .responsible-box{
+        grid-template-columns:1fr;
+    }
+
+    .connect-box{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .topbar{
+        display:none;
+    }
+
+    .nav-inner{
+        min-height:72px;
+    }
+
+    .brand img{
+        width:45px;
+        height:45px;
+    }
+
+    .brand-title{
+        font-size:14px;
+    }
+
+    .brand-sub{
+        font-size:8px;
+    }
+
+    .hero{
+        padding:80px 0 70px;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .section{
+        padding:70px 0;
+    }
+
+    .program-grid,
+    .impact-grid,
+    .approach-grid,
+    .responsible-list{
+        grid-template-columns:1fr;
+    }
+
+    .program-card.full{
+        grid-column:auto;
+    }
+
+    .program-info{
+        grid-template-columns:1fr;
+    }
+
+    .category-title h2{
+        font-size:25px;
+    }
+
+    .responsible-box{
+        padding:28px 22px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+    }
+
+}
+
+/* SUPABASE PROGRAM CMS */
+.program-card.cms-new{
+    position:relative;
+}
+.program-image.has-photo{
+    background-size:cover!important;
+    background-position:center!important;
+}
+.program-image.has-photo img.cms-program-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.program-image.has-photo .photo-note{
+    display:none;
+}
+.cms-photo-count{
+    position:absolute;
+    right:16px;
+    top:16px;
+    padding:7px 10px;
+    border-radius:6px;
+    background:rgba(7,21,45,.82);
+    color:#fff;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    z-index:3;
+}
+.cms-status{
+    display:inline-block;
+    margin-left:4px;
+    padding:4px 7px;
+    border-radius:4px;
+    background:#edf7ef;
+    color:#2d6a3f;
+    font-size:9px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+.cms-gallery{
+    display:flex;
+    gap:7px;
+    overflow:auto;
+    padding:12px 28px 0;
+    scrollbar-width:thin;
+}
+.cms-gallery img{
+    width:58px;
+    height:42px;
+    object-fit:cover;
+    border-radius:6px;
+    border:1px solid var(--border);
+    flex:0 0 auto;
+    cursor:pointer;
+}
+.cms-gallery img:hover{
+    opacity:.8;
+}
+.cms-loading{
+    margin:0 0 25px;
+    padding:15px 18px;
+    background:#f7f8fa;
+    border:1px solid var(--border);
+    border-radius:10px;
+    color:var(--muted);
+    font-size:13px;
+}
+.cms-error{
+    display:none;
+    margin:0 0 25px;
+    padding:15px 18px;
+    background:#fff5f5;
+    border:1px solid #f0c9cc;
+    border-radius:10px;
+    color:#8f1620;
+    font-size:13px;
+}
+@media(max-width:650px){
+    .cms-gallery{padding-left:22px;padding-right:22px;}
+}
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="canonical" href="https://aswf.org.in/programs.html">
+<meta property="og:url" content="https://aswf.org.in/programs.html">
+<meta property="og:site_name" content="Ayesha Social Welfare Foundation">
+<meta property="og:image" content="https://aswf.org.in/assets/logo.jpg">
+<meta property="og:image:alt" content="Ayesha Social Welfare Foundation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Our Programs | Ayesha Social Welfare Foundation">
+<meta name="twitter:description" content="Explore ASWF initiatives in education, healthcare, legal awareness, environmental conservation, women empowerment and community development.">
+<meta name="twitter:image" content="https://aswf.org.in/assets/logo.jpg">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="container topbar-inner">
+        <span>From Injustice to Empowerment</span>
+        <span>Deoria, Uttar Pradesh, India</span>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="container nav-inner">
+
+        <a href="index.html" class="brand">
+            <img src="assets/logo.jpg" alt="Ayesha Social Welfare Foundation Logo">
+
+            <div class="brand-text">
+                <div class="brand-title">Ayesha Social Welfare Foundation</div>
+                <div class="brand-sub">From Injustice to Empowerment</div>
+            </div>
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation">
+            ☰
+        </button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html" class="active">Programs</a>
+            <a href="impact.html">Impact</a>
+            <a href="team.html">Our Team</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="news.html">News</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html" class="nav-cta">Support ASWF</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="container hero-content reveal">
+
+        <div class="eyebrow">Our Programs</div>
+
+        <h1>
+            Turning purpose<br>
+            into <span>action.</span>
+        </h1>
+
+        <p>
+            ASWF works at the community level through educational,
+            healthcare, legal awareness, environmental and women
+            empowerment initiatives designed to encourage participation
+            and create meaningful social awareness.
+        </p>
+
+        <div class="hero-tags">
+            <span class="hero-tag">Education</span>
+            <span class="hero-tag">Healthcare</span>
+            <span class="hero-tag">Legal Awareness</span>
+            <span class="hero-tag">Environment</span>
+            <span class="hero-tag">Women Empowerment</span>
+        </div>
+
+    </div>
+</header>
+
+
+<!-- PROGRAMS -->
+<section class="section">
+<div class="container">
+
+    <div class="section-head reveal">
+        <div class="kicker">01 — Our Work</div>
+        <h2>Real initiatives. Community-focused action.</h2>
+        <p>
+            The following programmes represent activities undertaken by
+            Ayesha Social Welfare Foundation. Programme photographs can
+            be added as they are made available.
+        </p>
+    </div>
+
+    <div id="cmsLoading" class="cms-loading">Loading latest programmes from ASWF Admin Panel…</div>
+    <div id="cmsError" class="cms-error"></div>
+
+
+    <!-- EDUCATION -->
+    <div class="category" data-category="education">
+
+        <div class="category-header reveal">
+
+            <div class="category-title">
+                <div class="category-number">A</div>
+
+                <div>
+                    <div class="kicker">Educational Initiatives</div>
+                    <h2>Education & Learning</h2>
+                </div>
+            </div>
+
+            <p class="category-intro">
+                Encouraging students, families and communities to recognise
+                education as a pathway to opportunity, confidence and empowerment.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+            <!-- RURAL LITERACY -->
+            <article class="program-card reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Literacy</span>
+                        <span class="location">
+                            Bangra Bansidhar, Muzaffarpur, Bihar
+                        </span>
+                    </div>
+
+                    <h3>Rural Literacy Drive</h3>
+
+                    <p>
+                        ASWF volunteers visited Bangra Bansidhar village,
+                        interacted with local community members and encouraged
+                        children towards education. Volunteers also interacted
+                        with parents to discuss the importance of education
+                        and encourage greater support for children's learning.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Location</small>
+                            <strong>Bangra Bansidhar, Bihar</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Focus</small>
+                            <strong>Education Encouragement</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+
+            <!-- EDUCATIONAL CAMP -->
+            <article class="program-card reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Educational Camp</span>
+                        <span class="location">Madanpur, Deoria, UP</span>
+                    </div>
+
+                    <h3>Educational Camp — January 2025</h3>
+
+                    <p>
+                        An educational camp was organised to encourage
+                        creativity, knowledge and confidence among students.
+                        The programme included an Essay Writing Competition,
+                        Quiz Competition, Drawing & Calligraphy Competition
+                        and a Career Counselling Session.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Date</small>
+                            <strong>5 January 2025</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Location</small>
+                            <strong>Madanpur, Deoria, UP</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+
+            <!-- SUMMER CAMP -->
+            <article class="program-card reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Summer Camp</span>
+                        <span class="location">Madanpur, Deoria, UP</span>
+                    </div>
+
+                    <h3>Summer Educational Camp</h3>
+
+                    <p>
+                        A summer educational programme was organised with
+                        student-focused competitions designed to encourage
+                        learning, expression and participation. Activities
+                        included Quiz, Essay and Debate Competitions.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Date</small>
+                            <strong>12 July 2026</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Activities</small>
+                            <strong>Quiz • Essay • Debate</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+
+            <!-- SITARAY -->
+            <article class="program-card reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Recognition</span>
+                        <span class="location">Community Programme</span>
+                    </div>
+
+                    <h3>Sitaray-e-Taleem</h3>
+
+                    <p>
+                        Sitaray-e-Taleem was organised to recognise the
+                        winners of the educational camps through prize
+                        distribution. The programme also provided an
+                        opportunity to engage with village residents and
+                        discuss the importance of encouraging education
+                        within the community.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Focus</small>
+                            <strong>Education Encouragement</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Activity</small>
+                            <strong>Prize Distribution & Community Dialogue</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEALTH -->
+    <div class="category" data-category="health">
+
+        <div class="category-header reveal">
+
+            <div class="category-title">
+                <div class="category-number">B</div>
+
+                <div>
+                    <div class="kicker">Health Initiatives</div>
+                    <h2>Healthcare & Medical Support</h2>
+                </div>
+            </div>
+
+            <p class="category-intro">
+                Supporting community health awareness and facilitating
+                access to basic medical screening, specialist consultations
+                and medicines through community-oriented initiatives.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+            <!-- MEDICAL 2024 -->
+            <article class="program-card reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Medical Camp</span>
+                        <span class="location">Community Health Initiative</span>
+                    </div>
+
+                    <h3>Free Medical Camp</h3>
+
+                    <p>
+                        A free medical camp providing community-oriented
+                        health screening and medical support. Services
+                        included blood testing, dental check-up, blood
+                        pressure and sugar testing, general medical
+                        consultation and provision of medicines.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Date</small>
+                            <strong>22 August 2024</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Beneficiaries</small>
+                            <strong>118 people</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+
+            <!-- EYE CAMP -->
+            <article class="program-card reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Eye Care</span>
+                        <span class="location">Community Health Initiative</span>
+                    </div>
+
+                    <h3>Free Eye Check-up & Medicine Camp</h3>
+
+                    <p>
+                        A dedicated eye health camp providing free eye
+                        check-ups and medicines to community members,
+                        helping improve awareness and access to basic
+                        eye-care support.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Date</small>
+                            <strong>21 January 2025</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Beneficiaries</small>
+                            <strong>132 people</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+
+            <!-- MEDICAL 2026 -->
+            <article class="program-card full reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Multi-Speciality Camp</span>
+                        <span class="location">Madanpur, Deoria, Uttar Pradesh</span>
+                    </div>
+
+                    <h3>Free Medical Camp — July 2026</h3>
+
+                    <p>
+                        A two-day community medical camp providing free
+                        health screening, specialist consultations and
+                        medicines. The camp included blood testing,
+                        ENT consultation, orthopaedic consultation,
+                        gynaecological consultation, general physician
+                        consultation and dental check-up. Free medicines
+                        were also provided to beneficiaries.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Date</small>
+                            <strong>12–13 July 2026</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Location</small>
+                            <strong>Madanpur, Deoria, UP – 274205</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Beneficiaries</small>
+                            <strong>256 people</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Services</small>
+                            <strong>Blood • ENT • Ortho • Gynae • GP • Dental</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+
+            <!-- COMMUNITY HEALTH -->
+            <article class="program-card full reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Community Health</span>
+                        <span class="location">Madanpur, Deoria</span>
+                    </div>
+
+                    <h3>Community Health Engagement with ASHA Workers</h3>
+
+                    <p>
+                        ASWF members interacted with ASHA workers in Madanpur
+                        to better understand local healthcare needs and learn
+                        about effective approaches to community-level medical
+                        assistance and health support.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Date</small>
+                            <strong>10 August 2024</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Focus</small>
+                            <strong>Understanding Local Healthcare Needs</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+
+
+    <!-- LEGAL -->
+    <div class="category" data-category="legal">
+
+        <div class="category-header reveal">
+
+            <div class="category-title">
+                <div class="category-number">C</div>
+
+                <div>
+                    <div class="kicker">Legal Awareness Initiatives</div>
+                    <h2>Rights, Awareness & Justice</h2>
+                </div>
+            </div>
+
+            <p class="category-intro">
+                Creating awareness about legal rights, responsibilities,
+                cyber safety and access to justice through community
+                interaction and educational engagement.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+            <!-- PATWARI NAGLA -->
+            <article class="program-card reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Legal Awareness</span>
+                        <span class="location">Patwari Nagla, Aligarh</span>
+                    </div>
+
+                    <h3>Legal Awareness Programme</h3>
+
+                    <p>
+                        A community-oriented legal awareness programme was
+                        conducted at Patwari Nagla, Aligarh. Around 120 law
+                        students participated as volunteers along with
+                        four advocates. The programme involved interaction
+                        with more than 100 community members to encourage
+                        awareness and understanding of legal rights and issues.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Student Volunteers</small>
+                            <strong>Approximately 120 law students</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Legal Professionals</small>
+                            <strong>4 advocates</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Community Interaction</small>
+                            <strong>100+ people</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Location</small>
+                            <strong>Patwari Nagla, Aligarh</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+
+            <!-- CYBER -->
+            <article class="program-card reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Cyber Awareness</span>
+                        <span class="location">Madanpur, Deoria</span>
+                    </div>
+
+                    <h3>Cyber Crime Awareness Programme</h3>
+
+                    <p>
+                        A legal awareness and cyber crime awareness programme
+                        was organised for community members and children.
+                        The programme focused on discussing legal awareness
+                        and responsible awareness of cyber-related risks.
+                        Educational camp winners were also recognised through
+                        prize distribution during the programme.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Date</small>
+                            <strong>17 July 2025</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Location</small>
+                            <strong>Madanpur, Deoria, UP</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Additional Activity</small>
+                            <strong>Prize Distribution</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Audience</small>
+                            <strong>Community Members & Children</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+
+
+    <!-- ENVIRONMENT -->
+    <div class="category" data-category="environment">
+
+        <div class="category-header reveal">
+
+            <div class="category-title">
+                <div class="category-number">D</div>
+
+                <div>
+                    <div class="kicker">Environmental Conservation</div>
+                    <h2>Environment & Community Responsibility</h2>
+                </div>
+            </div>
+
+            <p class="category-intro">
+                Encouraging environmental awareness and responsible
+                participation at the community level.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+            <article class="program-card full reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Environment</span>
+                        <span class="location">Madanpur, Deoria, Uttar Pradesh</span>
+                    </div>
+
+                    <h3>Tree Plantation Drive</h3>
+
+                    <p>
+                        ASWF organised a tree plantation drive to encourage
+                        environmental awareness and responsible community
+                        participation on the occasion of Independence Day.
+                        The initiative highlighted the importance of trees,
+                        environmental responsibility and community involvement.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Date</small>
+                            <strong>15 August 2024</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Location</small>
+                            <strong>Madanpur, Deoria, UP</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+
+
+    <!-- WOMEN -->
+    <div class="category" data-category="women">
+
+        <div class="category-header reveal">
+
+            <div class="category-title">
+                <div class="category-number">E</div>
+
+                <div>
+                    <div class="kicker">Women Empowerment</div>
+                    <h2>Dignity, Safety & Awareness</h2>
+                </div>
+            </div>
+
+            <p class="category-intro">
+                Supporting awareness and community dialogue around the
+                safety, dignity and rights of women.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+            <article class="program-card full reveal">
+
+                <div class="program-image">
+                    <div class="photo-note">Photo to be added</div>
+                </div>
+
+                <div class="program-body">
+
+                    <div class="program-meta">
+                        <span class="badge">Women Empowerment</span>
+                        <span class="location">Madanpur, Deoria, Uttar Pradesh</span>
+                    </div>
+
+                    <h3>Candle March Against Rape Against Women</h3>
+
+                    <p>
+                        A candle march was organised in Madanpur as a
+                        community awareness initiative against violence
+                        against women. Following the march, ASWF engaged
+                        with local residents to encourage dialogue and
+                        awareness around women's safety, dignity and
+                        social responsibility.
+                    </p>
+
+                    <div class="program-info">
+
+                        <div class="info">
+                            <small>Location</small>
+                            <strong>Madanpur, Deoria, UP</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Focus</small>
+                            <strong>Women’s Safety & Awareness</strong>
+                        </div>
+
+                        <div class="info">
+                            <small>Community Activity</small>
+                            <strong>Candle March & Dialogue</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- VERIFIED PROGRAMME IMPACT -->
+<section class="impact-strip">
+    <div class="container">
+
+        <div class="section-head reveal" style="margin-bottom:35px;">
+            <div class="kicker" style="color:#e1c45a;">
+                02 — Documented Reach
+            </div>
+
+            <h2 style="color:#fff;">
+                Selected verified programme figures.
+            </h2>
+
+            <p style="color:#b9c5d6;">
+                These figures reflect information currently provided by ASWF
+                for specific activities. They are not presented as total
+                organisational impact figures.
+            </p>
+        </div>
+
+        <div class="impact-grid">
+
+            <div class="impact-item reveal">
+                <div class="num">118</div>
+                <h3>People</h3>
+                <p>
+                    Received free health screening and medical support
+                    at the August 2024 medical camp.
+                </p>
+            </div>
+
+            <div class="impact-item reveal">
+                <div class="num">132</div>
+                <h3>People</h3>
+                <p>
+                    Benefited from the January 2025 free eye
+                    check-up and medicine camp.
+                </p>
+            </div>
+
+            <div class="impact-item reveal">
+                <div class="num">256</div>
+                <h3>People</h3>
+                <p>
+                    Benefited from the July 2026 two-day free
+                    medical camp.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- OUR APPROACH -->
+<section class="section">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="kicker">03 — How We Work</div>
+
+            <h2>
+                Listen. Engage. Empower.
+            </h2>
+
+            <p>
+                Our programmes are designed around community interaction,
+                awareness and participation rather than simply one-time activity.
+            </p>
+        </div>
+
+        <div class="approach-grid">
+
+            <div class="approach-card reveal">
+                <div class="approach-no">01 — LISTEN</div>
+
+                <h3>Understand</h3>
+
+                <p>
+                    Engage with students, families, community members,
+                    professionals and local stakeholders to understand
+                    real needs and concerns.
+                </p>
+            </div>
+
+            <div class="approach-card reveal">
+                <div class="approach-no">02 — ENGAGE</div>
+
+                <h3>Create Awareness</h3>
+
+                <p>
+                    Use camps, community programmes, competitions,
+                    campaigns and interaction to share useful knowledge
+                    and encourage informed participation.
+                </p>
+            </div>
+
+            <div class="approach-card reveal">
+                <div class="approach-no">03 — EMPOWER</div>
+
+                <h3>Encourage Action</h3>
+
+                <p>
+                    Encourage people—especially students, youth and
+                    community members—to participate in responsible
+                    social action and community development.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- RESPONSIBLE STORYTELLING -->
+<section class="section responsible">
+    <div class="container">
+
+        <div class="responsible-box reveal">
+
+            <div>
+                <div class="kicker">04 — Transparency</div>
+
+                <h2>
+                    Real work. Responsible storytelling.
+                </h2>
+            </div>
+
+            <div>
+
+                <p style="margin-bottom:20px;">
+                    ASWF's programme pages are intended to present genuine
+                    organisational activities and verified information.
+                    Photographs, detailed reports and additional programme
+                    information can be added as official material becomes
+                    available.
+                </p>
+
+                <div class="responsible-list">
+
+                    <div class="responsible-item">
+                        ✓ Use authentic ASWF photographs
+                    </div>
+
+                    <div class="responsible-item">
+                        ✓ Publish verified programme information
+                    </div>
+
+                    <div class="responsible-item">
+                        ✓ Respect participant dignity and privacy
+                    </div>
+
+                    <div class="responsible-item">
+                        ✓ Avoid unsupported statistics
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONNECT -->
+<section class="connect">
+    <div class="container">
+
+        <div class="connect-box reveal">
+
+            <div>
+                <h3>Want to know more about our programmes?</h3>
+
+                <p>
+                    Contact ASWF for official programme information,
+                    volunteering opportunities or collaboration enquiries.
+                </p>
+
+                <div class="social-row">
+
+                    <span class="social">
+                        Facebook: Ayesha Social Welfare Foundation
+                    </span>
+
+                    <span class="social">
+                        Instagram: @ayeshafoundation.in
+                    </span>
+
+                </div>
+            </div>
+
+            <a href="contact.html" class="btn"
+               style="background:var(--navy);color:#fff;">
+                Contact ASWF
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+    <div class="container cta-content reveal">
+
+        <h2>
+            Help turn awareness into action.
+        </h2>
+
+        <p>
+            Volunteer your time, contribute your skills, collaborate with
+            ASWF or support community-focused initiatives.
+        </p>
+
+        <a href="get-involved.html" class="btn btn-light">
+            Get Involved
+        </a>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-col">
+
+                <div class="footer-brand">
+
+                    <img src="assets/logo.jpg" alt="ASWF Logo">
+
+                    <div>
+                        <strong>Ayesha Social Welfare Foundation</strong>
+                        <span>From Injustice to Empowerment</span>
+                    </div>
+
+                </div>
+
+                <p>
+                    A student-led social welfare organisation working towards
+                    an educated, empowered, healthy and just society.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <a href="index.html">Home</a>
+                <a href="about.html">About ASWF</a>
+                <a href="programs.html">Programs</a>
+                <a href="impact.html">Impact</a>
+                <a href="team.html">Our Team</a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Get Involved</h4>
+
+                <a href="get-involved.html">Get Involved</a>
+                <a href="volunteer.html">Volunteer</a>
+                <a href="collaboration.html">Partner With Us</a>
+                <a href="donate.html">Support ASWF</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Contact</h4>
+
+                <p>info@aswf.org.in</p>
+                <p>+91 7007824532</p>
+                <p>+91 7368-032471</p>
+                <p>Deoria, Uttar Pradesh, India</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div>
+                © 2026 Ayesha Social Welfare Foundation. All rights reserved.
+            </div>
+
+            <div class="footer-social">
+
+                <span>
+                    Facebook: Ayesha Social Welfare Foundation
+                </span>
+
+                <span>
+                    Instagram: @ayeshafoundation.in
+                </span>
+
+            </div>
+
+            <div>
+
+                <a href="privacy.html">Privacy</a>
+                &nbsp; · &nbsp;
+                <a href="terms.html">Terms</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+
+    menuBtn.textContent =
+        navLinks.classList.contains("open") ? "✕" : "☰";
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+        menuBtn.textContent = "☰";
+
+    });
+
+});
+
+
+/* SCROLL REVEAL */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+
+    });
+
+},{
+    threshold:.08
+});
+
+
+document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+});
+
+
+/* SUPABASE PROGRAM CMS */
+(function(){
+    const SUPABASE_URL = "https://zdvfcyxmrvaosqazicjl.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4w34BGktLYbE0G0Pb8v63g_XxR4sqq4";
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+    const loading = document.getElementById("cmsLoading");
+    const errorBox = document.getElementById("cmsError");
+
+    function escapeHTML(value){
+        return String(value ?? "").replace(/[&<>"']/g, ch => ({
+            "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+        }[ch]));
+    }
+
+    function formatDate(value){
+        if(!value) return "";
+        const d = new Date(value);
+        if(Number.isNaN(d.getTime())) return value;
+        return d.toLocaleDateString("en-IN", {
+            day:"numeric", month:"long", year:"numeric"
+        });
+    }
+
+    function categoryKey(category){
+        const c = String(category || "").toLowerCase();
+        if(c.includes("health") || c.includes("medical") || c.includes("eye")) return "health";
+        if(c.includes("legal") || c.includes("cyber") || c.includes("justice")) return "legal";
+        if(c.includes("environment") || c.includes("tree") || c.includes("plant")) return "environment";
+        if(c.includes("women") || c.includes("girl") || c.includes("rape")) return "women";
+        return "education";
+    }
+
+    /* VERIFIED ASWF PHOTO FALLBACKS
+       These are the exact public Supabase URLs saved for the Free Medical Camp. */
+    const VERIFIED_PROGRAM_PHOTOS = {
+        "free medical camp": [
+            "https://zdvfcyxmrvaosqazicjl.supabase.co/storage/v1/object/public/aswf-media/programs/b7a81896-25d9-410e-90d1-c75a17af96d1/1789410210115-1.jpeg",
+            "https://zdvfcyxmrvaosqazicjl.supabase.co/storage/v1/object/public/aswf-media/programs/b7a81896-25d9-410e-90d1-c75a17af96d1/1789410209803-0.jpeg"
+        ]
+    };
+
+    function getVerifiedPhotos(title){
+        const key = String(title || "").trim().toLowerCase();
+        return (VERIFIED_PROGRAM_PHOTOS[key] || []).map((url, index) => ({
+            image_url: url,
+            display_order: index
+        }));
+    }
+
+    function findExistingCard(title){
+        const cards = [...document.querySelectorAll(".program-card")];
+        const wanted = String(title || "").trim().toLowerCase();
+        return cards.find(card => {
+            const h = card.querySelector("h3");
+            return h && h.textContent.trim().toLowerCase() === wanted;
+        }) || null;
+    }
+
+    function categoryGrid(key){
+        const cat = document.querySelector('.category[data-category="'+key+'"]');
+        return cat ? cat.querySelector(".program-grid") : null;
+    }
+
+    function buildCard(program, photos){
+        const key = categoryKey(program.category);
+        const card = document.createElement("article");
+        card.className = "program-card cms-new reveal";
+
+        const image = document.createElement("div");
+        image.className = "program-image";
+        if(photos.length){
+            image.classList.add("has-photo");
+            const img = document.createElement("img");
+            img.className = "cms-program-img";
+            img.src = photos[0].image_url;
+            img.alt = program.title || "ASWF programme";
+            img.loading = "lazy";
+            image.appendChild(img);
+            if(photos.length > 1){
+                const count = document.createElement("div");
+                count.className = "cms-photo-count";
+                count.textContent = photos.length + " Photos";
+                image.appendChild(count);
+            }
+        } else {
+            const note = document.createElement("div");
+            note.className = "photo-note";
+            note.textContent = "Photo to be added";
+            image.appendChild(note);
+        }
+
+        const body = document.createElement("div");
+        body.className = "program-body";
+
+        const meta = document.createElement("div");
+        meta.className = "program-meta";
+        const badge = document.createElement("span");
+        badge.className = "badge";
+        badge.textContent = program.category || "Programme";
+        meta.appendChild(badge);
+        if(program.location){
+            const loc = document.createElement("span");
+            loc.className = "location";
+            loc.textContent = program.location;
+            meta.appendChild(loc);
+        }
+
+        const h3 = document.createElement("h3");
+        h3.textContent = program.title || "ASWF Programme";
+
+        const p = document.createElement("p");
+        p.textContent = program.description || program.short_description || "";
+
+        const info = document.createElement("div");
+        info.className = "program-info";
+
+        if(program.event_date){
+            info.innerHTML += '<div class="info"><small>Date</small><strong>'+escapeHTML(formatDate(program.event_date))+(program.end_date ? ' – '+escapeHTML(formatDate(program.end_date)) : '')+'</strong></div>';
+        }
+        if(program.location){
+            info.innerHTML += '<div class="info"><small>Location</small><strong>'+escapeHTML(program.location)+'</strong></div>';
+        }
+        if(program.participants){
+            info.innerHTML += '<div class="info"><small>Participants</small><strong>'+escapeHTML(program.participants)+'</strong></div>';
+        }
+        if(program.beneficiaries){
+            info.innerHTML += '<div class="info"><small>Beneficiaries</small><strong>'+escapeHTML(program.beneficiaries)+'</strong></div>';
+        }
+
+        body.append(meta,h3,p,info);
+        card.append(image,body);
+
+        if(photos.length > 1){
+            const gallery = document.createElement("div");
+            gallery.className = "cms-gallery";
+            photos.forEach(photo => {
+                const thumb = document.createElement("img");
+                thumb.src = photo.image_url;
+                thumb.alt = program.title || "ASWF programme photo";
+                thumb.loading = "lazy";
+                thumb.addEventListener("click", () => {
+                    image.classList.add("has-photo");
+                    const main = image.querySelector(".cms-program-img");
+                    if(main) main.src = photo.image_url;
+                });
+                gallery.appendChild(thumb);
+            });
+            card.appendChild(gallery);
+        }
+
+        return card;
+    }
+
+    function getReliablePhotos(program, photos){
+        const title = String(program?.title || "").trim().toLowerCase();
+        if(photos && photos.length) return photos;
+
+        // Reliable fallback for the Free Medical Camp already uploaded in Supabase.
+        // The CMS will continue to use the database automatically for all future uploads.
+        if(title === "free medical camp") {
+            return [
+                {
+                    image_url: "https://zdvfcyxmrvaosqazicjl.supabase.co/storage/v1/object/public/aswf-media/programs/b7a81896-25d9-410e-90d1-c75a17af96d1/1789410210115-1.jpeg",
+                    display_order: 0
+                },
+                {
+                    image_url: "https://zdvfcyxmrvaosqazicjl.supabase.co/storage/v1/object/public/aswf-media/programs/b7a81896-25d9-410e-90d1-c75a17af96d1/1789410209803-0.jpeg",
+                    display_order: 1
+                }
+            ];
+        }
+        return [];
+    }
+
+    function updateExistingCard(card, program, photos){
+        photos = getReliablePhotos(program, photos);
+        const image = card.querySelector(".program-image");
+        if(image && photos.length){
+            image.classList.add("has-photo");
+            image.innerHTML = "";
+            const img = document.createElement("img");
+            img.className = "cms-program-img";
+            img.src = photos[0].image_url;
+            img.alt = program.title || "ASWF programme";
+            img.loading = "lazy";
+            image.appendChild(img);
+
+            if(photos.length > 1){
+                const count = document.createElement("div");
+                count.className = "cms-photo-count";
+                count.textContent = photos.length + " Photos";
+                image.appendChild(count);
+            }
+        }
+
+        const body = card.querySelector(".program-body");
+        if(!body) return;
+
+        const meta = body.querySelector(".program-meta");
+        if(meta){
+            const badge = meta.querySelector(".badge");
+            if(badge && program.category) badge.textContent = program.category;
+            const loc = meta.querySelector(".location");
+            if(loc && program.location) loc.textContent = program.location;
+        }
+
+        const desc = body.querySelector("p");
+        if(desc && (program.description || program.short_description)){
+            desc.textContent = program.description || program.short_description;
+        }
+
+        let info = body.querySelector(".program-info");
+        if(!info){
+            info = document.createElement("div");
+            info.className = "program-info";
+            body.appendChild(info);
+        }
+
+        const items = [];
+        if(program.event_date){
+            items.push(["Date", formatDate(program.event_date)+(program.end_date ? " – "+formatDate(program.end_date) : "")]);
+        }
+        if(program.location) items.push(["Location", program.location]);
+        if(program.participants) items.push(["Participants", program.participants]);
+        if(program.beneficiaries) items.push(["Beneficiaries", program.beneficiaries]);
+
+        if(items.length){
+            info.innerHTML = items.map(x =>
+                '<div class="info"><small>'+escapeHTML(x[0])+'</small><strong>'+escapeHTML(x[1])+'</strong></div>'
+            ).join("");
+        }
+
+        if(photos.length > 1){
+            const old = card.querySelector(".cms-gallery");
+            if(old) old.remove();
+
+            const gallery = document.createElement("div");
+            gallery.className = "cms-gallery";
+            photos.forEach(photo => {
+                const thumb = document.createElement("img");
+                thumb.src = photo.image_url;
+                thumb.alt = program.title || "ASWF programme photo";
+                thumb.loading = "lazy";
+                thumb.addEventListener("click", () => {
+                    const main = image.querySelector(".cms-program-img");
+                    if(main) main.src = photo.image_url;
+                });
+                gallery.appendChild(thumb);
+            });
+            card.appendChild(gallery);
+        }
+    }
+
+    function getOrCreateCMSGrid(key, categoryLabel){
+        let grid = categoryGrid(key);
+        if(grid) return grid;
+
+        // If a new programme uses a category not yet represented on this page,
+        // create a dedicated CMS section automatically instead of hiding it.
+        let cmsSection = document.getElementById("cmsAdditionalPrograms");
+        if(!cmsSection){
+            cmsSection = document.createElement("div");
+            cmsSection.id = "cmsAdditionalPrograms";
+            cmsSection.className = "category";
+            cmsSection.setAttribute("data-category","additional");
+            cmsSection.innerHTML = `
+                <div class="category-header reveal">
+                    <div class="category-title">
+                        <div class="category-number">+</div>
+                        <div>
+                            <div class="kicker">From ASWF Admin Panel</div>
+                            <h2>Additional Programmes</h2>
+                        </div>
+                    </div>
+                    <p class="category-intro">New published programmes added through the ASWF Admin Panel appear here automatically.</p>
+                </div>
+                <div class="program-grid" id="cmsAdditionalGrid"></div>`;
+            const section = document.querySelector(".section > .container");
+            if(section) section.appendChild(cmsSection);
+        }
+
+        grid = cmsSection.querySelector(".program-grid");
+        return grid;
+    }
+
+    async function loadCMSPrograms(){
+        try{
+            const { data: programs, error: programsError } = await sb
+                .from("programs")
+                .select("*")
+                .in("status",["published","Published"])
+                .order("event_date",{ascending:false});
+
+            if(programsError) throw programsError;
+
+            if(!programs || programs.length === 0){
+                loading.textContent = "No published programmes have been added from the ASWF Admin Panel yet.";
+                return;
+            }
+
+            const ids = programs.map(p => p.id).filter(Boolean);
+            let photos = [];
+
+            if(ids.length){
+                const { data: photoRows, error: photoError } = await sb
+                    .from("program_photos")
+                    .select("program_id,image_url,display_order")
+                    .in("program_id", ids)
+                    .order("display_order",{ascending:true});
+
+                if(photoError) throw photoError;
+                photos = photoRows || [];
+            }
+
+            const photoMap = {};
+            photos.forEach(photo => {
+                if(!photoMap[photo.program_id]) photoMap[photo.program_id] = [];
+                photoMap[photo.program_id].push(photo);
+            });
+
+            programs.forEach(program => {
+                const programPhotos = getReliablePhotos(program, photoMap[program.id] || []);
+                const existing = findExistingCard(program.title);
+
+                if(existing){
+                    updateExistingCard(existing, program, programPhotos);
+                }else{
+                    const grid = getOrCreateCMSGrid(categoryKey(program.category), program.category);
+                    if(grid){
+                        const card = buildCard(program, programPhotos);
+                        grid.appendChild(card);
+                    }
+                }
+            });
+
+            loading.style.display = "none";
+
+            document.querySelectorAll(".cms-new.reveal").forEach(el => {
+                if(window.IntersectionObserver){
+                    const obs = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            if(entry.isIntersecting){
+                                entry.target.classList.add("show");
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    },{threshold:.08});
+                    obs.observe(el);
+                }else{
+                    el.classList.add("show");
+                }
+            });
+
+        }catch(err){
+            console.error("ASWF CMS error:",err);
+            loading.style.display = "none";
+            errorBox.style.display = "block";
+            errorBox.textContent = "Programme updates could not be loaded right now. The official programme information already on this page is still available.";
+        }
+    }
+
+    /* Always render the verified Free Medical Camp photos independently of the CMS query. */
+    (function renderVerifiedPhotosDirectly(){
+        const card = findExistingCard("Free Medical Camp");
+        const photos = getVerifiedPhotos("Free Medical Camp");
+        if(!card || !photos.length) return;
+
+        const image = card.querySelector(".program-image");
+        if(!image) return;
+
+        image.classList.add("has-photo");
+        image.innerHTML = "";
+
+        const img = document.createElement("img");
+        img.className = "cms-program-img";
+        img.src = photos[0].image_url;
+        img.alt = "Free Medical Camp - Ayesha Social Welfare Foundation";
+        img.loading = "eager";
+        img.decoding = "async";
+
+        img.onerror = function(){
+            console.error("ASWF photo failed to load:", this.src);
+            image.innerHTML = '<div class="photo-note">Photo could not be loaded</div>';
+        };
+
+        image.appendChild(img);
+
+        if(photos.length > 1){
+            const gallery = document.createElement("div");
+            gallery.className = "cms-gallery";
+            photos.forEach(photo => {
+                const thumb = document.createElement("img");
+                thumb.src = photo.image_url;
+                thumb.alt = "Free Medical Camp photo";
+                thumb.loading = "lazy";
+                thumb.addEventListener("click", () => {
+                    img.src = photo.image_url;
+                });
+                gallery.appendChild(thumb);
+            });
+            card.appendChild(gallery);
+        }
+    })();
+
+    loadCMSPrograms();
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,5688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ASWF Admin Panel</title>
+
+<meta name="description" content="Ayesha Social Welfare Foundation Administration Panel">
+<meta name="theme-color" content="#08111f">
+
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root{
+    --navy:#08111f;
+    --navy2:#0d192b;
+    --navy3:#13243b;
+    --red:#b21f2d;
+    --red2:#d62f40;
+    --gold:#c9a45c;
+    --white:#ffffff;
+    --muted:#8f9bad;
+    --text:#172033;
+    --bg:#f4f6f9;
+    --border:#e4e8ef;
+    --green:#198754;
+    --orange:#c77b00;
+    --shadow:0 15px 40px rgba(8,17,31,.08);
+    --radius:16px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+#loginScreen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    background:
+        radial-gradient(circle at top right,rgba(178,31,45,.18),transparent 35%),
+        radial-gradient(circle at bottom left,rgba(201,164,92,.12),transparent 35%),
+        var(--navy);
+}
+
+.login-card{
+    width:100%;
+    max-width:460px;
+    background:#fff;
+    border-radius:24px;
+    padding:42px;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.login-logo{
+    width:82px;
+    height:82px;
+    border-radius:18px;
+    object-fit:cover;
+    display:block;
+    margin:0 auto 22px;
+    border:1px solid var(--border);
+}
+
+.login-card h1{
+    text-align:center;
+    font-size:28px;
+    color:var(--navy);
+    margin-bottom:8px;
+}
+
+.login-subtitle{
+    text-align:center;
+    color:#748094;
+    font-size:14px;
+    margin-bottom:30px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:8px;
+    color:#334155;
+}
+
+.form-control{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #d8dee8;
+    border-radius:10px;
+    outline:none;
+    background:#fff;
+    transition:.2s;
+}
+
+.form-control:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(201,164,92,.13);
+}
+
+.btn{
+    border:0;
+    border-radius:10px;
+    padding:12px 17px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.btn-primary{
+    background:var(--navy);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:#13243b;
+    transform:translateY(-1px);
+}
+
+.btn-red{
+    background:var(--red);
+    color:#fff;
+}
+
+.btn-red:hover{
+    background:var(--red2);
+}
+
+.btn-gold{
+    background:var(--gold);
+    color:#111;
+}
+
+.btn-light{
+    background:#eef1f5;
+    color:#263244;
+}
+
+.btn-danger{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.btn-success{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.btn-block{
+    width:100%;
+}
+
+.login-error{
+    margin-top:15px;
+    padding:12px;
+    border-radius:9px;
+    background:#fff1f2;
+    color:#be123c;
+    font-size:13px;
+    display:none;
+}
+
+/* =========================================================
+   ADMIN LAYOUT
+========================================================= */
+
+#adminApp{
+    min-height:100vh;
+    display:none;
+}
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:260px;
+    background:var(--navy);
+    color:#fff;
+    z-index:1000;
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+}
+
+.sidebar-brand{
+    padding:24px 20px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.sidebar-brand img{
+    width:46px;
+    height:46px;
+    border-radius:10px;
+    object-fit:cover;
+    background:#fff;
+}
+
+.sidebar-brand strong{
+    display:block;
+    font-size:14px;
+}
+
+.sidebar-brand span{
+    display:block;
+    color:#91a0b4;
+    font-size:11px;
+    margin-top:3px;
+}
+
+.sidebar-nav{
+    padding:18px 12px;
+    flex:1;
+}
+
+.nav-section-title{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:#67768b;
+    padding:15px 12px 8px;
+    font-weight:800;
+}
+
+.nav-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 13px;
+    border-radius:10px;
+    color:#aeb9c8;
+    background:transparent;
+    border:0;
+    text-align:left;
+    margin-bottom:4px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.nav-item:hover,
+.nav-item.active{
+    color:#fff;
+    background:rgba(255,255,255,.08);
+}
+
+.nav-icon{
+    width:22px;
+    text-align:center;
+    font-size:16px;
+}
+
+.sidebar-footer{
+    padding:15px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.user-box{
+    padding:12px;
+    border-radius:12px;
+    background:rgba(255,255,255,.05);
+    margin-bottom:10px;
+}
+
+.user-box small{
+    color:#728196;
+    display:block;
+    font-size:10px;
+    margin-bottom:4px;
+}
+
+.user-box div{
+    font-size:12px;
+    color:#d7dde6;
+    word-break:break-all;
+}
+
+.logout-btn{
+    width:100%;
+    background:rgba(178,31,45,.18);
+    color:#ff9aa4;
+    border:1px solid rgba(214,47,64,.22);
+    padding:10px;
+    border-radius:9px;
+    font-weight:700;
+}
+
+.main{
+    margin-left:260px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:72px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    position:sticky;
+    top:0;
+    z-index:900;
+}
+
+.topbar-title{
+    font-size:19px;
+    font-weight:800;
+    color:var(--navy);
+}
+
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+    background:#22c55e;
+    border-radius:50%;
+}
+
+.status-text{
+    font-size:12px;
+    color:#64748b;
+}
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:#eef1f5;
+    width:40px;
+    height:40px;
+    border-radius:9px;
+    font-size:20px;
+}
+
+.content{
+    padding:30px;
+    max-width:1500px;
+    margin:0 auto;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.page-heading{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.page-heading h1{
+    font-size:27px;
+    color:var(--navy);
+    margin-bottom:5px;
+}
+
+.page-heading p{
+    color:#718096;
+    font-size:13px;
+}
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.stat-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow:var(--shadow);
+}
+
+.stat-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.stat-icon{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f2f4f8;
+    font-size:19px;
+}
+
+.stat-label{
+    font-size:12px;
+    color:#718096;
+    font-weight:700;
+}
+
+.stat-number{
+    font-size:30px;
+    font-weight:850;
+    color:var(--navy);
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.card-header{
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.card-header h3{
+    font-size:15px;
+    color:var(--navy);
+}
+
+.card-body{
+    padding:20px;
+}
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.quick-btn{
+    padding:16px;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:12px;
+    text-align:left;
+    transition:.2s;
+}
+
+.quick-btn:hover{
+    border-color:#c9a45c;
+    transform:translateY(-2px);
+}
+
+.quick-btn strong{
+    display:block;
+    color:var(--navy);
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.quick-btn span{
+    color:#7b8798;
+    font-size:11px;
+}
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+.data-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.data-table th{
+    background:#f8fafc;
+    color:#667085;
+    text-align:left;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    padding:12px 14px;
+    border-bottom:1px solid var(--border);
+}
+
+.data-table td{
+    padding:13px 14px;
+    border-bottom:1px solid #edf0f4;
+    font-size:12px;
+    color:#344054;
+    vertical-align:middle;
+}
+
+.data-table tr:last-child td{
+    border-bottom:0;
+}
+
+.data-table tr:hover td{
+    background:#fcfdfe;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.badge-published{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.badge-draft{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.badge-archived{
+    background:#e5e7eb;
+    color:#374151;
+}
+
+.badge-new{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+.badge-pending{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.badge-approved{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.badge-declined{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.badge-suspended{
+    background:#e5e7eb;
+    color:#374151;
+}
+
+.member-person{
+    min-width:170px;
+}
+
+.member-person strong{
+    display:block;
+    color:var(--navy);
+    font-size:12px;
+    margin-bottom:3px;
+}
+
+.member-person span{
+    display:block;
+    color:#8490a0;
+    font-size:10px;
+}
+
+.member-actions{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+    min-width:150px;
+}
+
+.action-group{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+}
+
+.action-btn{
+    border:0;
+    padding:7px 9px;
+    border-radius:7px;
+    font-size:10px;
+    font-weight:700;
+}
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(5,13,24,.7);
+    z-index:3000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    background:#fff;
+    width:100%;
+    max-width:760px;
+    max-height:92vh;
+    overflow-y:auto;
+    border-radius:20px;
+    box-shadow:0 30px 100px rgba(0,0,0,.35);
+}
+
+.modal-header{
+    padding:20px 22px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.modal-header h2{
+    font-size:19px;
+    color:var(--navy);
+}
+
+.modal-close{
+    border:0;
+    background:#f1f3f6;
+    width:34px;
+    height:34px;
+    border-radius:8px;
+    font-size:18px;
+}
+
+.modal-body{
+    padding:22px;
+}
+
+.modal-footer{
+    padding:16px 22px;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+textarea.form-control{
+    min-height:120px;
+    resize:vertical;
+}
+
+.form-help{
+    font-size:10px;
+    color:#8490a0;
+    margin-top:5px;
+}
+
+.checkbox-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.checkbox-row input{
+    width:16px;
+    height:16px;
+}
+
+.upload-area{
+    border:2px dashed #d6dce5;
+    border-radius:13px;
+    padding:25px;
+    text-align:center;
+    background:#fafbfc;
+    transition:.2s;
+}
+
+.upload-area:hover{
+    border-color:var(--gold);
+    background:#fffdf8;
+}
+
+.upload-area strong{
+    display:block;
+    color:var(--navy);
+    margin-bottom:5px;
+}
+
+.upload-area span{
+    color:#8994a5;
+    font-size:11px;
+}
+
+.preview-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.preview-item{
+    aspect-ratio:1;
+    border-radius:9px;
+    overflow:hidden;
+    background:#eef1f5;
+    position:relative;
+}
+
+.preview-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:var(--navy);
+    color:#fff;
+    padding:13px 17px;
+    border-radius:10px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    z-index:5000;
+    font-size:12px;
+    transform:translateY(120px);
+    opacity:0;
+    transition:.3s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.toast.success{
+    border-left:4px solid #22c55e;
+}
+
+.toast.error{
+    border-left:4px solid #ef4444;
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty{
+    padding:45px 20px;
+    text-align:center;
+    color:#8490a0;
+}
+
+.empty-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.empty strong{
+    display:block;
+    color:#475467;
+    margin-bottom:4px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1250px){
+    .stats-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:1100px){
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:800px){
+    .sidebar{
+        transform:translateX(-100%);
+        transition:.25s;
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .topbar{
+        padding:0 16px;
+    }
+
+    .content{
+        padding:20px 15px;
+    }
+
+    .page-heading{
+        flex-direction:column;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .preview-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .quick-grid{
+        grid-template-columns:1fr;
+    }
+
+    .login-card{
+        padding:28px 22px;
+    }
+
+    .topbar-title{
+        font-size:15px;
+    }
+
+    .status-text{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+
+<section id="loginScreen">
+
+    <div class="login-card">
+
+        <img
+            src="assets/logo.jpg"
+            class="login-logo"
+            alt="ASWF Logo"
+        >
+
+        <h1>ASWF Admin</h1>
+
+        <p class="login-subtitle">
+            Ayesha Social Welfare Foundation
+        </p>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input
+                    type="email"
+                    id="loginEmail"
+                    class="form-control"
+                    placeholder="Admin email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="loginPassword"
+                    class="form-control"
+                    placeholder="Password"
+                    required
+                >
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary btn-block"
+                id="loginButton"
+            >
+                Sign In
+            </button>
+
+            <div id="loginError" class="login-error"></div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN APP
+========================================================= -->
+
+<div id="adminApp">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+
+            <img src="assets/logo.jpg" alt="ASWF">
+
+            <div>
+                <strong>ASWF ADMIN</strong>
+                <span>Management Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-section-title">Main</div>
+
+            <button class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">▦</span>
+                Dashboard
+            </button>
+
+
+            <div class="nav-section-title">Website Content</div>
+
+            <button class="nav-item" data-page="programs">
+                <span class="nav-icon">◈</span>
+                Programs
+            </button>
+
+            <button class="nav-item" data-page="gallery">
+                <span class="nav-icon">▧</span>
+                Gallery
+            </button>
+
+            <button class="nav-item" data-page="news">
+                <span class="nav-icon">▤</span>
+                News & Updates
+            </button>
+
+            <button class="nav-item" data-page="team">
+                <span class="nav-icon">♙</span>
+                Team
+            </button>
+
+            <button class="nav-item" data-page="impact">
+                <span class="nav-icon">↗</span>
+                Impact
+            </button>
+
+            <button class="nav-item" data-page="faqs">
+                <span class="nav-icon">?</span>
+                FAQs
+            </button>
+
+
+            <div class="nav-section-title">Submissions</div>
+
+            <button class="nav-item" data-page="volunteers">
+                <span class="nav-icon">♧</span>
+                Volunteers
+            </button>
+
+            <button class="nav-item" data-page="collaborations">
+                <span class="nav-icon">◇</span>
+                Collaborations
+            </button>
+
+            <button class="nav-item" data-page="members">
+                <span class="nav-icon">♙</span>
+                Member Applications
+            </button>
+
+
+            <div class="nav-section-title">Configuration</div>
+
+            <button class="nav-item" data-page="settings">
+                <span class="nav-icon">⚙</span>
+                Website Settings
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="user-box">
+                <small>SIGNED IN AS</small>
+                <div id="adminEmailDisplay">Admin</div>
+            </div>
+
+            <button class="logout-btn" id="logoutButton">
+                Sign Out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div style="display:flex;align-items:center;gap:12px;">
+
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu"
+                    type="button"
+                >
+                    ☰
+                </button>
+
+                <div class="topbar-title" id="topbarTitle">
+                    Dashboard
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <span class="status-dot"></span>
+
+                <span class="status-text">
+                    Admin connected
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================= -->
+
+            <section class="page active" id="page-dashboard">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>
+                            Manage the ASWF website from one place.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">Programs</span>
+                            <div class="stat-icon">◈</div>
+                        </div>
+                        <div class="stat-number" id="statPrograms">—</div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">Gallery Photos</span>
+                            <div class="stat-icon">▧</div>
+                        </div>
+                        <div class="stat-number" id="statGallery">—</div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">News</span>
+                            <div class="stat-icon">▤</div>
+                        </div>
+                        <div class="stat-number" id="statNews">—</div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">Volunteers</span>
+                            <div class="stat-icon">♧</div>
+                        </div>
+                        <div class="stat-number" id="statVolunteers">—</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span class="stat-label">Member Applications</span>
+                            <div class="stat-icon">♙</div>
+                        </div>
+                        <div class="stat-number" id="statMembers">—</div>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <div class="card">
+
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="quick-grid">
+
+                                <button
+                                    class="quick-btn"
+                                    onclick="openProgramModal()"
+                                >
+                                    <strong>+ Add Programme</strong>
+                                    <span>Create a new ASWF activity</span>
+                                </button>
+
+                                <button
+                                    class="quick-btn"
+                                    onclick="openGalleryModal()"
+                                >
+                                    <strong>+ Add Gallery Photo</strong>
+                                    <span>Upload a new activity photo</span>
+                                </button>
+
+                                <button
+                                    class="quick-btn"
+                                    onclick="openNewsModal()"
+                                >
+                                    <strong>+ Publish News</strong>
+                                    <span>Create a website update</span>
+                                </button>
+
+                                <button
+                                    class="quick-btn"
+                                    onclick="openTeamModal()"
+                                >
+                                    <strong>+ Add Team Member</strong>
+                                    <span>Update the leadership page</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-header">
+                            <h3>ASWF</h3>
+                        </div>
+
+                        <div class="card-body">
+
+                            <p style="font-size:13px;line-height:1.8;color:#667085;">
+                                <strong style="color:#08111f;">
+                                    Ayesha Social Welfare Foundation
+                                </strong>
+                                is a student-led social welfare organisation
+                                working toward an educated, empowered,
+                                healthy and just society.
+                            </p>
+
+                            <div style="margin-top:18px;padding-top:18px;border-top:1px solid #edf0f4;">
+
+                                <div style="font-size:11px;color:#8994a5;margin-bottom:5px;">
+                                    TAGLINE
+                                </div>
+
+                                <strong style="font-size:14px;color:#b21f2d;">
+                                    From Injustice to Empowerment
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROGRAMS
+            ================================================= -->
+
+            <section class="page" id="page-programs">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Programs</h1>
+                        <p>
+                            Manage ASWF activities and programme records.
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="openProgramModal()"
+                    >
+                        + Add Programme
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Programme</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="programsTable">
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="empty">
+                                            Loading...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 GALLERY
+            ================================================= -->
+
+            <section class="page" id="page-gallery">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Gallery</h1>
+                        <p>
+                            Upload and manage authentic ASWF activity photos.
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="openGalleryModal()"
+                    >
+                        + Upload Photo
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="galleryTable">
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="empty">
+                                            Loading...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 NEWS
+            ================================================= -->
+
+            <section class="page" id="page-news">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>News & Updates</h1>
+                        <p>
+                            Publish verified ASWF news and announcements.
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="openNewsModal()"
+                    >
+                        + Add News
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date</th>
+                                    <th>Author</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="newsTable">
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="empty">
+                                            Loading...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 TEAM
+            ================================================= -->
+
+            <section class="page" id="page-team">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Team</h1>
+                        <p>
+                            Manage directors and office bearers.
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="openTeamModal()"
+                    >
+                        + Add Member
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Designation</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="teamTable">
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="empty">
+                                            Loading...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 IMPACT
+            ================================================= -->
+
+            <section class="page" id="page-impact">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Impact</h1>
+                        <p>
+                            Manage verified impact statistics.
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="openImpactModal()"
+                    >
+                        + Add Impact
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Number</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="impactTable">
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="empty">
+                                            Loading...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FAQS
+            ================================================= -->
+
+            <section class="page" id="page-faqs">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>FAQs</h1>
+                        <p>
+                            Manage frequently asked questions.
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="openFaqModal()"
+                    >
+                        + Add FAQ
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="faqsTable">
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="empty">
+                                            Loading...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VOLUNTEERS
+            ================================================= -->
+
+            <section class="page" id="page-volunteers">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Volunteer Applications</h1>
+                        <p>
+                            Review volunteer submissions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>City</th>
+                                    <th>Interest</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="volunteersTable">
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="empty">
+                                            Loading...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 COLLABORATIONS
+            ================================================= -->
+
+            <section class="page" id="page-collaborations">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Collaborations</h1>
+                        <p>
+                            Review collaboration enquiries.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrap">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Organisation</th>
+                                    <th>Contact</th>
+                                    <th>Email</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="collaborationsTable">
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="empty">
+                                            Loading...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MEMBER APPLICATIONS
+            ================================================= -->
+
+            <section class="page" id="page-members">
+
+                <div class="page-heading">
+                    <div>
+                        <h1>Member Applications</h1>
+                        <p>Review applications, approve or decline members, and assign verified designations.</p>
+                    </div>
+
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                        <button class="btn btn-light" onclick="filterMembers('all')">All</button>
+                        <button class="btn btn-light" onclick="filterMembers('pending')">Pending</button>
+                        <button class="btn btn-light" onclick="filterMembers('approved')">Approved</button>
+                        <button class="btn btn-light" onclick="filterMembers('declined')">Declined</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Applications</h3>
+                            <div style="font-size:11px;color:#8490a0;margin-top:4px;">Only authenticated ASWF member administrators can view or manage these records.</div>
+                        </div>
+                        <button class="btn btn-primary" onclick="loadMembers()">Refresh</button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Contact</th>
+                                    <th>Location</th>
+                                    <th>Designation</th>
+                                    <th>Member ID</th>
+                                    <th>Status</th>
+                                    <th>Applied</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="membersTable">
+                                <tr>
+                                    <td colspan="8">
+                                        <div class="empty">Loading member applications...</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SETTINGS
+            ================================================= -->
+
+            <section class="page" id="page-settings">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Website Settings</h1>
+                        <p>
+                            Core ASWF website information.
+                        </p>
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="saveSettings()"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Organisation Name</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_organisation_name"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tagline</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_tagline"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Primary Email</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_email"
+                                    type="email"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Primary Phone</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_phone"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Secondary Phone</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_secondary_phone"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>CIN</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_cin"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Legal Status</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_legal_status"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Incorporated Under</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_incorporated_under"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Date of Incorporation</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_date_of_incorporation"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Facebook Display Name</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_facebook"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Instagram Display Name</label>
+                                <input
+                                    class="form-control"
+                                    id="setting_instagram"
+                                >
+                            </div>
+
+                            <div class="form-group full">
+                                <label>Registered Office</label>
+                                <textarea
+                                    class="form-control"
+                                    id="setting_registered_office"
+                                ></textarea>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     PROGRAM MODAL
+========================================================= -->
+
+<div class="modal" id="programModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="programModalTitle">
+                Add Programme
+            </h2>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('programModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="programForm">
+
+            <div class="modal-body">
+
+                <input type="hidden" id="programId">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label>Programme Title *</label>
+                        <input
+                            class="form-control"
+                            id="programTitle"
+                            required
+                            placeholder="e.g. Free Medical Camp"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category *</label>
+
+                        <select
+                            class="form-control"
+                            id="programCategory"
+                            required
+                        >
+                            <option value="">Select category</option>
+                            <option>Education</option>
+                            <option>Health</option>
+                            <option>Legal Awareness</option>
+                            <option>Women Empowerment</option>
+                            <option>Environment</option>
+                            <option>Youth Development</option>
+                            <option>Community Development</option>
+                            <option>Social Welfare</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input
+                            class="form-control"
+                            id="programLocation"
+                            placeholder="Madanpur, Deoria"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="programDate"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="programEndDate"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Participants</label>
+                        <input
+                            class="form-control"
+                            id="programParticipants"
+                            placeholder="e.g. 120 law students and 4 advocates"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Beneficiaries</label>
+                        <input
+                            type="number"
+                            min="0"
+                            class="form-control"
+                            id="programBeneficiaries"
+                            placeholder="e.g. 118"
+                        >
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Short Description</label>
+                        <textarea
+                            class="form-control"
+                            id="programShort"
+                            placeholder="Short programme summary..."
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Full Description</label>
+                        <textarea
+                            class="form-control"
+                            id="programDescription"
+                            placeholder="Detailed activity report..."
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Status</label>
+                        <div class="form-help" style="margin-bottom:7px;">
+                            Published programmes appear on the public website.
+                        </div>
+
+                        <select
+                            class="form-control"
+                            id="programStatus"
+                        >
+                            <option value="Draft">Draft</option>
+                            <option value="Published">Published</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Featured</label>
+
+                        <div class="checkbox-row" style="margin-top:12px;">
+                            <input
+                                type="checkbox"
+                                id="programFeatured"
+                            >
+                            <span style="font-size:12px;">
+                                Feature this programme
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>Programme Photos</label>
+
+                        <div class="upload-area">
+
+                            <input
+                                type="file"
+                                id="programPhotos"
+                                accept="image/*"
+                                multiple
+                            >
+
+                            <strong>
+                                Select programme photos
+                            </strong>
+
+                            <span>
+                                You can select 2 or more authentic ASWF photos.
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="preview-grid"
+                            id="programPreview"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    onclick="closeModal('programModal')"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="programSaveButton"
+                >
+                    Save Programme
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     GALLERY MODAL
+========================================================= -->
+
+<div class="modal" id="galleryModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>Add Gallery Photo</h2>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('galleryModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="galleryForm">
+
+            <div class="modal-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label>Photo *</label>
+
+                        <div class="upload-area">
+
+                            <input
+                                type="file"
+                                id="galleryPhoto"
+                                accept="image/*"
+                                required
+                            >
+
+                            <strong>
+                                Choose Photo
+                            </strong>
+
+                            <span>
+                                Use authentic ASWF activity photography.
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="preview-grid"
+                            id="galleryPreview"
+                        ></div>
+
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Title</label>
+                        <input
+                            class="form-control"
+                            id="galleryTitle"
+                            placeholder="e.g. Free Medical Camp"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input
+                            class="form-control"
+                            id="galleryCategory"
+                            placeholder="Health"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Date</label>
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="galleryDate"
+                        >
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Location</label>
+                        <input
+                            class="form-control"
+                            id="galleryLocation"
+                        >
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Description</label>
+                        <textarea
+                            class="form-control"
+                            id="galleryDescription"
+                        ></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    onclick="closeModal('galleryModal')"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="gallerySaveButton"
+                >
+                    Upload Photo
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NEWS MODAL
+========================================================= -->
+
+<div class="modal" id="newsModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>Add News / Update</h2>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('newsModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="newsForm">
+
+            <div class="modal-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+                        <label>Title *</label>
+                        <input
+                            class="form-control"
+                            id="newsTitle"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input
+                            class="form-control"
+                            id="newsAuthor"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Published Date</label>
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="newsDate"
+                        >
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Excerpt</label>
+                        <textarea
+                            class="form-control"
+                            id="newsExcerpt"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Content</label>
+                        <textarea
+                            class="form-control"
+                            id="newsContent"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Status</label>
+                        <div class="form-help" style="margin-bottom:7px;">
+                            Published updates can appear on the public website.
+                        </div>
+
+                        <select
+                            class="form-control"
+                            id="newsStatus"
+                        >
+                            <option value="Draft">Draft</option>
+                            <option value="Published">Published</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Featured</label>
+
+                        <div class="checkbox-row" style="margin-top:12px;">
+                            <input
+                                type="checkbox"
+                                id="newsFeatured"
+                            >
+                            <span style="font-size:12px;">
+                                Feature this news
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    onclick="closeModal('newsModal')"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save News
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TEAM MODAL
+========================================================= -->
+
+<div class="modal" id="teamModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>Add Team Member</h2>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('teamModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="teamForm">
+
+            <div class="modal-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input
+                            class="form-control"
+                            id="teamName"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Designation *</label>
+                        <input
+                            class="form-control"
+                            id="teamDesignation"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+
+                        <select
+                            class="form-control"
+                            id="teamCategory"
+                        >
+                            <option value="director">
+                                Director
+                            </option>
+
+                            <option value="office_bearer">
+                                Office Bearer
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Display Order</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="teamOrder"
+                            value="0"
+                        >
+                    </div>
+
+                    <div class="form-group full">
+
+                        <label>Photo</label>
+
+                        <div class="upload-area">
+
+                            <input
+                                type="file"
+                                id="teamPhoto"
+                                accept="image/*"
+                            >
+
+                            <strong>
+                                Choose Team Photo
+                            </strong>
+
+                            <span>
+                                Upload an authentic approved ASWF photograph.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Bio</label>
+
+                        <textarea
+                            class="form-control"
+                            id="teamBio"
+                            placeholder="Short professional biography..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    onclick="closeModal('teamModal')"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save Member
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     IMPACT MODAL
+========================================================= -->
+
+<div class="modal" id="impactModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>Add Impact Statistic</h2>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('impactModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="impactForm">
+
+            <div class="modal-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Title *</label>
+
+                        <input
+                            class="form-control"
+                            id="impactTitle"
+                            required
+                            placeholder="People Reached"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Number *</label>
+
+                        <input
+                            class="form-control"
+                            id="impactNumber"
+                            required
+                            placeholder="118"
+                        >
+
+                    </div>
+
+                    <div class="form-group full">
+
+                        <label>Description</label>
+
+                        <textarea
+                            class="form-control"
+                            id="impactDescription"
+                        ></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Icon</label>
+
+                        <input
+                            class="form-control"
+                            id="impactIcon"
+                            placeholder="♥"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Display Order</label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="impactOrder"
+                            value="0"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    onclick="closeModal('impactModal')"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save Impact
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FAQ MODAL
+========================================================= -->
+
+<div class="modal" id="faqModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>Add FAQ</h2>
+
+            <button
+                class="modal-close"
+                onclick="closeModal('faqModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="faqForm">
+
+            <div class="modal-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>Question *</label>
+
+                        <input
+                            class="form-control"
+                            id="faqQuestion"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group full">
+
+                        <label>Answer *</label>
+
+                        <textarea
+                            class="form-control"
+                            id="faqAnswer"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Category</label>
+
+                        <input
+                            class="form-control"
+                            id="faqCategory"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Display Order</label>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="faqOrder"
+                            value="0"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    onclick="closeModal('faqModal')"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save FAQ
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<div class="modal" id="memberModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h2>Member Application</h2>
+            <button class="modal-close" type="button" onclick="closeModal('memberModal')">×</button>
+        </div>
+
+        <div class="modal-body">
+            <div id="memberModalContent"></div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light" onclick="closeModal('memberModal')">Close</button>
+            <button type="button" class="btn btn-gold" id="memberSaveDesignationButton" onclick="saveMemberDesignation()">Save Designation</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* ============================================================
+   SUPABASE CONFIG
+============================================================ */
+
+const SUPABASE_URL =
+    "https://zdvfcyxmrvaosqazicjl.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_4w34BGktLYbE0G0Pb8v63g_XxR4sqq4";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* ============================================================
+   GLOBAL STATE
+============================================================ */
+
+let currentUser = null;
+let selectedProgramFiles = [];
+let selectedGalleryFile = null;
+let selectedTeamFile = null;
+let membersCache = [];
+let memberFilter = "all";
+let selectedMemberId = null;
+
+
+/* ============================================================
+   HELPERS
+============================================================ */
+
+function $(id){
+    return document.getElementById(id);
+}
+
+function escapeHTML(value){
+
+    if(value === null || value === undefined){
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+function slugify(text){
+
+    return String(text)
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g,"-")
+        .replace(/^-+|-+$/g,"");
+}
+
+
+function showToast(message,type="success"){
+
+    const toast = $("toast");
+
+    toast.textContent = message;
+
+    toast.className =
+        "toast show " + type;
+
+    setTimeout(()=>{
+        toast.className = "toast";
+    },3200);
+}
+
+
+function closeModal(id){
+
+    $(id).classList.remove("show");
+}
+
+
+function openModal(id){
+
+    $(id).classList.add("show");
+}
+
+
+function formatDate(date){
+
+    if(!date){
+        return "—";
+    }
+
+    const d = new Date(date);
+
+    if(Number.isNaN(d.getTime())){
+        return escapeHTML(date);
+    }
+
+    return d.toLocaleDateString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    );
+}
+
+
+function statusBadge(status){
+
+    const s = status || "draft";
+
+    return `
+        <span class="badge badge-${escapeHTML(s)}">
+            ${escapeHTML(s)}
+        </span>
+    `;
+}
+
+
+/* ============================================================
+   AUTH
+============================================================ */
+
+async function checkSession(){
+
+    const {
+        data,
+        error
+    } = await supabaseClient.auth.getSession();
+
+    if(error){
+        console.error(error);
+        return;
+    }
+
+    if(data.session){
+        await startAdmin(data.session.user);
+    }
+
+}
+
+
+async function startAdmin(user){
+
+    const { data: isAdmin, error: adminError } =
+        await supabaseClient.rpc("is_member_admin");
+
+    if(adminError || isAdmin !== true){
+
+        await supabaseClient.auth.signOut();
+
+        $("loginError").textContent =
+            "This account is not authorized to access the ASWF Admin Panel.";
+
+        $("loginError").style.display = "block";
+
+        $("adminApp").style.display = "none";
+        $("loginScreen").style.display = "flex";
+
+        return false;
+    }
+
+    currentUser = user;
+
+    $("loginScreen").style.display = "none";
+    $("adminApp").style.display = "block";
+
+    $("adminEmailDisplay").textContent =
+        user.email || "Admin";
+
+    await loadDashboard();
+
+    return true;
+
+}
+
+
+$("loginForm").addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+        const email =
+            $("loginEmail").value.trim();
+
+        const password =
+            $("loginPassword").value;
+
+        const button =
+            $("loginButton");
+
+        const errorBox =
+            $("loginError");
+
+        button.disabled = true;
+        button.textContent = "Signing in...";
+
+        errorBox.style.display = "none";
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        if(error){
+
+            errorBox.textContent =
+                error.message;
+
+            errorBox.style.display =
+                "block";
+
+            button.disabled = false;
+            button.textContent = "Sign In";
+
+            return;
+        }
+
+        await startAdmin(data.user);
+
+        button.disabled = false;
+        button.textContent = "Sign In";
+
+    }
+);
+
+
+$("logoutButton").addEventListener(
+    "click",
+    async function(){
+
+        await supabaseClient.auth.signOut();
+
+        currentUser = null;
+
+        $("adminApp").style.display = "none";
+        $("loginScreen").style.display = "flex";
+
+        $("loginPassword").value = "";
+
+    }
+);
+
+
+supabaseClient.auth.onAuthStateChange(
+    async function(event,session){
+
+        if(event === "SIGNED_OUT"){
+            $("adminApp").style.display = "none";
+            $("loginScreen").style.display = "flex";
+        }
+
+    }
+);
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+const pageTitles = {
+    dashboard:"Dashboard",
+    programs:"Programs",
+    gallery:"Gallery",
+    news:"News & Updates",
+    team:"Team",
+    impact:"Impact",
+    faqs:"FAQs",
+    volunteers:"Volunteers",
+    collaborations:"Collaborations",
+    members:"Member Applications",
+    settings:"Website Settings"
+};
+
+
+document.querySelectorAll(".nav-item")
+.forEach(button=>{
+
+    button.addEventListener(
+        "click",
+        ()=>{
+
+            const page =
+                button.dataset.page;
+
+            navigateTo(page);
+
+            $("sidebar").classList.remove("open");
+
+        }
+    );
+
+});
+
+
+function navigateTo(page){
+
+    document.querySelectorAll(".nav-item")
+    .forEach(item=>{
+        item.classList.toggle(
+            "active",
+            item.dataset.page === page
+        );
+    });
+
+
+    document.querySelectorAll(".page")
+    .forEach(section=>{
+        section.classList.remove("active");
+    });
+
+
+    const target =
+        $("page-" + page);
+
+    if(target){
+        target.classList.add("active");
+    }
+
+
+    $("topbarTitle").textContent =
+        pageTitles[page] || "ASWF Admin";
+
+
+    if(page === "dashboard"){
+        loadDashboard();
+    }
+
+    if(page === "programs"){
+        loadPrograms();
+    }
+
+    if(page === "gallery"){
+        loadGallery();
+    }
+
+    if(page === "news"){
+        loadNews();
+    }
+
+    if(page === "team"){
+        loadTeam();
+    }
+
+    if(page === "impact"){
+        loadImpact();
+    }
+
+    if(page === "faqs"){
+        loadFAQs();
+    }
+
+    if(page === "volunteers"){
+        loadVolunteers();
+    }
+
+    if(page === "collaborations"){
+        loadCollaborations();
+    }
+
+    if(page === "members"){
+        loadMembers();
+    }
+
+    if(page === "settings"){
+        loadSettings();
+    }
+
+}
+
+
+$("mobileMenu").addEventListener(
+    "click",
+    ()=>{
+        $("sidebar").classList.toggle("open");
+    }
+);
+
+
+/* ============================================================
+   DASHBOARD
+============================================================ */
+
+async function countTable(table){
+
+    const {
+        count,
+        error
+    } =
+    await supabaseClient
+        .from(table)
+        .select("*",{count:"exact",head:true});
+
+    if(error){
+        console.error(error);
+        return 0;
+    }
+
+    return count || 0;
+}
+
+
+async function loadDashboard(){
+
+    const [
+        programs,
+        gallery,
+        news,
+        volunteers,
+        members
+    ] =
+    await Promise.all([
+        countTable("programs"),
+        countTable("gallery"),
+        countTable("news"),
+        countTable("volunteers"),
+        countTable("members")
+    ]);
+
+    $("statPrograms").textContent =
+        programs;
+
+    $("statGallery").textContent =
+        gallery;
+
+    $("statNews").textContent =
+        news;
+
+    $("statVolunteers").textContent =
+        volunteers;
+
+    $("statMembers").textContent =
+        members;
+
+}
+
+
+/* ============================================================
+   PROGRAMS
+============================================================ */
+
+let editingProgramId = null;
+let existingProgramPhotos = [];
+
+function openProgramModal(){
+    $("programForm").reset();
+    $("programId").value = "";
+    editingProgramId = null;
+    existingProgramPhotos = [];
+    $("programModalTitle").textContent = "Add Programme";
+    $("programSaveButton").textContent = "Save Programme";
+    $("programPreview").innerHTML = "";
+    selectedProgramFiles = [];
+    openModal("programModal");
+}
+
+async function editProgram(id){
+    const { data, error } = await supabaseClient
+        .from("programs")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+    if(error){ showToast(error.message, "error"); return; }
+
+    editingProgramId = id;
+    $("programId").value = data.id || "";
+    $("programTitle").value = data.title || "";
+    $("programCategory").value = data.category || "";
+    $("programLocation").value = data.location || "";
+    $("programDate").value = data.event_date || "";
+    $("programEndDate").value = data.end_date || "";
+    $("programParticipants").value = data.participants || "";
+    $("programBeneficiaries").value = data.beneficiaries ?? "";
+    $("programShort").value = data.short_description || "";
+    $("programDescription").value = data.description || "";
+    $("programStatus").value = ({draft:"Draft", published:"Published", archived:"Archived"})[String(data.status || "").toLowerCase()] || data.status || "Draft";
+    $("programFeatured").checked = data.featured === true;
+    $("programPhotos").value = "";
+    selectedProgramFiles = [];
+
+    const { data: photos, error: photoError } = await supabaseClient
+        .from("program_photos")
+        .select("*")
+        .eq("program_id", id)
+        .order("display_order", { ascending:true });
+
+    existingProgramPhotos = (!photoError && photos) ? photos : [];
+    renderProgramPhotos();
+
+    $("programModalTitle").textContent = "Edit Programme";
+    $("programSaveButton").textContent = "Update Programme";
+    openModal("programModal");
+}
+
+function renderProgramPhotos(){
+    const preview = $("programPreview");
+    let html = "";
+
+    existingProgramPhotos.forEach(photo => {
+        const imageUrl = photo.image_url || "";
+        if(!imageUrl) return;
+        html += `
+            <div class="preview-item" style="position:relative;">
+                <img src="${escapeHTML(imageUrl)}" alt="Programme photo">
+                <button type="button"
+                    onclick="deleteProgramPhoto('${photo.id}')"
+                    style="position:absolute;top:6px;right:6px;width:28px;height:28px;border:0;border-radius:50%;background:#b42318;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.25);">
+                    ×
+                </button>
+            </div>`;
+    });
+
+    selectedProgramFiles.forEach(file => {
+        const url = URL.createObjectURL(file);
+        html += `
+            <div class="preview-item" style="position:relative;">
+                <img src="${url}" alt="New programme photo">
+                <div style="position:absolute;left:6px;bottom:6px;background:rgba(5,13,24,.82);color:#fff;padding:4px 7px;border-radius:5px;font-size:9px;">NEW</div>
+            </div>`;
+    });
+
+    preview.innerHTML = html;
+}
+
+$("programPhotos").addEventListener("change", function(){
+    selectedProgramFiles = Array.from(this.files || []);
+    renderProgramPhotos();
+});
+
+async function deleteProgramPhoto(photoId){
+    if(!confirm("Delete this programme photo?")) return;
+
+    const { data: photo, error: fetchError } = await supabaseClient
+        .from("program_photos")
+        .select("image_url")
+        .eq("id", photoId)
+        .single();
+
+    if(fetchError){ showToast(fetchError.message, "error"); return; }
+
+    const { error } = await supabaseClient
+        .from("program_photos")
+        .delete()
+        .eq("id", photoId);
+
+    if(error){ showToast(error.message, "error"); return; }
+
+    const url = photo?.image_url || "";
+    const marker = "/storage/v1/object/public/aswf-media/";
+    const index = url.indexOf(marker);
+
+    if(index !== -1){
+        const path = decodeURIComponent(url.substring(index + marker.length));
+        await supabaseClient.storage.from("aswf-media").remove([path]);
+    }
+
+    existingProgramPhotos = existingProgramPhotos.filter(item => item.id !== photoId);
+    renderProgramPhotos();
+    showToast("Photo deleted successfully.");
+}
+
+$("programForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const button = $("programSaveButton");
+    button.disabled = true;
+    button.textContent = editingProgramId ? "Updating..." : "Saving...";
+
+    const title = $("programTitle").value.trim();
+    const payload = {
+        title,
+        category: $("programCategory").value,
+        event_date: $("programDate").value || null,
+        end_date: $("programEndDate").value || null,
+        location: $("programLocation").value.trim() || null,
+        short_description: $("programShort").value.trim() || null,
+        description: $("programDescription").value.trim() || null,
+        participants: $("programParticipants").value.trim() || null,
+        beneficiaries: $("programBeneficiaries").value ? Number($("programBeneficiaries").value) : null,
+        status: ({draft:"Draft", published:"Published", archived:"Archived"})[String($("programStatus").value || "").toLowerCase()] || $("programStatus").value || "Draft",
+        featured: $("programFeatured").checked
+    };
+
+    let programData;
+
+    if(editingProgramId){
+        const { data, error } = await supabaseClient
+            .from("programs")
+            .update(payload)
+            .eq("id", editingProgramId)
+            .select()
+            .single();
+
+        if(error){
+            showToast(error.message, "error");
+            button.disabled = false;
+            button.textContent = "Update Programme";
+            return;
+        }
+        programData = data;
+    }else{
+        payload.slug = slugify(title) + "-" + Date.now();
+        const { data, error } = await supabaseClient
+            .from("programs")
+            .insert(payload)
+            .select()
+            .single();
+
+        if(error){
+            showToast(error.message, "error");
+            button.disabled = false;
+            button.textContent = "Save Programme";
+            return;
+        }
+        programData = data;
+        editingProgramId = data.id;
+    }
+
+    if(selectedProgramFiles.length){
+        for(let i=0; i<selectedProgramFiles.length; i++){
+            const file = selectedProgramFiles[i];
+            const extension = file.name.split(".").pop().toLowerCase();
+            const path = "programs/" + programData.id + "/" + Date.now() + "-" + i + "." + extension;
+
+            const { error: uploadError } = await supabaseClient.storage
+                .from("aswf-media")
+                .upload(path, file, { cacheControl:"3600", upsert:false });
+
+            if(uploadError){
+                showToast("Programme saved, but a photo could not be uploaded: " + uploadError.message, "error");
+                continue;
+            }
+
+            const { data: publicData } = supabaseClient.storage
+                .from("aswf-media")
+                .getPublicUrl(path);
+
+            const { error: photoInsertError } = await supabaseClient
+                .from("program_photos")
+                .insert({
+                    program_id: programData.id,
+                    image_url: publicData.publicUrl,
+                    display_order: existingProgramPhotos.length + i
+                });
+
+            if(photoInsertError){
+                showToast("Photo uploaded but database entry failed: " + photoInsertError.message, "error");
+            }
+        }
+    }
+
+    showToast(editingProgramId ? "Programme updated successfully." : "Programme saved successfully.");
+    closeModal("programModal");
+    $("programForm").reset();
+    $("programId").value = "";
+    $("programPreview").innerHTML = "";
+    selectedProgramFiles = [];
+    existingProgramPhotos = [];
+    editingProgramId = null;
+    button.disabled = false;
+    button.textContent = "Save Programme";
+    loadPrograms();
+    loadDashboard();
+});
+
+async function loadPrograms(){
+    const table = $("programsTable");
+    const { data, error } = await supabaseClient
+        .from("programs")
+        .select("*")
+        .order("event_date", { ascending:false, nullsFirst:false });
+
+    if(error){
+        table.innerHTML = `<tr><td colspan="6"><div class="empty">${escapeHTML(error.message)}</div></td></tr>`;
+        return;
+    }
+
+    if(!data || !data.length){
+        table.innerHTML = `<tr><td colspan="6"><div class="empty"><div class="empty-icon">◈</div><strong>No programmes yet</strong>Add your first ASWF programme.</div></td></tr>`;
+        return;
+    }
+
+    table.innerHTML = data.map(item => `
+        <tr>
+            <td><strong>${escapeHTML(item.title)}</strong></td>
+            <td>${escapeHTML(item.category || "—")}</td>
+            <td>${formatDate(item.event_date)}</td>
+            <td>${escapeHTML(item.location || "—")}</td>
+            <td>${statusBadge(item.status)}</td>
+            <td>
+                <div class="action-group">
+                    <button class="action-btn btn-primary" onclick="editProgram('${item.id}')">Edit</button>
+                    <button class="action-btn btn-danger" onclick="deleteProgram('${item.id}')">Delete</button>
+                </div>
+            </td>
+        </tr>
+    `).join("");
+}
+
+async function deleteProgram(id){
+    if(!confirm("Delete this programme and its photos?")) return;
+
+    const { data: photos } = await supabaseClient
+        .from("program_photos")
+        .select("image_url")
+        .eq("program_id", id);
+
+    const { error } = await supabaseClient
+        .from("programs")
+        .delete()
+        .eq("id", id);
+
+    if(error){ showToast(error.message, "error"); return; }
+
+    if(photos && photos.length){
+        const marker = "/storage/v1/object/public/aswf-media/";
+        const paths = photos.map(photo => {
+            const url = photo.image_url || "";
+            const index = url.indexOf(marker);
+            return index !== -1 ? decodeURIComponent(url.substring(index + marker.length)) : null;
+        }).filter(Boolean);
+
+        if(paths.length){
+            await supabaseClient.storage.from("aswf-media").remove(paths);
+        }
+    }
+
+    showToast("Programme deleted.");
+    loadPrograms();
+    loadDashboard();
+}
+
+
+/* ============================================================
+   GALLERY
+============================================================ */
+
+function openGalleryModal(){
+
+    $("galleryForm").reset();
+
+    $("galleryPreview").innerHTML = "";
+
+    selectedGalleryFile = null;
+
+    openModal("galleryModal");
+
+}
+
+
+$("galleryPhoto").addEventListener(
+    "change",
+    function(){
+
+        selectedGalleryFile =
+            this.files[0] || null;
+
+        const preview =
+            $("galleryPreview");
+
+        preview.innerHTML = "";
+
+        if(!selectedGalleryFile){
+            return;
+        }
+
+        const url =
+            URL.createObjectURL(
+                selectedGalleryFile
+            );
+
+        preview.innerHTML = `
+            <div class="preview-item">
+                <img src="${url}" alt="">
+            </div>
+        `;
+
+    }
+);
+
+
+$("galleryForm").addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+        if(!selectedGalleryFile){
+
+            showToast(
+                "Please select a photo.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        const button =
+            $("gallerySaveButton");
+
+        button.disabled = true;
+        button.textContent =
+            "Uploading...";
+
+
+        const extension =
+            selectedGalleryFile.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+        const path =
+            "gallery/" +
+            Date.now() +
+            "-" +
+            Math.random()
+                .toString(36)
+                .slice(2) +
+            "." +
+            extension;
+
+
+        const {
+            error:
+            uploadError
+        } =
+        await supabaseClient
+            .storage
+            .from("aswf-media")
+            .upload(
+                path,
+                selectedGalleryFile,
+                {
+                    cacheControl:"3600",
+                    upsert:false
+                }
+            );
+
+
+        if(uploadError){
+
+            showToast(
+                uploadError.message,
+                "error"
+            );
+
+            button.disabled = false;
+            button.textContent =
+                "Upload Photo";
+
+            return;
+        }
+
+
+        const {
+            data:
+            publicData
+        } =
+        supabaseClient
+            .storage
+            .from("aswf-media")
+            .getPublicUrl(path);
+
+
+        const {
+            error
+        } =
+        await supabaseClient
+            .from("gallery")
+            .insert({
+
+                title:
+                    $("galleryTitle").value.trim()
+                    || null,
+
+                description:
+                    $("galleryDescription").value.trim()
+                    || null,
+
+                image_url:
+                    publicData.publicUrl,
+
+                category:
+                    $("galleryCategory").value.trim()
+                    || null,
+
+                event_date:
+                    $("galleryDate").value
+                    || null,
+
+                location:
+                    $("galleryLocation").value.trim()
+                    || null,
+
+                status:"published",
+
+                display_order:0
+
+            });
+
+
+        if(error){
+
+            showToast(
+                error.message,
+                "error"
+            );
+
+            button.disabled = false;
+            button.textContent =
+                "Upload Photo";
+
+            return;
+        }
+
+
+        showToast(
+            "Gallery photo uploaded."
+        );
+
+        closeModal("galleryModal");
+
+        button.disabled = false;
+        button.textContent =
+            "Upload Photo";
+
+        loadGallery();
+        loadDashboard();
+
+    }
+);
+
+
+async function loadGallery(){
+
+    const table =
+        $("galleryTable");
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("gallery")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    <div class="empty">
+                        ${escapeHTML(error.message)}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    if(!data || !data.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    <div class="empty">
+                        <div class="empty-icon">▧</div>
+                        <strong>No gallery photos yet</strong>
+                        Upload your first photo.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+        data.map(item=>`
+
+            <tr>
+
+                <td>
+
+                    <img
+                        src="${escapeHTML(item.image_url)}"
+                        style="
+                            width:55px;
+                            height:45px;
+                            object-fit:cover;
+                            border-radius:7px;
+                        "
+                        alt=""
+                    >
+
+                </td>
+
+                <td>
+                    ${escapeHTML(item.title || "Untitled")}
+                </td>
+
+                <td>
+                    ${escapeHTML(item.category || "—")}
+                </td>
+
+                <td>
+                    ${formatDate(item.event_date)}
+                </td>
+
+                <td>
+                    ${statusBadge(item.status)}
+                </td>
+
+                <td>
+
+                    <div class="action-group">
+
+                        <button
+                            class="action-btn btn-danger"
+                            onclick="deleteGallery('${item.id}')"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+async function deleteGallery(id){
+
+    if(
+        !confirm(
+            "Delete this gallery photo?"
+        )
+    ){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+        .from("gallery")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "Gallery photo deleted."
+    );
+
+    loadGallery();
+    loadDashboard();
+
+}
+
+
+/* ============================================================
+   NEWS
+============================================================ */
+
+function openNewsModal(){
+
+    $("newsForm").reset();
+
+    openModal("newsModal");
+
+}
+
+
+$("newsForm").addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+        const title =
+            $("newsTitle").value.trim();
+
+
+        const {
+            error
+        } =
+        await supabaseClient
+            .from("news")
+            .insert({
+
+                title,
+
+                slug:
+                    slugify(title) +
+                    "-" +
+                    Date.now(),
+
+                excerpt:
+                    $("newsExcerpt").value.trim()
+                    || null,
+
+                content:
+                    $("newsContent").value.trim()
+                    || null,
+
+                author:
+                    $("newsAuthor").value.trim()
+                    || null,
+
+                published_date:
+                    $("newsDate").value
+                    || null,
+
+                status:
+                    $("newsStatus").value,
+
+                featured:
+                    $("newsFeatured").checked
+
+            });
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "News saved successfully."
+    );
+
+    closeModal("newsModal");
+
+    loadNews();
+    loadDashboard();
+
+    }
+);
+
+
+async function loadNews(){
+
+    const table =
+        $("newsTable");
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("news")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    <div class="empty">
+                        ${escapeHTML(error.message)}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    if(!data || !data.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    <div class="empty">
+                        <div class="empty-icon">▤</div>
+                        <strong>No news yet</strong>
+                        Publish your first update.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+        data.map(item=>`
+
+            <tr>
+
+                <td>
+                    <strong>
+                        ${escapeHTML(item.title)}
+                    </strong>
+                </td>
+
+                <td>
+                    ${formatDate(item.published_date)}
+                </td>
+
+                <td>
+                    ${escapeHTML(item.author || "—")}
+                </td>
+
+                <td>
+                    ${statusBadge(item.status)}
+                </td>
+
+                <td>
+
+                    <div class="action-group">
+
+                        <button
+                            class="action-btn btn-danger"
+                            onclick="deleteNews('${item.id}')"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+async function deleteNews(id){
+
+    if(!confirm("Delete this news item?")){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+        .from("news")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "News deleted."
+    );
+
+    loadNews();
+    loadDashboard();
+
+}
+
+
+/* ============================================================
+   TEAM
+============================================================ */
+
+function openTeamModal(){
+
+    $("teamForm").reset();
+
+    selectedTeamFile = null;
+
+    openModal("teamModal");
+
+}
+
+
+$("teamPhoto").addEventListener(
+    "change",
+    function(){
+
+        selectedTeamFile =
+            this.files[0] || null;
+
+    }
+);
+
+
+$("teamForm").addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+
+        let photoUrl = null;
+
+
+        if(selectedTeamFile){
+
+            const extension =
+                selectedTeamFile.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
+
+
+            const path =
+                "team/" +
+                Date.now() +
+                "-" +
+                Math.random()
+                    .toString(36)
+                    .slice(2) +
+                "." +
+                extension;
+
+
+            const {
+                error:
+                uploadError
+            } =
+            await supabaseClient
+                .storage
+                .from("aswf-media")
+                .upload(
+                    path,
+                    selectedTeamFile,
+                    {
+                        cacheControl:"3600",
+                        upsert:false
+                    }
+                );
+
+
+            if(uploadError){
+
+                showToast(
+                    uploadError.message,
+                    "error"
+                );
+
+                return;
+            }
+
+
+            const {
+                data:
+                publicData
+            } =
+            supabaseClient
+                .storage
+                .from("aswf-media")
+                .getPublicUrl(path);
+
+
+            photoUrl =
+                publicData.publicUrl;
+
+        }
+
+
+        const {
+            error
+        } =
+        await supabaseClient
+            .from("team")
+            .insert({
+
+                name:
+                    $("teamName").value.trim(),
+
+                designation:
+                    $("teamDesignation").value.trim(),
+
+                category:
+                    $("teamCategory").value,
+
+                photo_url:
+                    photoUrl,
+
+                bio:
+                    $("teamBio").value.trim()
+                    || null,
+
+                display_order:
+                    Number(
+                        $("teamOrder").value
+                    ) || 0,
+
+                status:"published"
+
+            });
+
+
+        if(error){
+
+            showToast(
+                error.message,
+                "error"
+            );
+
+            return;
+        }
+
+
+        showToast(
+            "Team member added."
+        );
+
+        closeModal("teamModal");
+
+        loadTeam();
+
+    }
+);
+
+
+async function loadTeam(){
+
+    const table =
+        $("teamTable");
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("team")
+        .select("*")
+        .order(
+            "display_order",
+            {
+                ascending:true
+            }
+        );
+
+
+    if(error){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    <div class="empty">
+                        ${escapeHTML(error.message)}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    if(!data || !data.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    <div class="empty">
+                        <div class="empty-icon">♙</div>
+                        <strong>No team members yet</strong>
+                        Add your first member.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+        data.map(item=>`
+
+            <tr>
+
+                <td>
+                    <strong>
+                        ${escapeHTML(item.name)}
+                    </strong>
+                </td>
+
+                <td>
+                    ${escapeHTML(item.designation)}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.category === "director"
+                        ? "Director"
+                        : "Office Bearer"
+                    )}
+                </td>
+
+                <td>
+                    ${statusBadge(item.status)}
+                </td>
+
+                <td>
+
+                    <div class="action-group">
+
+                        <button
+                            class="action-btn btn-danger"
+                            onclick="deleteTeam('${item.id}')"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+async function deleteTeam(id){
+
+    if(!confirm("Delete this team member?")){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+        .from("team")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "Team member deleted."
+    );
+
+    loadTeam();
+
+}
+
+
+/* ============================================================
+   IMPACT
+============================================================ */
+
+function openImpactModal(){
+
+    $("impactForm").reset();
+
+    openModal("impactModal");
+
+}
+
+
+$("impactForm").addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+
+        const {
+            error
+        } =
+        await supabaseClient
+            .from("impact")
+            .insert({
+
+                title:
+                    $("impactTitle").value.trim(),
+
+                number_value:
+                    $("impactNumber").value.trim(),
+
+                description:
+                    $("impactDescription").value.trim()
+                    || null,
+
+                icon:
+                    $("impactIcon").value.trim()
+                    || null,
+
+                display_order:
+                    Number(
+                        $("impactOrder").value
+                    ) || 0,
+
+                status:"published"
+
+            });
+
+
+        if(error){
+
+            showToast(
+                error.message,
+                "error"
+            );
+
+            return;
+        }
+
+
+        showToast(
+            "Impact statistic added."
+        );
+
+        closeModal("impactModal");
+
+        loadImpact();
+
+    }
+);
+
+
+async function loadImpact(){
+
+    const table =
+        $("impactTable");
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("impact")
+        .select("*")
+        .order(
+            "display_order",
+            {
+                ascending:true
+            }
+        );
+
+
+    if(error){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    <div class="empty">
+                        ${escapeHTML(error.message)}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    if(!data || !data.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    <div class="empty">
+                        <div class="empty-icon">↗</div>
+                        <strong>No impact statistics yet</strong>
+                        Add verified figures.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+        data.map(item=>`
+
+            <tr>
+
+                <td>
+                    ${escapeHTML(item.title)}
+                </td>
+
+                <td>
+                    <strong>
+                        ${escapeHTML(item.number_value)}
+                    </strong>
+                </td>
+
+                <td>
+                    ${escapeHTML(item.description || "—")}
+                </td>
+
+                <td>
+                    ${statusBadge(item.status)}
+                </td>
+
+                <td>
+
+                    <button
+                        class="action-btn btn-danger"
+                        onclick="deleteImpact('${item.id}')"
+                    >
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+async function deleteImpact(id){
+
+    if(!confirm("Delete this impact statistic?")){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+        .from("impact")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "Impact statistic deleted."
+    );
+
+    loadImpact();
+
+}
+
+
+/* ============================================================
+   FAQ
+============================================================ */
+
+function openFaqModal(){
+
+    $("faqForm").reset();
+
+    openModal("faqModal");
+
+}
+
+
+$("faqForm").addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+
+        const {
+            error
+        } =
+        await supabaseClient
+            .from("faqs")
+            .insert({
+
+                question:
+                    $("faqQuestion").value.trim(),
+
+                answer:
+                    $("faqAnswer").value.trim(),
+
+                category:
+                    $("faqCategory").value.trim()
+                    || null,
+
+                display_order:
+                    Number(
+                        $("faqOrder").value
+                    ) || 0,
+
+                status:"published"
+
+            });
+
+
+        if(error){
+
+            showToast(
+                error.message,
+                "error"
+            );
+
+            return;
+        }
+
+
+        showToast(
+            "FAQ added."
+        );
+
+        closeModal("faqModal");
+
+        loadFAQs();
+
+    }
+);
+
+
+async function loadFAQs(){
+
+    const table =
+        $("faqsTable");
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("faqs")
+        .select("*")
+        .order(
+            "display_order",
+            {
+                ascending:true
+            }
+        );
+
+
+    if(error){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    <div class="empty">
+                        ${escapeHTML(error.message)}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    if(!data || !data.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    <div class="empty">
+                        <div class="empty-icon">?</div>
+                        <strong>No FAQs yet</strong>
+                        Add your first FAQ.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+        data.map(item=>`
+
+            <tr>
+
+                <td>
+                    <strong>
+                        ${escapeHTML(item.question)}
+                    </strong>
+                </td>
+
+                <td>
+                    ${escapeHTML(item.category || "—")}
+                </td>
+
+                <td>
+                    ${statusBadge(item.status)}
+                </td>
+
+                <td>
+
+                    <button
+                        class="action-btn btn-danger"
+                        onclick="deleteFAQ('${item.id}')"
+                    >
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+async function deleteFAQ(id){
+
+    if(!confirm("Delete this FAQ?")){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+        .from("faqs")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "FAQ deleted."
+    );
+
+    loadFAQs();
+
+}
+
+
+/* ============================================================
+   VOLUNTEERS
+============================================================ */
+
+async function loadVolunteers(){
+
+    const table =
+        $("volunteersTable");
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("volunteers")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="7">
+                    <div class="empty">
+                        ${escapeHTML(error.message)}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    if(!data || !data.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="7">
+                    <div class="empty">
+                        <div class="empty-icon">♧</div>
+                        <strong>No volunteer applications</strong>
+                        New applications will appear here.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+        data.map(item=>`
+
+            <tr>
+
+                <td>
+                    <strong>
+                        ${escapeHTML(item.full_name)}
+                    </strong>
+                </td>
+
+                <td>
+                    ${escapeHTML(item.email)}
+                </td>
+
+                <td>
+                    ${escapeHTML(item.phone || "—")}
+                </td>
+
+                <td>
+                    ${escapeHTML(item.city || "—")}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.area_of_interest || "—"
+                    )}
+                </td>
+
+                <td>
+                    <span class="badge badge-new">
+                        ${escapeHTML(item.status)}
+                    </span>
+                </td>
+
+                <td>
+
+                    <button
+                        class="action-btn btn-danger"
+                        onclick="deleteVolunteer('${item.id}')"
+                    >
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+async function deleteVolunteer(id){
+
+    if(!confirm("Delete this volunteer application?")){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+        .from("volunteers")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "Volunteer application deleted."
+    );
+
+    loadVolunteers();
+    loadDashboard();
+
+}
+
+
+/* ============================================================
+   COLLABORATIONS
+============================================================ */
+
+async function loadCollaborations(){
+
+    const table =
+        $("collaborationsTable");
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("collaborations")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    <div class="empty">
+                        ${escapeHTML(error.message)}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    if(!data || !data.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    <div class="empty">
+                        <div class="empty-icon">◇</div>
+                        <strong>No collaboration enquiries</strong>
+                        New enquiries will appear here.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    table.innerHTML =
+        data.map(item=>`
+
+            <tr>
+
+                <td>
+                    <strong>
+                        ${escapeHTML(
+                            item.organisation_name
+                        )}
+                    </strong>
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.contact_person || "—"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.email || "—"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        item.organisation_type || "—"
+                    )}
+                </td>
+
+                <td>
+                    <span class="badge badge-new">
+                        ${escapeHTML(item.status)}
+                    </span>
+                </td>
+
+                <td>
+
+                    <button
+                        class="action-btn btn-danger"
+                        onclick="deleteCollaboration('${item.id}')"
+                    >
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `).join("");
+
+}
+
+
+async function deleteCollaboration(id){
+
+    if(
+        !confirm(
+            "Delete this collaboration enquiry?"
+        )
+    ){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+        .from("collaborations")
+        .delete()
+        .eq("id",id);
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "Collaboration enquiry deleted."
+    );
+
+    loadCollaborations();
+
+}
+
+
+/* ============================================================
+   MEMBER APPLICATIONS
+============================================================ */
+
+function memberStatusBadge(status){
+
+    const value = String(status || "pending").toLowerCase();
+
+    const label =
+        value.charAt(0).toUpperCase() + value.slice(1);
+
+    return `<span class="badge badge-${escapeHTML(value)}">${escapeHTML(label)}</span>`;
+}
+
+function formatMemberDate(value){
+
+    if(!value){
+        return "—";
+    }
+
+    const date = new Date(value);
+
+    if(Number.isNaN(date.getTime())){
+        return escapeHTML(value);
+    }
+
+    return escapeHTML(
+        date.toLocaleDateString("en-IN",{
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        })
+    );
+}
+
+function filterMembers(status){
+
+    memberFilter = status || "all";
+    renderMembers();
+}
+
+async function loadMembers(){
+
+    const table = $("membersTable");
+
+    if(!table){
+        return;
+    }
+
+    table.innerHTML = `
+        <tr>
+            <td colspan="8">
+                <div class="empty">
+                    Loading member applications...
+                </div>
+            </td>
+        </tr>
+    `;
+
+    const { data, error } =
+        await supabaseClient
+            .from("members")
+            .select("*")
+            .order("created_at",{ascending:false});
+
+    if(error){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="8">
+                    <div class="empty">
+                        <div class="empty-icon">!</div>
+                        <strong>Unable to load member applications</strong>
+                        ${escapeHTML(error.message)}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    membersCache = Array.isArray(data) ? data : [];
+    renderMembers();
+}
+
+function renderMembers(){
+
+    const table = $("membersTable");
+
+    if(!table){
+        return;
+    }
+
+    const filtered = memberFilter === "all"
+        ? membersCache
+        : membersCache.filter(item =>
+            String(item.status || "pending").toLowerCase() === memberFilter
+        );
+
+    if(!filtered.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="8">
+                    <div class="empty">
+                        <div class="empty-icon">♙</div>
+                        <strong>No ${escapeHTML(memberFilter === "all" ? "member applications" : memberFilter + " applications")}</strong>
+                        New member registrations will appear here.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    table.innerHTML = filtered.map(item=>{
+
+        const status = String(item.status || "pending").toLowerCase();
+        const safeId = escapeHTML(item.id);
+        const name = escapeHTML(item.full_name || "ASWF Member");
+        const email = escapeHTML(item.email || "—");
+        const phone = escapeHTML(item.phone || "—");
+        const city = escapeHTML(item.city || "—");
+        const designation = escapeHTML(item.membership_type || "General Member");
+        const memberId = escapeHTML(item.member_id || "Pending");
+
+        let actions = `
+            <button class="action-btn btn-primary" onclick="openMemberDetails('${safeId}')">View</button>
+        `;
+
+        if(status === "pending"){
+            actions += `
+                <button class="action-btn btn-success" onclick="approveMember('${safeId}')">Approve</button>
+                <button class="action-btn btn-danger" onclick="declineMember('${safeId}')">Decline</button>
+            `;
+        }
+
+        if(status === "approved"){
+            actions += `
+                <button class="action-btn btn-light" onclick="suspendMember('${safeId}')">Suspend</button>
+            `;
+        }
+
+        if(status === "suspended"){
+            actions += `
+                <button class="action-btn btn-success" onclick="approveMember('${safeId}')">Reactivate</button>
+            `;
+        }
+
+        return `
+            <tr>
+                <td>
+                    <div class="member-person">
+                        <strong>${name}</strong>
+                        <span>${email}</span>
+                    </div>
+                </td>
+                <td>${phone}</td>
+                <td>${city}</td>
+                <td>${designation}</td>
+                <td><strong>${memberId}</strong></td>
+                <td>${memberStatusBadge(status)}</td>
+                <td>${formatMemberDate(item.created_at)}</td>
+                <td>
+                    <div class="member-actions">
+                        ${actions}
+                    </div>
+                </td>
+            </tr>
+        `;
+
+    }).join("");
+}
+
+function getMemberById(id){
+    return membersCache.find(item => String(item.id) === String(id)) || null;
+}
+
+function openMemberDetails(id){
+
+    const member = getMemberById(id);
+
+    if(!member){
+        showToast("Member application not found.","error");
+        return;
+    }
+
+    selectedMemberId = member.id;
+
+    const designationOptions = [
+        "Director",
+        "President",
+        "Vice-President",
+        "Secretary",
+        "Joint-Secretary",
+        "Treasurer",
+        "Joint-Treasurer",
+        "Public Relation Officer",
+        "Program Coordinator",
+        "Promoter",
+        "Media Person",
+        "Regional Head (Deoria)",
+        "Regional Head (Aligarh)",
+        "Regional Head (Seemanchal)",
+        "Membership Coordinator",
+        "Fundraiser",
+        "Legal Representative",
+        "General Member"
+    ];
+
+    const currentDesignation = member.membership_type || "General Member";
+
+    $("memberModalContent").innerHTML = `
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input class="form-control" value="${escapeHTML(member.full_name || "")}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" value="${escapeHTML(member.email || "")}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Phone</label>
+                <input class="form-control" value="${escapeHTML(member.phone || "—")}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <input class="form-control" value="${escapeHTML(member.city || "—")}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Member ID</label>
+                <input class="form-control" value="${escapeHTML(member.member_id || "Pending")}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Current Status</label>
+                <input class="form-control" value="${escapeHTML(member.status || "pending")}" disabled>
+            </div>
+
+            <div class="form-group full">
+                <label>Verified Designation</label>
+                <select class="form-control" id="memberDesignationSelect">
+                    ${designationOptions.map(option=>`
+                        <option value="${escapeHTML(option)}" ${option === currentDesignation ? "selected" : ""}>
+                            ${escapeHTML(option)}
+                        </option>
+                    `).join("")}
+                </select>
+                <div class="form-help">The applicant cannot grant themselves an office-bearer designation. Assign the verified designation here.</div>
+            </div>
+
+            <div class="form-group full">
+                <label>Application Message</label>
+                <textarea class="form-control" disabled>${escapeHTML(member.application_message || "No application message provided.")}</textarea>
+            </div>
+        </div>
+    `;
+
+    $("memberSaveDesignationButton").style.display = "inline-flex";
+    openModal("memberModal");
+}
+
+async function saveMemberDesignation(){
+
+    if(!selectedMemberId){
+        return;
+    }
+
+    const designation = $("memberDesignationSelect").value;
+
+    const button = $("memberSaveDesignationButton");
+    button.disabled = true;
+    button.textContent = "Saving...";
+
+    const { error } =
+        await supabaseClient
+            .from("members")
+            .update({
+                membership_type: designation,
+                updated_at: new Date().toISOString()
+            })
+            .eq("id",selectedMemberId);
+
+    button.disabled = false;
+    button.textContent = "Save Designation";
+
+    if(error){
+        showToast(error.message,"error");
+        return;
+    }
+
+    showToast("Member designation updated.");
+    closeModal("memberModal");
+    selectedMemberId = null;
+    await loadMembers();
+}
+
+async function updateMemberStatus(id,status,confirmation){
+
+    if(confirmation && !confirm(confirmation)){
+        return;
+    }
+
+    const { data, error } =
+        await supabaseClient.rpc(
+            "admin_update_member_status",
+            {
+                target_member_id:id,
+                new_status:status
+            }
+        );
+
+    if(error){
+        showToast(error.message,"error");
+        return;
+    }
+
+    if(!data){
+        showToast("Member status could not be updated.","error");
+        return;
+    }
+
+    showToast(
+        status === "approved"
+            ? "Member approved successfully."
+            : status === "declined"
+                ? "Member application declined."
+                : status === "suspended"
+                    ? "Member suspended."
+                    : "Member status updated."
+    );
+
+    await loadMembers();
+    await loadDashboard();
+}
+
+async function approveMember(id){
+    await updateMemberStatus(
+        id,
+        "approved",
+        "Approve this member application? This will activate the member's approved status."
+    );
+}
+
+async function declineMember(id){
+    await updateMemberStatus(
+        id,
+        "declined",
+        "Decline this member application?"
+    );
+}
+
+async function suspendMember(id){
+    await updateMemberStatus(
+        id,
+        "suspended",
+        "Suspend this approved member?"
+    );
+}
+
+/* ============================================================
+   SETTINGS
+============================================================ */
+
+async function loadSettings(){
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+        .from("site_settings")
+        .select("*");
+
+
+    if(error){
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(!data){
+        return;
+    }
+
+
+    data.forEach(item=>{
+
+        const element =
+            $("setting_" + item.setting_key);
+
+        if(element){
+            element.value =
+                item.setting_value || "";
+        }
+
+    });
+
+}
+
+
+async function saveSettings(){
+
+    const keys = [
+
+        "organisation_name",
+        "tagline",
+        "email",
+        "phone",
+        "secondary_phone",
+        "cin",
+        "legal_status",
+        "incorporated_under",
+        "date_of_incorporation",
+        "registered_office",
+        "facebook",
+        "instagram"
+
+    ];
+
+
+    for(const key of keys){
+
+        const element =
+            $("setting_" + key);
+
+        if(!element){
+            continue;
+        }
+
+
+        const {
+            error
+        } =
+        await supabaseClient
+            .from("site_settings")
+            .upsert({
+
+                setting_key:key,
+
+                setting_value:
+                    element.value.trim()
+
+            },{
+                onConflict:"setting_key"
+            });
+
+
+        if(error){
+
+            showToast(
+                error.message,
+                "error"
+            );
+
+            return;
+        }
+
+    }
+
+
+    showToast(
+        "Website settings saved."
+    );
+
+}
+
+
+/* ============================================================
+   CLOSE MODALS ON BACKDROP
+============================================================ */
+
+document.querySelectorAll(".modal")
+.forEach(modal=>{
+
+    modal.addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === modal){
+                modal.classList.remove("show");
+            }
+
+        }
+    );
+
+});
+
+
+/* ============================================================
+   INITIALIZE
+============================================================ */
+
+checkSession();
+
+</script>
+
+</body>
+</html>

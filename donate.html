@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support ASWF | Ayesha Social Welfare Foundation</title>
+  <meta name="description" content="Support Ayesha Social Welfare Foundation and contribute to meaningful initiatives in education, healthcare, legal awareness and empowerment.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <style>
+    :root{
+      --navy:#07111f;
+      --navy2:#0c192a;
+      --navy3:#12243a;
+      --red:#a71930;
+      --red2:#861327;
+      --gold:#c9a45c;
+      --gold2:#ead39a;
+      --white:#fff;
+      --muted:rgba(255,255,255,.68);
+      --line:rgba(255,255,255,.10);
+      --card:rgba(255,255,255,.045);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--white);
+      background:var(--navy);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+
+    /* TOP BAR */
+    .topbar{
+      background:#050c15;
+      border-bottom:1px solid rgba(255,255,255,.07);
+      color:rgba(255,255,255,.56);
+      font-size:11px;
+    }
+    .topbar-inner{
+      min-height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .topbar span{white-space:nowrap}
+    .topbar strong{color:var(--gold2);font-weight:700}
+
+    /* NAV */
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(7,17,31,.91);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
+    }
+    .brand{display:flex;align-items:center;gap:13px}
+    .logo{
+      width:50px;height:50px;border-radius:50%;
+      object-fit:cover;
+      border:2px solid var(--gold);
+    }
+    .brand-text{line-height:1.15}
+    .brand-name{font-size:14px;font-weight:800;letter-spacing:.01em}
+    .brand-tag{
+      margin-top:5px;
+      color:var(--gold2);
+      font-size:8px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .nav-links{display:flex;align-items:center;gap:25px}
+    .nav-links a{
+      color:rgba(255,255,255,.68);
+      font-size:12px;
+      font-weight:700;
+      transition:.2s;
+    }
+    .nav-links a:hover,.nav-links a.active{color:var(--gold2)}
+    .nav-cta{
+      padding:11px 17px;
+      background:var(--red);
+      border-radius:6px;
+      color:#fff!important;
+    }
+    .nav-cta:hover{background:var(--red2)!important}
+    .menu-btn{
+      display:none;
+      border:1px solid var(--line);
+      background:transparent;
+      color:#fff;
+      width:42px;height:42px;border-radius:7px;
+      cursor:pointer;
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:100px 0 95px;
+      background:
+        radial-gradient(circle at 75% 30%,rgba(201,164,92,.15),transparent 26%),
+        radial-gradient(circle at 12% 85%,rgba(167,25,48,.13),transparent 28%),
+        linear-gradient(135deg,var(--navy),var(--navy2) 55%,var(--navy3));
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      width:680px;height:680px;
+      border:1px solid rgba(201,164,92,.09);
+      border-radius:50%;
+      right:-330px;top:-300px;
+    }
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:70px;
+      align-items:center;
+    }
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--gold2);
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+    .eyebrow:before{content:"";width:35px;height:1px;background:var(--gold)}
+    h1{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(44px,6vw,72px);
+      line-height:1.03;
+      font-weight:500;
+      letter-spacing:-.035em;
+    }
+    h1 span{color:var(--gold2)}
+    .hero-copy{
+      margin-top:25px;
+      max-width:620px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.85;
+    }
+    .hero-actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      min-height:48px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 22px;
+      border-radius:6px;
+      font-size:12px;
+      font-weight:800;
+      transition:.25s;
+    }
+    .btn-primary{background:var(--red);box-shadow:0 12px 28px rgba(167,25,48,.22)}
+    .btn-primary:hover{background:var(--red2);transform:translateY(-2px)}
+    .btn-outline{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.025)}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold2);transform:translateY(-2px)}
+
+    .support-card{
+      position:relative;
+      padding:34px;
+      border:1px solid rgba(201,164,92,.22);
+      border-radius:15px;
+      background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018));
+      box-shadow:0 25px 70px rgba(0,0,0,.25);
+    }
+    .support-card:before{
+      content:"";
+      position:absolute;
+      left:0;top:25px;bottom:25px;
+      width:3px;background:var(--gold);
+      border-radius:0 4px 4px 0;
+    }
+    .card-label{
+      color:var(--gold2);
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .support-card h2{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:31px;
+      font-weight:500;
+      margin:12px 0 13px;
+    }
+    .support-card p{color:var(--muted);font-size:13px;line-height:1.8}
+    .mini-note{
+      margin-top:23px;
+      padding:14px 15px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      color:rgba(255,255,255,.58);
+      font-size:11px;
+      line-height:1.7;
+      background:rgba(0,0,0,.13);
+    }
+
+    /* SECTION */
+    section{padding:90px 0}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 45px}
+    .section-kicker{
+      color:var(--gold2);
+      font-size:10px;font-weight:800;
+      letter-spacing:.18em;text-transform:uppercase;
+      margin-bottom:12px;
+    }
+    .section-head h2{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(32px,4vw,46px);
+      line-height:1.15;
+      font-weight:500;
+    }
+    .section-head p{margin-top:14px;color:var(--muted);font-size:14px;line-height:1.8}
+
+    /* WAYS */
+    .ways{background:#091525}
+    .ways-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .way{
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--card);
+      transition:.25s;
+    }
+    .way:hover{
+      transform:translateY(-4px);
+      border-color:rgba(201,164,92,.30);
+      background:rgba(201,164,92,.045);
+    }
+    .way-number{
+      color:var(--gold);
+      font-family:Georgia,serif;
+      font-size:25px;
+    }
+    .way h3{margin:10px 0 8px;font-size:16px}
+    .way p{color:var(--muted);font-size:12px;line-height:1.75}
+
+    /* RESPONSIBLE SUPPORT */
+    .responsible{
+      background:
+        linear-gradient(180deg,#0b1829,#07111f);
+    }
+    .responsible-grid{
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:70px;
+      align-items:center;
+    }
+    .responsible h2{
+      font-family:Georgia,serif;
+      font-size:clamp(32px,4vw,47px);
+      font-weight:500;
+      line-height:1.15;
+    }
+    .responsible h2 span{color:var(--gold2)}
+    .responsible-copy{margin-top:18px;color:var(--muted);font-size:14px;line-height:1.85}
+    .info-box{
+      border:1px solid var(--line);
+      border-radius:13px;
+      overflow:hidden;
+      background:rgba(255,255,255,.035);
+    }
+    .info-row{
+      display:grid;
+      grid-template-columns:145px 1fr;
+      gap:20px;
+      padding:18px 22px;
+      border-bottom:1px solid var(--line);
+    }
+    .info-row:last-child{border-bottom:0}
+    .info-row strong{font-size:11px;color:var(--gold2);text-transform:uppercase;letter-spacing:.08em}
+    .info-row span{font-size:12px;color:rgba(255,255,255,.72)}
+
+    /* AREAS */
+    .areas{background:#07111f}
+    .area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .area{
+      padding:25px 18px;
+      text-align:center;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:rgba(255,255,255,.025);
+    }
+    .area strong{display:block;font-size:12px}
+    .area small{display:block;margin-top:5px;color:rgba(255,255,255,.43);font-size:10px}
+
+    /* QUOTE */
+    .quote-section{
+      padding:75px 0;
+      background:
+        linear-gradient(135deg,rgba(167,25,48,.14),rgba(201,164,92,.06)),
+        #0b1829;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .quote{
+      max-width:850px;
+      margin:auto;
+      text-align:center;
+    }
+    .quote-mark{
+      color:var(--gold);
+      font-family:Georgia,serif;
+      font-size:58px;
+      line-height:.6;
+    }
+    .quote p{
+      margin-top:20px;
+      font-family:Georgia,serif;
+      font-size:clamp(23px,3vw,34px);
+      line-height:1.35;
+      color:#fff;
+    }
+
+    /* CONTACT STRIP */
+    .contact-strip{background:#050c15;padding:45px 0}
+    .contact-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:30px;
+    }
+    .contact-inner h3{font-family:Georgia,serif;font-size:27px;font-weight:500}
+    .contact-inner p{margin-top:5px;color:var(--muted);font-size:12px}
+    .contact-details{display:flex;gap:24px;flex-wrap:wrap;justify-content:flex-end}
+    .contact-details a{font-size:12px;color:var(--gold2)}
+    .contact-details span{color:rgba(255,255,255,.42);font-size:11px}
+
+    /* FOOTER */
+    footer{
+      padding:30px 0;
+      background:#030810;
+      border-top:1px solid rgba(255,255,255,.07);
+    }
+    .footer-inner{
+      display:flex;justify-content:space-between;align-items:center;gap:25px
+    }
+    .footer-copy{color:rgba(255,255,255,.38);font-size:10px}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+    .footer-links a{font-size:10px;color:rgba(255,255,255,.48)}
+    .footer-links a:hover{color:var(--gold2)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(18px);animation:reveal .7s ease forwards}
+    .d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}
+    @keyframes reveal{to{opacity:1;transform:none}}
+
+    @media(max-width:900px){
+      .nav-links{display:none}
+      .menu-btn{display:block}
+      .hero-grid,.responsible-grid{grid-template-columns:1fr;gap:45px}
+      .ways-grid{grid-template-columns:repeat(2,1fr)}
+      .area-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-inner{flex-direction:column;align-items:flex-start}
+      .contact-details{justify-content:flex-start}
+    }
+
+    @media(max-width:600px){
+      .container{width:min(100% - 28px,1160px)}
+      .topbar-inner{justify-content:center;text-align:center}
+      .topbar span:last-child{display:none}
+      .nav{min-height:70px}
+      .logo{width:45px;height:45px}
+      .brand-name{font-size:11px}
+      .brand-tag{font-size:7px}
+      .hero{padding:70px 0}
+      h1{font-size:43px}
+      .hero-copy{font-size:14px}
+      section{padding:65px 0}
+      .ways-grid{grid-template-columns:1fr}
+      .area-grid{grid-template-columns:1fr 1fr}
+      .support-card{padding:27px}
+      .info-row{grid-template-columns:1fr;gap:5px}
+      .contact-details{flex-direction:column;gap:9px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .reveal{animation:none;opacity:1;transform:none}
+      *{scroll-behavior:auto!important}
+    }
+  </style>
+<link rel="canonical" href="https://aswf.org.in/donate.html">
+<meta property="og:url" content="https://aswf.org.in/donate.html">
+<meta property="og:site_name" content="Ayesha Social Welfare Foundation">
+<meta property="og:image" content="https://aswf.org.in/assets/logo.jpg">
+<meta property="og:image:alt" content="Ayesha Social Welfare Foundation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Support ASWF | Ayesha Social Welfare Foundation">
+<meta name="twitter:description" content="Support Ayesha Social Welfare Foundation and contribute to meaningful initiatives in education, healthcare, legal awareness and empowerment.">
+<meta name="twitter:image" content="https://aswf.org.in/assets/logo.jpg">
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><strong>Ayesha Social Welfare Foundation</strong></span>
+      <span>From Injustice to Empowerment</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+        <img src="assets/logo.jpg" alt="Ayesha Social Welfare Foundation" class="logo">
+        <div class="brand-text">
+          <div class="brand-name">Ayesha Social Welfare Foundation</div>
+          <div class="brand-tag">From Injustice to Empowerment</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="impact.html">Impact</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="donate.html" class="active nav-cta">Support ASWF</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div class="reveal">
+          <div class="eyebrow">Support ASWF</div>
+
+          <h1>
+            Be part of<br>
+            <span>meaningful change.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Every meaningful social change begins with people who choose to
+            participate. Your support can help Ayesha Social Welfare Foundation
+            continue community-oriented work in education, healthcare, legal
+            awareness, empowerment and social development.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#support" class="btn btn-primary">Ways to Support</a>
+            <a href="get-involved.html" class="btn btn-outline">Get Involved →</a>
+          </div>
+        </div>
+
+        <div class="support-card reveal d2">
+
+          <div class="card-label">A responsible approach</div>
+
+          <h2>Support with purpose.</h2>
+
+          <p>
+            ASWF welcomes individuals, students, professionals, institutions
+            and organisations who wish to contribute to meaningful social
+            welfare initiatives.
+          </p>
+
+          <div class="mini-note">
+            For financial contributions or support-related enquiries, please
+            contact the Foundation directly through its official professional
+            email. Verified contribution details can be shared through the
+            appropriate official channel.
+          </div>
+
+          <div class="hero-actions">
+            <a
+              href="mailto:info@aswf.org.in?subject=Support%20%2F%20Contribution%20Enquiry"
+              class="btn btn-primary"
+            >
+              Contact ASWF
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="ways" id="support">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-kicker">More than financial support</div>
+          <h2>There are many ways to contribute.</h2>
+          <p>
+            Social impact is strengthened when people contribute their time,
+            knowledge, skills, networks and resources.
+          </p>
+        </div>
+
+        <div class="ways-grid">
+
+          <article class="way reveal">
+            <div class="way-number">01</div>
+            <h3>Financial Support</h3>
+            <p>
+              Contribute towards community-oriented initiatives and activities
+              undertaken in line with ASWF's objectives.
+            </p>
+          </article>
+
+          <article class="way reveal d1">
+            <div class="way-number">02</div>
+            <h3>Volunteer Your Time</h3>
+            <p>
+              Join ASWF as a volunteer and participate in awareness campaigns,
+              educational activities and community programmes.
+            </p>
+          </article>
+
+          <article class="way reveal d2">
+            <div class="way-number">03</div>
+            <h3>Share Your Skills</h3>
+            <p>
+              Professionals, students and community members can contribute
+              through their knowledge, experience and practical skills.
+            </p>
+          </article>
+
+          <article class="way reveal">
+            <div class="way-number">04</div>
+            <h3>Build Connections</h3>
+            <p>
+              Help connect ASWF with institutions, professionals, communities
+              and organisations that share compatible social objectives.
+            </p>
+          </article>
+
+          <article class="way reveal d1">
+            <div class="way-number">05</div>
+            <h3>Spread Awareness</h3>
+            <p>
+              Share information about education, healthcare, legal awareness,
+              empowerment and other community initiatives.
+            </p>
+          </article>
+
+          <article class="way reveal d2">
+            <div class="way-number">06</div>
+            <h3>Partner With Us</h3>
+            <p>
+              Organisations and institutions can explore structured
+              collaboration opportunities with the Foundation.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="responsible">
+      <div class="container responsible-grid">
+
+        <div class="reveal">
+          <div class="section-kicker">Official information</div>
+
+          <h2>
+            Support should be
+            <span>transparent and responsible.</span>
+          </h2>
+
+          <p class="responsible-copy">
+            ASWF believes that support for social welfare should be approached
+            responsibly. If you are interested in making a contribution,
+            sponsoring an initiative or discussing support, please contact
+            the Foundation through its official channels.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              href="mailto:info@aswf.org.in?subject=Support%20%2F%20Contribution%20Enquiry"
+              class="btn btn-primary"
+            >
+              Email the Foundation
+            </a>
+          </div>
+        </div>
+
+        <div class="info-box reveal d2">
+
+          <div class="info-row">
+            <strong>Organisation</strong>
+            <span>Ayesha Social Welfare Foundation</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Legal Status</strong>
+            <span>Section 8 Company</span>
+          </div>
+
+          <div class="info-row">
+            <strong>CIN</strong>
+            <span>U88100UP2024NPL207331</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Email</strong>
+            <span>info@aswf.org.in</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Phone</strong>
+            <span>+91 7007824532</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Registered Office</strong>
+            <span>Ramjan Nagar, Madanpur, Deoria, Uttar Pradesh – 274205, India</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="areas">
+      <div class="container">
+
+        <div class="section-head reveal">
+          <div class="section-kicker">Where support can matter</div>
+          <h2>Areas of our work</h2>
+          <p>
+            ASWF works towards an educated, empowered, healthy and just society.
+          </p>
+        </div>
+
+        <div class="area-grid">
+
+          <div class="area reveal">
+            <strong>Education</strong>
+            <small>Learning & opportunities</small>
+          </div>
+
+          <div class="area reveal d1">
+            <strong>Healthcare</strong>
+            <small>Community health initiatives</small>
+          </div>
+
+          <div class="area reveal d2">
+            <strong>Legal Awareness</strong>
+            <small>Rights & access to justice</small>
+          </div>
+
+          <div class="area reveal">
+            <strong>Women Empowerment</strong>
+            <small>Safety & development</small>
+          </div>
+
+          <div class="area reveal d1">
+            <strong>Youth Development</strong>
+            <small>Participation & leadership</small>
+          </div>
+
+          <div class="area reveal d2">
+            <strong>Community Development</strong>
+            <small>Grassroots participation</small>
+          </div>
+
+          <div class="area reveal">
+            <strong>Environment</strong>
+            <small>Awareness & conservation</small>
+          </div>
+
+          <div class="area reveal d1">
+            <strong>Sports & Leadership</strong>
+            <small>Growth & personality development</small>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="quote-section">
+      <div class="container">
+
+        <div class="quote reveal">
+          <div class="quote-mark">“</div>
+
+          <p>
+            Meaningful change grows when people come together with purpose,
+            responsibility and a commitment to serve.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="contact-strip">
+      <div class="container contact-inner">
+
+        <div>
+          <h3>Want to support ASWF?</h3>
+          <p>
+            Get in touch with the Foundation to discuss how you can contribute.
+          </p>
+        </div>
+
+        <div class="contact-details">
+          <a href="mailto:info@aswf.org.in">info@aswf.org.in</a>
+          <span>|</span>
+          <a href="tel:+917007824532">+91 7007824532</a>
+          <span>|</span>
+          <a href="contact.html">Contact Page →</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="container footer-inner">
+
+      <div class="footer-copy">
+        © <span id="year"></span> Ayesha Social Welfare Foundation. All rights reserved.
+      </div>
+
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+      const open = navLinks.style.display === "flex";
+
+      if (open) {
+        navLinks.style.display = "";
+      } else {
+        navLinks.style.display = "flex";
+        navLinks.style.position = "absolute";
+        navLinks.style.top = "70px";
+        navLinks.style.left = "14px";
+        navLinks.style.right = "14px";
+        navLinks.style.flexDirection = "column";
+        navLinks.style.alignItems = "stretch";
+        navLinks.style.gap = "0";
+        navLinks.style.padding = "10px";
+        navLinks.style.background = "#0b1829";
+        navLinks.style.border = "1px solid rgba(255,255,255,.10)";
+        navLinks.style.borderRadius = "10px";
+      }
+    });
+  </script>
+
+</body>
+</html>

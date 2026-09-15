@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer With ASWF | Ayesha Social Welfare Foundation</title>
+<meta name="description" content="Volunteer with ASWF and contribute your time, skills and energy to meaningful community-focused social welfare work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--navy:#0b1d35;--navy2:#102945;--gold:#b28a3b;--red:#a9232c;--cream:#f7f4ee;--ink:#182332;--muted:#667085;--line:#e5e8ed;--white:#fff;--shadow:0 24px 70px rgba(11,29,53,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"DM Sans",Arial,sans-serif;background:#fff;line-height:1.7}a{text-decoration:none;color:inherit}.container{width:min(1160px,92%);margin:auto}
+.topbar{background:var(--navy);color:#dce5ef;font-size:12px;letter-spacing:.04em}.topbar-inner{min-height:38px;display:flex;align-items:center;justify-content:space-between}.topbar span{margin-right:20px}.navbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(11,29,53,.08)}.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px}.brand{display:flex;align-items:center;gap:12px;min-width:240px}.brand img{width:52px;height:52px;object-fit:contain;border-radius:8px}.brand strong{display:block;color:var(--navy);font-size:14px;line-height:1.2}.brand span{display:block;color:var(--gold);font-size:9px;letter-spacing:.13em;text-transform:uppercase;margin-top:4px}.nav-links{display:flex;align-items:center;gap:20px;font-size:13px;font-weight:600}.nav-links a{color:#344054;transition:.2s}.nav-links a:hover,.nav-links a.active{color:var(--red)}.nav-cta{background:var(--navy);color:#fff!important;padding:11px 17px;border-radius:3px}.menu{display:none;background:none;border:0;font-size:27px;color:var(--navy)}
+.hero{background:linear-gradient(110deg,var(--navy),#142f4e);color:#fff;padding:105px 0 95px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:480px;height:480px;border:1px solid rgba(255,255,255,.09);border-radius:50%;right:-180px;top:-180px}.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#d6b46a;font-weight:700;margin-bottom:18px}.hero h1{font-family:"Playfair Display",serif;font-size:clamp(44px,6vw,76px);line-height:1.03;font-weight:600;letter-spacing:-.03em;max-width:800px;margin:0 0 24px}.hero h1 span{color:#e2c46e}.hero p{max-width:700px;color:#cbd6e2;font-size:18px;margin:0}.hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 21px;border-radius:3px;font-weight:700;font-size:13px;border:1px solid transparent;cursor:pointer}.btn-gold{background:#d0ab58;color:var(--navy)}.btn-outline{border-color:rgba(255,255,255,.35);color:#fff}
+.section{padding:92px 0}.section.cream{background:var(--cream)}.section-head{max-width:760px;margin-bottom:44px}.label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px}.section h2{font-family:"Playfair Display",serif;font-size:clamp(34px,4vw,50px);line-height:1.12;color:var(--navy);margin:0 0 16px}.section-intro{color:var(--muted);font-size:16px;margin:0}
+.layout{display:grid;grid-template-columns:1.02fr .98fr;gap:70px;align-items:start}.points{display:grid;gap:15px}.point{background:#fff;border:1px solid var(--line);padding:23px 24px;display:flex;gap:18px;align-items:flex-start}.point-num{width:34px;height:34px;flex:0 0 34px;border:1px solid #d8c08a;color:var(--gold);display:grid;place-items:center;font-weight:700;font-size:12px}.point h3{margin:0 0 4px;color:var(--navy);font-size:17px}.point p{margin:0;color:var(--muted);font-size:14px}
+.form-card{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:38px}.form-title{font-family:"Playfair Display",serif;font-size:30px;color:var(--navy);margin:0 0 7px}.form-note{font-size:13px;color:var(--muted);margin:0 0 25px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:700;color:#344054}.field input,.field select,.field textarea{width:100%;border:1px solid #d9dee6;background:#fbfcfd;padding:13px 14px;font:inherit;font-size:14px;color:var(--ink);outline:none;border-radius:3px;transition:.2s}.field textarea{min-height:120px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(178,138,59,.10)}.consent{font-size:12px;color:var(--muted);margin:17px 0}.submit{width:100%;background:var(--red);color:#fff}.submit:disabled{opacity:.65;cursor:not-allowed}.message{display:none;margin-top:15px;padding:13px 15px;font-size:13px;border-radius:3px}.message.success{display:block;background:#edf8f0;color:#216e3a;border:1px solid #c8e8d0}.message.error{display:block;background:#fff1f1;color:#8d2229;border:1px solid #f0c8cb}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.info-card{padding:30px;border:1px solid var(--line);background:#fff}.icon{width:42px;height:42px;border:1px solid #d8c08a;color:var(--gold);display:grid;place-items:center;margin-bottom:20px;font-weight:700}.info-card h3{margin:0 0 8px;color:var(--navy);font-family:"Playfair Display",serif;font-size:24px}.info-card p{margin:0;color:var(--muted);font-size:14px}
+.privacy{font-size:12px;color:var(--muted);margin-top:13px}.contact-strip{background:var(--navy);color:#fff;padding:65px 0}.contact-grid{display:flex;justify-content:space-between;gap:30px;align-items:center}.contact-strip h2{color:#fff;font-family:"Playfair Display",serif;font-size:38px;line-height:1.1;margin:0 0 10px}.contact-strip p{color:#c5d0dc;margin:0}.contact-links{display:flex;gap:12px;flex-wrap:wrap}.contact-link{border:1px solid rgba(255,255,255,.2);padding:13px 17px;font-size:13px;color:#fff}
+footer{background:#071526;color:#b7c2ce;padding:55px 0 20px}.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:45px}.footer-brand{display:flex;gap:12px;align-items:center;color:#fff}.footer-brand img{width:48px;height:48px;object-fit:contain;border-radius:7px}.footer-brand strong{display:block}.footer-brand span{font-size:10px;color:#d1af62;letter-spacing:.1em}.footer p{font-size:13px}.footer h4{color:#fff;margin:0 0 14px;font-size:13px;text-transform:uppercase;letter-spacing:.12em}.footer a{display:block;font-size:13px;margin:8px 0;color:#b7c2ce}.footer a:hover{color:#fff}.footer-bottom{margin-top:42px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:20px;font-size:11px}
+.reveal{opacity:0;transform:translateY(18px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:980px){.nav-links{display:none}.menu{display:block}.nav-links.open{display:flex;position:absolute;left:0;right:0;top:82px;background:#fff;padding:15px 5%;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line);box-shadow:0 20px 35px rgba(0,0,0,.08)}.layout{grid-template-columns:1fr;gap:45px}.cards{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.contact-grid{align-items:flex-start;flex-direction:column}}
+@media(max-width:620px){.topbar{display:none}.nav{min-height:74px}.brand{min-width:0}.brand img{width:46px;height:46px}.brand strong{font-size:12px}.hero{padding:78px 0 70px}.hero p{font-size:16px}.section{padding:70px 0}.form-card{padding:25px 20px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.cards{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.contact-strip h2{font-size:31px}}
+</style>
+<link rel="canonical" href="https://aswf.org.in/volunteer.html">
+<meta property="og:url" content="https://aswf.org.in/volunteer.html">
+<meta property="og:site_name" content="Ayesha Social Welfare Foundation">
+<meta property="og:image" content="https://aswf.org.in/assets/logo.jpg">
+<meta property="og:image:alt" content="Ayesha Social Welfare Foundation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Volunteer With ASWF | Ayesha Social Welfare Foundation">
+<meta name="twitter:description" content="Volunteer with ASWF and contribute your time, skills and energy to meaningful community-focused social welfare work.">
+<meta name="twitter:image" content="https://aswf.org.in/assets/logo.jpg">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div><span>Section 8 Nonprofit Organisation</span><span>Deoria, Uttar Pradesh</span></div>
+    <div><span>info@aswf.org.in</span><span>+91 7007824532</span></div>
+  </div>
+</div>
+
+<header class="navbar">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Ayesha Social Welfare Foundation">
+      <img src="assets/logo.jpg" alt="ASWF Logo">
+      <div><strong>Ayesha Social Welfare Foundation</strong><span>From Injustice to Empowerment</span></div>
+    </a>
+    <button class="menu" id="menuBtn" aria-label="Open navigation">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+      <a href="impact.html">Impact</a><a href="team.html">Our Team</a><a href="get-involved.html">Get Involved</a>
+      <a href="gallery.html">Gallery</a><a href="news.html">News</a><a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a><a href="donate.html" class="nav-cta">Support ASWF</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container reveal">
+    <div class="eyebrow">Volunteer With ASWF</div>
+    <h1>Your time can become <span>meaningful action.</span></h1>
+    <p>ASWF welcomes people who want to contribute responsibly to education, legal awareness, healthcare, women empowerment, youth development and community-focused social welfare.</p>
+    <div class="hero-actions"><a class="btn btn-gold" href="#apply">Apply to Volunteer</a><a class="btn btn-outline" href="get-involved.html">Explore Ways to Help</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container layout">
+    <div class="reveal">
+      <div class="label">Why Volunteer</div>
+      <h2>Contribute skills. Build communities. Learn through service.</h2>
+      <p class="section-intro">Volunteering with ASWF is about responsible participation and practical contribution. Opportunities may vary according to programme needs, location and organisational capacity.</p>
+      <div class="points" style="margin-top:30px">
+        <div class="point"><div class="point-num">01</div><div><h3>Community participation</h3><p>Support awareness activities, camps, educational initiatives and other community programmes.</p></div></div>
+        <div class="point"><div class="point-num">02</div><div><h3>Use your skills</h3><p>Students, professionals and community members can contribute relevant knowledge, skills and time.</p></div></div>
+        <div class="point"><div class="point-num">03</div><div><h3>Responsible service</h3><p>Work with respect for participant dignity, privacy, safety and the genuine needs of communities.</p></div></div>
+        <div class="point"><div class="point-num">04</div><div><h3>Grow with ASWF</h3><p>Stay connected as suitable volunteer opportunities and community initiatives develop.</p></div></div>
+      </div>
+    </div>
+
+    <div class="form-card reveal" id="apply">
+      <div class="label">Volunteer Enquiry</div>
+      <h2 class="form-title">Start the conversation.</h2>
+      <p class="form-note">Submit your details. Your application will be received by the ASWF team for review.</p>
+      <form id="volunteerForm">
+        <div class="grid">
+          <div class="field"><label for="fullName">Full name *</label><input id="fullName" required maxlength="120" autocomplete="name"></div>
+          <div class="field"><label for="email">Email address *</label><input id="email" type="email" required maxlength="180" autocomplete="email"></div>
+          <div class="field"><label for="phone">Phone number</label><input id="phone" maxlength="30" autocomplete="tel"></div>
+          <div class="field"><label for="city">City</label><input id="city" maxlength="100" autocomplete="address-level2"></div>
+          <div class="field full"><label for="interest">Area of interest *</label>
+            <select id="interest" required>
+              <option value="">Select an area</option>
+              <option>Education</option><option>Health & Medical Assistance</option><option>Legal Awareness</option>
+              <option>Social Justice</option><option>Women Empowerment</option><option>Community Development</option>
+              <option>Youth & Sports</option><option>Environmental Awareness</option><option>Media & Communication</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field full"><label for="message">Tell us how you would like to contribute</label><textarea id="message" maxlength="1200" placeholder="Skills, experience, availability or the kind of work you would like to support"></textarea></div>
+        </div>
+        <div class="consent">By submitting this form, you agree that ASWF may use the information provided to review and respond to your volunteer enquiry.</div>
+        <button class="btn submit" id="submitBtn" type="submit">Submit Volunteer Application</button>
+        <div class="message" id="formMessage"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section cream">
+  <div class="container">
+    <div class="section-head reveal"><div class="label">Where You Can Contribute</div><h2>Different skills. One shared purpose.</h2><p class="section-intro">Volunteer opportunities can be shaped around genuine programme requirements rather than a fixed one-size-fits-all role.</p></div>
+    <div class="cards">
+      <article class="info-card reveal"><div class="icon">ED</div><h3>Education</h3><p>Support literacy, educational camps, competitions, student engagement and learning-focused community activities.</p></article>
+      <article class="info-card reveal"><div class="icon">LA</div><h3>Legal Awareness</h3><p>Assist with awareness, outreach, documentation or communication connected with legal literacy initiatives.</p></article>
+      <article class="info-card reveal"><div class="icon">HC</div><h3>Health</h3><p>Support suitable community health activities, awareness programmes and camp coordination.</p></article>
+      <article class="info-card reveal"><div class="icon">WY</div><h3>Women & Youth</h3><p>Contribute to empowerment, youth participation, sports, leadership and community dialogue.</p></article>
+      <article class="info-card reveal"><div class="icon">CM</div><h3>Community Work</h3><p>Help with outreach, surveys, local coordination and responsible community-focused initiatives.</p></article>
+      <article class="info-card reveal"><div class="icon">MC</div><h3>Media & Skills</h3><p>Contribute writing, design, photography, communications, technology or other relevant professional skills.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="contact-strip">
+  <div class="container contact-grid reveal">
+    <div><h2>Prefer to speak directly?</h2><p>Contact Ayesha Social Welfare Foundation for official volunteer information.</p></div>
+    <div class="contact-links"><a class="contact-link" href="mailto:info@aswf.org.in">info@aswf.org.in</a><a class="contact-link" href="tel:+917007824532">+91 7007824532</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand"><img src="assets/logo.jpg" alt="ASWF Logo"><div><strong>Ayesha Social Welfare Foundation</strong><span>From Injustice to Empowerment</span></div></div><p>A student-led Section 8 social welfare organisation working towards an educated, empowered, healthy and just society.</p></div>
+      <div><h4>Explore</h4><a href="about.html">About ASWF</a><a href="programs.html">Programs</a><a href="impact.html">Impact</a><a href="team.html">Our Team</a><a href="gallery.html">Gallery</a></div>
+      <div><h4>Get Involved</h4><a href="get-involved.html">Get Involved</a><a href="volunteer.html">Volunteer</a><a href="collaboration.html">Partner With Us</a><a href="donate.html">Support ASWF</a><a href="faq.html">FAQs</a></div>
+      <div><h4>Contact</h4><p>Ramjan Nagar, Madanpur,<br>Deoria, Uttar Pradesh – 274205, India</p><a href="mailto:info@aswf.org.in">info@aswf.org.in</a><a href="tel:+917007824532">+91 7007824532</a><a href="tel:+917368032471">+91 7368-032471</a></div>
+    </div>
+    <div class="footer-bottom"><div>© 2026 Ayesha Social Welfare Foundation. All rights reserved.</div><div><a href="privacy.html" style="display:inline">Privacy Policy</a> &nbsp; · &nbsp; <a href="terms.html" style="display:inline">Terms & Conditions</a></div></div>
+  </div>
+</footer>
+
+<script>
+const SUPABASE_URL="https://zdvfcyxmrvaosqazicjl.supabase.co";
+const SUPABASE_KEY="sb_publishable_4w34BGktLYbE0G0Pb8v63g_XxR4sqq4";
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+const menuBtn=document.getElementById("menuBtn"),navLinks=document.getElementById("navLinks");
+menuBtn.addEventListener("click",()=>navLinks.classList.toggle("open"));
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("open")));
+
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");observer.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+function escapeHTML(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+
+const form=document.getElementById("volunteerForm"),btn=document.getElementById("submitBtn"),msg=document.getElementById("formMessage");
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  btn.disabled=true;btn.textContent="Submitting…";msg.className="message";msg.textContent="";
+  const payload={
+    full_name:document.getElementById("fullName").value.trim(),
+    email:document.getElementById("email").value.trim(),
+    phone:document.getElementById("phone").value.trim()||null,
+    city:document.getElementById("city").value.trim()||null,
+    area_of_interest:document.getElementById("interest").value,
+    message:document.getElementById("message").value.trim()||null,
+    status:"new"
+  };
+  const {error}=await db.from("volunteers").insert(payload);
+  if(error){
+    msg.className="message error";
+    msg.textContent="We could not submit your application right now. Please email info@aswf.org.in instead.";
+    btn.disabled=false;btn.textContent="Submit Volunteer Application";return;
+  }
+  msg.className="message success";
+  msg.textContent="Thank you. Your volunteer application has been submitted successfully.";
+  form.reset();btn.disabled=false;btn.textContent="Submit Volunteer Application";
+});
+</script>
+</body>
+</html>

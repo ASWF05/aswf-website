@@ -1,0 +1,1621 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Terms & Conditions | Ayesha Social Welfare Foundation</title>
+  <meta name="description" content="Read the Terms and Conditions governing the use of the Ayesha Social Welfare Foundation website.">
+  <meta name="theme-color" content="#08111f">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <style>
+    :root {
+      --navy: #08111f;
+      --navy-2: #0d1a2b;
+      --navy-3: #122238;
+      --red: #a71930;
+      --red-dark: #861327;
+      --gold: #c9a45c;
+      --gold-light: #e4c98c;
+      --white: #ffffff;
+      --off-white: #f7f8fa;
+      --text: #1a2635;
+      --muted: #667085;
+      --border: #e7e9ee;
+      --shadow: 0 18px 50px rgba(8, 17, 31, 0.10);
+      --radius: 18px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+      color: var(--text);
+      background: var(--off-white);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================= */
+
+    .topbar {
+      background: var(--navy);
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .topbar-inner {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .topbar-left,
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a:hover {
+      color: var(--gold-light);
+    }
+
+    .topbar strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(8,17,31,.08);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 230px;
+    }
+
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      box-shadow: 0 5px 18px rgba(8,17,31,.12);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-name {
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .brand-tagline {
+      margin-top: 5px;
+      color: var(--red);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .desktop-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .desktop-menu a {
+      padding: 10px 12px;
+      color: #344054;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: .25s ease;
+    }
+
+    .desktop-menu a:hover {
+      color: var(--red);
+      background: #faf5f6;
+    }
+
+    .desktop-menu .nav-cta {
+      margin-left: 7px;
+      padding: 11px 18px;
+      color: #fff;
+      background: var(--red);
+      border-radius: 7px;
+      box-shadow: 0 8px 20px rgba(167,25,48,.18);
+    }
+
+    .desktop-menu .nav-cta:hover {
+      color: #fff;
+      background: var(--red-dark);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--navy);
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 12px 20px 20px;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 13px 5px;
+      border-bottom: 1px solid #f0f1f3;
+      font-size: 14px;
+      font-weight: 600;
+      color: #344054;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: 0;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 88px;
+      background:
+        radial-gradient(circle at 90% 15%, rgba(201,164,92,.14), transparent 27%),
+        radial-gradient(circle at 8% 85%, rgba(167,25,48,.10), transparent 30%),
+        linear-gradient(135deg, #08111f 0%, #102238 100%);
+      color: #fff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -170px;
+      top: -220px;
+      border: 1px solid rgba(201,164,92,.18);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      left: -150px;
+      bottom: -180px;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 19px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.05;
+      font-weight: 500;
+      letter-spacing: -.035em;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero p {
+      max-width: 750px;
+      color: rgba(255,255,255,.76);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-meta {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
+    }
+
+    .hero-meta .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* =========================
+       MAIN CONTENT
+    ========================= */
+
+    .main {
+      padding: 72px 0 100px;
+    }
+
+    .policy-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 55px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 112px;
+    }
+
+    .sidebar-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 35px rgba(8,17,31,.05);
+    }
+
+    .sidebar-label {
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 8px 0;
+      color: #667085;
+      font-size: 13px;
+      border-bottom: 1px solid #f0f1f3;
+      transition: .2s ease;
+    }
+
+    .toc a:last-child {
+      border-bottom: 0;
+    }
+
+    .toc a:hover {
+      color: var(--red);
+      padding-left: 4px;
+    }
+
+    .document {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: clamp(30px, 5vw, 58px);
+      box-shadow: var(--shadow);
+    }
+
+    .intro {
+      padding-bottom: 32px;
+      margin-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro p {
+      color: #475467;
+      font-size: 16px;
+      max-width: 830px;
+    }
+
+    .notice {
+      margin-top: 22px;
+      padding: 21px 23px;
+      border-left: 3px solid var(--gold);
+      background: #fbfaf7;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .notice strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .notice p {
+      margin: 0;
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .section {
+      scroll-margin-top: 120px;
+      margin-bottom: 42px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      line-height: 1.25;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    .number {
+      color: var(--gold);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
+
+    .section p {
+      color: #475467;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .section ul {
+      margin: 13px 0 15px 21px;
+      color: #475467;
+    }
+
+    .section li {
+      margin-bottom: 9px;
+      padding-left: 4px;
+    }
+
+    .section li::marker {
+      color: var(--red);
+    }
+
+    .contact-card {
+      margin-top: 45px;
+      padding: 28px;
+      border-radius: 17px;
+      background:
+        linear-gradient(135deg, #0a1525, #13253c);
+      color: #fff;
+    }
+
+    .contact-card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 500;
+      margin-bottom: 9px;
+    }
+
+    .contact-card p {
+      color: rgba(255,255,255,.70);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card strong {
+      color: #fff;
+    }
+
+    .contact-card a {
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta-strip {
+      background: #f1f3f6;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 55px 0;
+    }
+
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .cta-copy small {
+      display: block;
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .cta-copy h2 {
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    .cta-copy p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta-button {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 23px;
+      color: #fff;
+      background: var(--red);
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(167,25,48,.18);
+      transition: .25s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.70);
+      padding: 62px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.45fr .8fr .9fr;
+      gap: 55px;
+      padding-bottom: 45px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .footer-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+    }
+
+    .footer-brand h3 {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .footer-brand p {
+      color: var(--gold-light);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .footer-description {
+      margin-top: 20px;
+      max-width: 500px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-heading {
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-bottom: 17px;
+    }
+
+    .footer-links a {
+      display: block;
+      width: fit-content;
+      padding: 5px 0;
+      font-size: 13px;
+      color: rgba(255,255,255,.63);
+      transition: .2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+      padding-left: 3px;
+    }
+
+    .footer-contact {
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .footer-contact strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .footer-contact a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      padding-top: 23px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 11px;
+      color: rgba(255,255,255,.43);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--gold-light);
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: reveal .7s ease forwards;
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 1050px) {
+
+      .desktop-menu {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .policy-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .sidebar-card {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .topbar {
+        display: none;
+      }
+
+      .nav {
+        min-height: 72px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-logo {
+        width: 47px;
+        height: 47px;
+      }
+
+      .brand-name {
+        font-size: 13px;
+      }
+
+      .brand-tagline {
+        font-size: 8px;
+      }
+
+      .hero {
+        padding: 68px 0 65px;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .hero-meta {
+        flex-wrap: wrap;
+      }
+
+      .main {
+        padding: 35px 0 65px;
+      }
+
+      .document {
+        padding: 27px 21px;
+        border-radius: 16px;
+      }
+
+      .section h2 {
+        font-size: 23px;
+      }
+
+      .section p,
+      .section li {
+        font-size: 14px;
+      }
+
+      .cta-strip {
+        padding: 40px 0;
+      }
+
+      .cta-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer {
+        padding-top: 45px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+<link rel="canonical" href="https://aswf.org.in/terms.html">
+<meta property="og:url" content="https://aswf.org.in/terms.html">
+<meta property="og:site_name" content="Ayesha Social Welfare Foundation">
+<meta property="og:image" content="https://aswf.org.in/assets/logo.jpg">
+<meta property="og:image:alt" content="Ayesha Social Welfare Foundation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Terms & Conditions | Ayesha Social Welfare Foundation">
+<meta name="twitter:description" content="Read the Terms and Conditions governing the use of the Ayesha Social Welfare Foundation website.">
+<meta name="twitter:image" content="https://aswf.org.in/assets/logo.jpg">
+</head>
+
+<body>
+
+  <!-- =========================
+       TOP BAR
+  ========================= -->
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+
+      <div class="topbar-left">
+        <span>
+          <strong>ASWF</strong> · A Student-Led Social Welfare Organisation
+        </span>
+      </div>
+
+      <div class="topbar-right">
+        <a href="mailto:info@aswf.org.in">
+          info@aswf.org.in
+        </a>
+
+        <span>
+          Deoria, Uttar Pradesh, India
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header class="header">
+
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+
+        <img
+          src="assets/logo.jpg"
+          alt="Ayesha Social Welfare Foundation Logo"
+          class="brand-logo"
+        >
+
+        <div class="brand-text">
+          <div class="brand-name">
+            Ayesha Social Welfare Foundation
+          </div>
+
+          <div class="brand-tagline">
+            From Injustice to Empowerment
+          </div>
+        </div>
+
+      </a>
+
+
+      <nav class="desktop-menu">
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="impact.html">Impact</a>
+        <a href="team.html">Our Team</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="donate.html" class="nav-cta">
+          Support Us
+        </a>
+
+      </nav>
+
+
+      <button
+        class="mobile-toggle"
+        id="mobileToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </div>
+
+
+    <div class="mobile-menu" id="mobileMenu">
+
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="impact.html">Impact</a>
+      <a href="team.html">Our Team</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="news.html">News</a>
+      <a href="get-involved.html">Get Involved</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html">Support Us</a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="hero-content reveal">
+
+        <div class="eyebrow">
+          Website Policy
+        </div>
+
+        <h1>
+          Terms & <span>Conditions</span>
+        </h1>
+
+        <p>
+          These terms outline the general conditions governing access to and
+          use of the Ayesha Social Welfare Foundation website and its
+          information, forms and resources.
+        </p>
+
+        <div class="hero-meta">
+          <span>Last updated: September 2026</span>
+          <span class="dot"></span>
+          <span>Ayesha Social Welfare Foundation</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main class="main">
+
+    <div class="container">
+
+      <div class="policy-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+          <div class="sidebar-card">
+
+            <div class="sidebar-label">
+              On this page
+            </div>
+
+            <nav class="toc">
+              <a href="#acceptance">Acceptance</a>
+              <a href="#website">Website Use</a>
+              <a href="#content">Website Content</a>
+              <a href="#forms">Forms & Submissions</a>
+              <a href="#intellectual">Intellectual Property</a>
+              <a href="#external">External Links</a>
+              <a href="#availability">Website Availability</a>
+              <a href="#liability">Limitation of Liability</a>
+              <a href="#privacy">Privacy</a>
+              <a href="#changes">Changes</a>
+              <a href="#contact">Contact</a>
+            </nav>
+
+          </div>
+
+        </aside>
+
+
+        <!-- DOCUMENT -->
+
+        <article class="document">
+
+          <div class="intro" id="acceptance">
+
+            <p>
+              Welcome to the website of Ayesha Social Welfare Foundation
+              (“ASWF”, “we”, “us” or “our”). By accessing or using this
+              website, you acknowledge that you have read, understood and
+              agree to comply with these Terms & Conditions.
+            </p>
+
+            <div class="notice">
+
+              <strong>Important</strong>
+
+              <p>
+                If you do not agree with these terms, please discontinue use
+                of the website. These terms apply to the website and its
+                publicly available content, forms and resources.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- 01 -->
+
+          <section class="section" id="website">
+
+            <h2>
+              <span class="number">01</span>
+              Website Use
+            </h2>
+
+            <p>
+              You may use this website for lawful purposes and in a manner
+              consistent with the objectives of Ayesha Social Welfare
+              Foundation.
+            </p>
+
+            <p>
+              You agree not to misuse the website, interfere with its normal
+              operation, attempt to gain unauthorised access, introduce
+              malicious code, or knowingly use the website for unlawful,
+              fraudulent or harmful activities.
+            </p>
+
+          </section>
+
+
+          <!-- 02 -->
+
+          <section class="section" id="content">
+
+            <h2>
+              <span class="number">02</span>
+              Website Content
+            </h2>
+
+            <p>
+              The website provides information about ASWF, its objectives,
+              programmes, activities, initiatives, team, updates and
+              opportunities to engage with the Foundation.
+            </p>
+
+            <p>
+              We make reasonable efforts to keep publicly available
+              information useful and accurate. However, information on the
+              website may change over time and should not be treated as a
+              guarantee that a particular programme, activity, opportunity or
+              service will always be available.
+            </p>
+
+            <p>
+              Information published on this website is provided for general
+              informational purposes unless expressly stated otherwise.
+            </p>
+
+          </section>
+
+
+          <!-- 03 -->
+
+          <section class="section" id="forms">
+
+            <h2>
+              <span class="number">03</span>
+              Forms & Submissions
+            </h2>
+
+            <p>
+              Certain areas of the website may allow visitors to submit
+              information, including volunteer applications, collaboration
+              enquiries and general communications.
+            </p>
+
+            <p>
+              When using a website form, you agree to provide information that
+              is accurate and appropriate for the stated purpose.
+            </p>
+
+            <ul>
+              <li>
+                Do not submit information that you know to be false or
+                misleading.
+              </li>
+
+              <li>
+                Do not use forms to send unlawful, abusive, threatening or
+                malicious material.
+              </li>
+
+              <li>
+                Do not knowingly submit another person's private information
+                without appropriate authority.
+              </li>
+
+              <li>
+                Do not submit passwords, payment-card information or other
+                highly sensitive information through a general enquiry form.
+              </li>
+            </ul>
+
+            <p>
+              Submission of an application or enquiry does not automatically
+              create a membership, employment relationship, partnership,
+              appointment or other obligation on the part of ASWF.
+            </p>
+
+          </section>
+
+
+          <!-- 04 -->
+
+          <section class="section" id="intellectual">
+
+            <h2>
+              <span class="number">04</span>
+              Intellectual Property
+            </h2>
+
+            <p>
+              Unless otherwise indicated, website content including
+              organisational text, branding, graphics, design elements,
+              photographs and other original materials may belong to or be
+              used by Ayesha Social Welfare Foundation.
+            </p>
+
+            <p>
+              You may view and use publicly available website information for
+              personal, educational or other lawful informational purposes.
+            </p>
+
+            <p>
+              Reproduction, modification, commercial exploitation or
+              redistribution of website materials should not be undertaken
+              without appropriate permission where such permission is
+              required.
+            </p>
+
+          </section>
+
+
+          <!-- 05 -->
+
+          <section class="section" id="external">
+
+            <h2>
+              <span class="number">05</span>
+              External Links
+            </h2>
+
+            <p>
+              The website may contain links to websites, platforms or
+              resources operated by third parties.
+            </p>
+
+            <p>
+              These links may be provided for convenience or additional
+              information. ASWF does not control third-party websites and is
+              not responsible for their content, availability, security or
+              privacy practices.
+            </p>
+
+            <p>
+              Your use of an external website is subject to that website's
+              own terms and policies.
+            </p>
+
+          </section>
+
+
+          <!-- 06 -->
+
+          <section class="section" id="availability">
+
+            <h2>
+              <span class="number">06</span>
+              Website Availability
+            </h2>
+
+            <p>
+              We aim to keep the website available and functional, but we do
+              not guarantee uninterrupted or error-free access at all times.
+            </p>
+
+            <p>
+              The website may occasionally be unavailable because of
+              maintenance, updates, technical issues, hosting problems,
+              security measures or circumstances outside our reasonable
+              control.
+            </p>
+
+          </section>
+
+
+          <!-- 07 -->
+
+          <section class="section" id="liability">
+
+            <h2>
+              <span class="number">07</span>
+              Limitation of Liability
+            </h2>
+
+            <p>
+              To the extent permitted by applicable law, ASWF shall not be
+              responsible for losses or damages arising solely from reliance
+              on general website information, temporary website
+              unavailability, third-party websites or circumstances beyond
+              the Foundation's reasonable control.
+            </p>
+
+            <p>
+              Nothing in these Terms & Conditions is intended to exclude or
+              limit any responsibility that cannot lawfully be excluded or
+              limited under applicable law.
+            </p>
+
+          </section>
+
+
+          <!-- 08 -->
+
+          <section class="section" id="privacy">
+
+            <h2>
+              <span class="number">08</span>
+              Privacy
+            </h2>
+
+            <p>
+              Information submitted through the website is handled in
+              accordance with our
+              <a
+                href="privacy.html"
+                style="color:var(--red);font-weight:700;"
+              >
+                Privacy Policy
+              </a>.
+            </p>
+
+            <p>
+              By using forms or other website features that request
+              information, you acknowledge that the information may be
+              processed for the purposes described in the Privacy Policy.
+            </p>
+
+          </section>
+
+
+          <!-- 09 -->
+
+          <section class="section" id="changes">
+
+            <h2>
+              <span class="number">09</span>
+              Changes to These Terms
+            </h2>
+
+            <p>
+              ASWF may update these Terms & Conditions from time to time to
+              reflect changes to the website, organisational practices,
+              technology or applicable requirements.
+            </p>
+
+            <p>
+              Updated terms will be published on this page. Continued use of
+              the website after an updated version is published may constitute
+              acceptance of the revised terms to the extent permitted by
+              applicable law.
+            </p>
+
+          </section>
+
+
+          <!-- 10 -->
+
+          <section class="section" id="contact">
+
+            <h2>
+              <span class="number">10</span>
+              Contact Us
+            </h2>
+
+            <p>
+              If you have any questions regarding these Terms & Conditions,
+              please contact Ayesha Social Welfare Foundation using the
+              information below.
+            </p>
+
+            <div class="contact-card">
+
+              <h3>
+                Ayesha Social Welfare Foundation
+              </h3>
+
+              <p>
+                <strong>Legal Status:</strong>
+                Section 8 Company
+              </p>
+
+              <p>
+                <strong>Incorporated Under:</strong>
+                Companies Act, 2013
+              </p>
+
+              <p>
+                <strong>Registered Office:</strong><br>
+                Ramjan Nagar, Madanpur, Deoria,<br>
+                Uttar Pradesh – 274205, India
+              </p>
+
+              <p>
+                <strong>Email:</strong>
+                <a href="mailto:info@aswf.org.in">
+                  info@aswf.org.in
+                </a>
+              </p>
+
+              <p>
+                <strong>Phone:</strong>
+                <a href="tel:+917007824532">
+                  +91 7007824532
+                </a>
+              </p>
+
+              <p>
+                <strong>CIN:</strong>
+                U88100UP2024NPL207331
+              </p>
+
+            </div>
+
+          </section>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =========================
+       CTA
+  ========================= -->
+
+  <section class="cta-strip">
+
+    <div class="container cta-inner">
+
+      <div class="cta-copy">
+
+        <small>
+          Stay connected with ASWF
+        </small>
+
+        <h2>
+          Be part of meaningful social change.
+        </h2>
+
+        <p>
+          Explore opportunities to volunteer, collaborate or support our work.
+        </p>
+
+      </div>
+
+      <a href="get-involved.html" class="cta-button">
+        Get Involved →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- BRAND -->
+
+        <div>
+
+          <div class="footer-brand">
+
+            <img
+              src="assets/logo.jpg"
+              alt="Ayesha Social Welfare Foundation Logo"
+              class="footer-logo"
+            >
+
+            <div>
+
+              <h3>
+                Ayesha Social Welfare Foundation
+              </h3>
+
+              <p>
+                From Injustice to Empowerment
+              </p>
+
+            </div>
+
+          </div>
+
+          <p class="footer-description">
+            A student-led social welfare organisation working towards an
+            educated, empowered, healthy and just society through education,
+            healthcare, legal awareness, women empowerment, youth development
+            and community action.
+          </p>
+
+        </div>
+
+
+        <!-- EXPLORE -->
+
+        <div>
+
+          <div class="footer-heading">
+            Explore
+          </div>
+
+          <div class="footer-links">
+
+            <a href="about.html">About ASWF</a>
+            <a href="programs.html">Our Programs</a>
+            <a href="impact.html">Our Impact</a>
+            <a href="team.html">Our Team</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="news.html">News & Updates</a>
+            <a href="faq.html">FAQs</a>
+
+          </div>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div>
+
+          <div class="footer-heading">
+            Contact
+          </div>
+
+          <div class="footer-contact">
+
+            <p>
+              <strong>Registered Office</strong><br>
+              Ramjan Nagar, Madanpur,<br>
+              Deoria, Uttar Pradesh – 274205,<br>
+              India
+            </p>
+
+            <p style="margin-top:12px;">
+
+              <strong>Email</strong><br>
+
+              <a href="mailto:info@aswf.org.in">
+                info@aswf.org.in
+              </a>
+
+            </p>
+
+            <p style="margin-top:12px;">
+
+              <strong>Phone</strong><br>
+
+              <a href="tel:+917007824532">
+                +91 7007824532
+              </a>
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <div>
+          © <span id="year"></span>
+          Ayesha Social Welfare Foundation.
+          All rights reserved.
+        </div>
+
+        <div class="footer-bottom-links">
+
+          <a href="privacy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms.html">
+            Terms & Conditions
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    const mobileToggle =
+      document.getElementById("mobileToggle");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    mobileToggle.addEventListener("click", function () {
+
+      const isOpen =
+        mobileMenu.classList.toggle("active");
+
+      mobileToggle.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      mobileToggle.textContent =
+        isOpen ? "✕" : "☰";
+
+    });
+
+
+    document.querySelectorAll("#mobileMenu a").forEach(function(link) {
+
+      link.addEventListener("click", function() {
+
+        mobileMenu.classList.remove("active");
+
+        mobileToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        mobileToggle.textContent = "☰";
+
+      });
+
+    });
+
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
+
