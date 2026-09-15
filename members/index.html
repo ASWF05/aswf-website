@@ -2,90 +2,1886 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ASWF Member Portal</title>
-<meta name="description" content="Secure Member Portal of Ayesha Social Welfare Foundation.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ASWF Member Portal | Ayesha Social Welfare Foundation</title>
+
+<meta name="description" content="Secure member portal of Ayesha Social Welfare Foundation. Apply for membership, access your member profile and manage your membership securely.">
+
 <link rel="icon" type="image/jpeg" href="../assets/logo.jpg">
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-:root{--navy:#07111f;--navy2:#0d1a2b;--red:#b21f2d;--gold:#c9a45c;--cream:#f7f4ed;--white:#fff;--muted:#8d99aa;--line:rgba(255,255,255,.11);--shadow:0 30px 90px rgba(0,0,0,.28)}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,Arial,sans-serif;background:var(--navy);color:#172033;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
-.shell{min-height:100vh;display:grid;grid-template-columns:minmax(330px,.9fr) minmax(460px,1.1fr);background:#fff}
-.brand-panel{position:relative;overflow:hidden;padding:55px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 15% 15%,rgba(201,164,92,.18),transparent 30%),radial-gradient(circle at 85% 80%,rgba(178,31,45,.2),transparent 35%),linear-gradient(145deg,#06101d,#0e1d30 60%,#07111f);color:#fff}
-.brand-panel:before{content:"";position:absolute;width:480px;height:480px;border:1px solid rgba(201,164,92,.15);border-radius:50%;right:-240px;top:-150px}.brand-panel:after{content:"";position:absolute;width:340px;height:340px;border:1px solid rgba(255,255,255,.06);border-radius:50%;left:-190px;bottom:-130px}.brand-content,.brand-footer{position:relative;z-index:1}.brand{display:flex;align-items:center;gap:15px}.brand img{width:58px;height:58px;border-radius:15px;object-fit:cover;background:#fff}.brand strong{display:block;font-size:17px;letter-spacing:.2px}.brand span{display:block;margin-top:4px;color:#b9c2cf;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}.eyebrow{margin-top:90px;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase}.brand-panel h1{margin-top:16px;max-width:520px;font-size:clamp(38px,4.6vw,64px);line-height:1.03;letter-spacing:-2px}.brand-panel h1 span{color:var(--gold)}.brand-copy{max-width:500px;margin-top:22px;color:#b7c0ce;line-height:1.8;font-size:14px}.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}.pill{border:1px solid var(--line);padding:8px 11px;border-radius:999px;color:#d6dce5;font-size:10px}.brand-footer{display:flex;justify-content:space-between;gap:20px;align-items:end;color:#758398;font-size:11px;line-height:1.6}.brand-footer strong{display:block;color:#cbd3df;font-size:12px}
-.form-panel{background:var(--cream);padding:35px;display:flex;align-items:center;justify-content:center;min-height:100vh}.card{width:min(680px,100%);background:#fff;border:1px solid #e7e2d8;border-radius:28px;box-shadow:var(--shadow);overflow:hidden}.card-head{padding:34px 38px 20px}.card-head .mini{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#a28a58;font-weight:800}.card-head h2{margin-top:8px;color:var(--navy);font-size:29px;letter-spacing:-.7px}.card-head p{margin-top:8px;color:#788396;font-size:13px;line-height:1.6}.tabs{display:grid;grid-template-columns:1fr 1fr;margin:0 38px;border-bottom:1px solid #e9edf2}.tab{border:0;background:none;padding:14px 10px;color:#8490a0;font-weight:800;font-size:12px;position:relative}.tab.active{color:var(--navy)}.tab.active:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold)}.form{padding:28px 38px 38px}.form.hidden{display:none}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.full{grid-column:1/-1}.group{margin-bottom:15px}.group label{display:block;font-size:11px;font-weight:800;color:#344054;margin-bottom:7px}.control{width:100%;border:1px solid #dce2ea;background:#fff;border-radius:11px;padding:12px 13px;outline:none;color:#172033;font-size:13px;transition:.2s}.control:focus{border-color:#c9a45c;box-shadow:0 0 0 3px rgba(201,164,92,.13)}textarea.control{min-height:105px;resize:vertical}.password{position:relative}.password .control{padding-right:48px}.toggle-pass{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:none;color:#8a94a3;font-size:11px;font-weight:800}.hint{font-size:10px;color:#8a94a3;line-height:1.5;margin-top:5px}.btn{width:100%;border:0;border-radius:11px;padding:13px 16px;font-weight:850;font-size:12px}.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:#122238}.btn-gold{background:var(--gold);color:#111}.btn-light{background:#f0f2f5;color:#273244}.btn:disabled{opacity:.6;cursor:not-allowed}.forgot{display:flex;justify-content:flex-end;margin:-4px 0 16px}.link-btn{border:0;background:none;color:#9a7d43;font-size:11px;font-weight:800}.message{display:none;margin-top:14px;padding:12px 13px;border-radius:10px;font-size:11px;line-height:1.5}.message.show{display:block}.message.error{background:#fff0f1;color:#b42331;border:1px solid #ffd7da}.message.success{background:#eefbf3;color:#177245;border:1px solid #ccefd9}.message.info{background:#f0f5fb;color:#28567d;border:1px solid #d7e6f5}.fine{margin-top:18px;text-align:center;color:#8a94a3;font-size:10px;line-height:1.6}.fine a{color:#9a7d43;font-weight:800}.status{display:none;padding:34px 38px 40px}.status.show{display:block}.status-icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:#f2efe8;color:#9a7d43;font-size:24px}.status h3{margin-top:18px;color:var(--navy);font-size:25px}.status p{margin-top:8px;color:#768296;font-size:13px;line-height:1.65}.status-card{margin-top:22px;border:1px solid #e4e8ef;border-radius:16px;padding:18px;background:#fafbfc}.row{display:flex;justify-content:space-between;gap:20px;padding:9px 0;border-bottom:1px solid #edf0f4;font-size:12px}.row:last-child{border-bottom:0}.row span{color:#7a8595}.row strong{color:#172033;text-align:right}.badge{display:inline-flex;padding:5px 9px;border-radius:999px;font-size:9px;text-transform:uppercase;font-weight:900}.pending{background:#fff4d6;color:#8a6200}.approved{background:#def7e7;color:#18713e}.declined{background:#ffe4e7;color:#b42331}.suspended{background:#eceff3;color:#596474}.status-actions{display:flex;gap:10px;margin-top:18px}.status-actions .btn{width:auto;flex:1}
-@media(max-width:900px){.shell{grid-template-columns:1fr}.brand-panel{min-height:430px;padding:32px}.eyebrow{margin-top:55px}.brand-footer{margin-top:45px}.form-panel{min-height:auto;padding:22px}.card{border-radius:22px}}
-@media(max-width:560px){.brand-panel{padding:25px;min-height:400px}.brand-panel h1{font-size:40px}.brand-copy{font-size:12px}.brand-footer{display:block}.brand-footer div+div{margin-top:12px}.form-panel{padding:10px}.card-head,.form,.status{padding-left:22px;padding-right:22px}.tabs{margin-left:22px;margin-right:22px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.status-actions{flex-direction:column}.status-actions .btn{width:100%}}
+:root{
+    --navy:#08111f;
+    --navy-2:#0d1b2e;
+    --gold:#c9a45c;
+    --gold-light:#e4c889;
+    --cream:#f7f3ea;
+    --white:#ffffff;
+    --text:#182333;
+    --muted:#718096;
+    --border:#e6e9ee;
+    --success:#1f8f5f;
+    --danger:#c74646;
+    --warning:#b27a16;
+    --shadow:0 25px 70px rgba(8,17,31,.14);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top right,rgba(201,164,92,.10),transparent 32%),
+        linear-gradient(135deg,#f8fafc,#f5f1e8);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.site-header{
+    height:76px;
+    background:rgba(8,17,31,.96);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.brand img{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid rgba(201,164,92,.75);
+    background:#fff;
+}
+
+.brand-text strong{
+    display:block;
+    font-family:Georgia,serif;
+    font-size:17px;
+    letter-spacing:.3px;
+}
+
+.brand-text span{
+    display:block;
+    color:var(--gold-light);
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-top:3px;
+}
+
+.header-link{
+    color:#fff;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.16);
+    padding:10px 17px;
+    border-radius:999px;
+    font-size:13px;
+    transition:.2s;
+}
+
+.header-link:hover{
+    border-color:var(--gold);
+    color:var(--gold-light);
+}
+
+.page{
+    width:min(1180px,92%);
+    margin:42px auto 70px;
+}
+
+.hero{
+    background:
+        linear-gradient(135deg,rgba(8,17,31,.98),rgba(15,31,52,.96));
+    color:#fff;
+    border-radius:28px;
+    padding:54px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    margin-bottom:28px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    right:-180px;
+    top:-180px;
+    border-radius:50%;
+    border:1px solid rgba(201,164,92,.28);
+    box-shadow:
+        0 0 0 45px rgba(201,164,92,.04),
+        0 0 0 90px rgba(201,164,92,.025);
+}
+
+.eyebrow{
+    color:var(--gold-light);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:14px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(34px,5vw,58px);
+    line-height:1.08;
+    max-width:720px;
+    margin-bottom:16px;
+}
+
+.hero p{
+    max-width:690px;
+    color:rgba(255,255,255,.74);
+    line-height:1.8;
+    font-size:15px;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:25px;
+    padding:9px 14px;
+    border:1px solid rgba(201,164,92,.35);
+    background:rgba(201,164,92,.08);
+    border-radius:999px;
+    color:var(--gold-light);
+    font-size:12px;
+}
+
+.card{
+    background:rgba(255,255,255,.96);
+    border:1px solid rgba(8,17,31,.07);
+    border-radius:24px;
+    padding:32px;
+    box-shadow:0 15px 50px rgba(8,17,31,.08);
+}
+
+.auth-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+}
+
+.card-header{
+    margin-bottom:25px;
+}
+
+.card-header h2{
+    font-family:Georgia,serif;
+    color:var(--navy);
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.card-header p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+.field label{
+    font-size:12px;
+    font-weight:700;
+    color:#344054;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#fff;
+    padding:13px 14px;
+    outline:none;
+    color:var(--text);
+    transition:.2s;
+}
+
+.field textarea{
+    min-height:105px;
+    resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(201,164,92,.10);
+}
+
+.required{
+    color:#c74646;
+}
+
+.btn{
+    width:100%;
+    border:0;
+    border-radius:12px;
+    padding:14px 18px;
+    font-weight:800;
+    transition:.2s;
+}
+
+.btn-primary{
+    background:var(--navy);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:#12243b;
+    transform:translateY(-1px);
+}
+
+.btn-gold{
+    background:linear-gradient(135deg,#c9a45c,#a9823d);
+    color:#fff;
+}
+
+.btn-gold:hover{
+    transform:translateY(-1px);
+    box-shadow:0 10px 25px rgba(169,130,61,.25);
+}
+
+.btn-danger{
+    background:#fff;
+    border:1px solid rgba(199,70,70,.25);
+    color:var(--danger);
+}
+
+.btn-danger:hover{
+    background:#fff5f5;
+}
+
+.form-note{
+    margin-top:13px;
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.message{
+    padding:13px 15px;
+    border-radius:12px;
+    margin-bottom:18px;
+    font-size:13px;
+    line-height:1.55;
+}
+
+.message.success{
+    background:#ecfdf3;
+    border:1px solid #b7e6cb;
+    color:#17653f;
+}
+
+.message.error{
+    background:#fff1f1;
+    border:1px solid #f1c0c0;
+    color:#9d2d2d;
+}
+
+.message.info{
+    background:#eff6ff;
+    border:1px solid #c8dcfa;
+    color:#24558c;
+}
+
+.status-box{
+    margin-bottom:24px;
+    padding:20px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:#fafbfc;
+}
+
+.status-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:12px;
+}
+
+.status-row:last-child{
+    margin-bottom:0;
+}
+
+.status-label{
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+}
+
+.status-value{
+    color:var(--navy);
+    font-weight:800;
+    font-size:13px;
+    text-align:right;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:7px 12px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:800;
+    text-transform:capitalize;
+}
+
+.badge.pending{
+    background:#fff7df;
+    color:#9b6a00;
+}
+
+.badge.approved{
+    background:#eaf8f1;
+    color:#16734a;
+}
+
+.badge.declined{
+    background:#fff0f0;
+    color:#a52f2f;
+}
+
+.badge.suspended{
+    background:#f1f2f4;
+    color:#59636f;
+}
+
+.dashboard{
+    display:grid;
+    gap:24px;
+}
+
+.dashboard-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:25px;
+}
+
+.welcome h2{
+    font-family:Georgia,serif;
+    font-size:34px;
+    color:var(--navy);
+    margin-bottom:7px;
+}
+
+.welcome p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.logout-btn{
+    width:auto;
+    min-width:110px;
+}
+
+.member-id-card{
+    background:
+        linear-gradient(135deg,#08111f,#152a44);
+    color:#fff;
+    border-radius:24px;
+    padding:30px;
+    position:relative;
+    overflow:hidden;
+}
+
+.member-id-card::after{
+    content:"ASWF";
+    position:absolute;
+    right:25px;
+    bottom:-15px;
+    font-family:Georgia,serif;
+    font-size:110px;
+    font-weight:700;
+    color:rgba(255,255,255,.035);
+}
+
+.member-id-label{
+    color:var(--gold-light);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:10px;
+    font-weight:800;
+    margin-bottom:9px;
+}
+
+.member-id{
+    font-family:Georgia,serif;
+    font-size:31px;
+    letter-spacing:1px;
+    position:relative;
+    z-index:2;
+}
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:17px;
+}
+
+.profile-item{
+    padding:17px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:#fafbfc;
+}
+
+.profile-item span{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:6px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+.profile-item strong{
+    display:block;
+    color:var(--navy);
+    font-size:14px;
+    word-break:break-word;
+}
+
+.section-title{
+    font-family:Georgia,serif;
+    color:var(--navy);
+    font-size:25px;
+    margin-bottom:7px;
+}
+
+.section-subtitle{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:22px;
+    line-height:1.7;
+}
+
+.notice{
+    padding:18px;
+    border-left:4px solid var(--gold);
+    background:#fffaf0;
+    border-radius:12px;
+    color:#604b20;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.loading{
+    text-align:center;
+    padding:35px;
+    color:var(--muted);
+}
+
+.footer{
+    text-align:center;
+    color:#8993a0;
+    font-size:12px;
+    padding:20px;
+}
+
+.small-link{
+    color:#9a783b;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.small-link:hover{
+    text-decoration:underline;
+}
+
+.divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:20px 0;
+    color:#9aa3ae;
+    font-size:11px;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+    height:1px;
+    background:var(--border);
+    flex:1;
+}
+
+@media(max-width:850px){
+    .auth-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:38px 27px;
+    }
+
+    .card{
+        padding:25px;
+    }
+}
+
+@media(max-width:620px){
+    .site-header{
+        padding:0 4%;
+        height:68px;
+    }
+
+    .brand-text strong{
+        font-size:14px;
+    }
+
+    .brand-text span{
+        font-size:8px;
+    }
+
+    .brand img{
+        width:40px;
+        height:40px;
+    }
+
+    .header-link{
+        padding:8px 11px;
+        font-size:11px;
+    }
+
+    .page{
+        width:94%;
+        margin-top:25px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .form-grid,
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .dashboard-top{
+        flex-direction:column;
+    }
+
+    .logout-btn{
+        width:100%;
+    }
+
+    .member-id{
+        font-size:25px;
+    }
+}
 </style>
 </head>
+
 <body>
-<div class="shell">
-<section class="brand-panel">
-<div class="brand-content">
-<a class="brand" href="../index.html"><img src="../assets/logo.jpg" alt="ASWF logo"><div><strong>Ayesha Social Welfare Foundation</strong><span>From Injustice to Empowerment</span></div></a>
-<div class="eyebrow">Secure Member Portal</div>
-<h1>Belong to the <span>movement.</span></h1>
-<p class="brand-copy">A private space for approved ASWF members to stay connected with organisational information, notices, programmes and member resources.</p>
-<div class="pill-row"><span class="pill">Section 8 Organisation</span><span class="pill">Deoria, Uttar Pradesh</span><span class="pill">Member Access</span></div>
-</div>
-<div class="brand-footer"><div><strong>ASWF</strong>Membership &amp; Community</div><div>Only approved members receive private portal access.</div></div>
-</section>
-<section class="form-panel">
-<div class="card">
-<div class="card-head"><div class="mini">Ayesha Social Welfare Foundation</div><h2 id="heading">Member Sign In</h2><p id="subheading">Use your registered email and password to access the member portal.</p></div>
-<div class="tabs"><button class="tab active" id="loginTab" type="button">Sign In</button><button class="tab" id="registerTab" type="button">New Member Registration</button></div>
-<form class="form" id="loginForm">
-<div class="group"><label>Email Address</label><input class="control" id="loginEmail" type="email" autocomplete="email" required placeholder="you@example.com"></div>
-<div class="group password"><label>Password</label><input class="control" id="loginPassword" type="password" autocomplete="current-password" required placeholder="Your password"><button class="toggle-pass" type="button" data-target="loginPassword">Show</button></div>
-<div class="forgot"><button class="link-btn" id="forgotButton" type="button">Forgot password?</button></div>
-<button class="btn btn-primary" id="loginButton" type="submit">Sign In Securely</button>
-<div class="message" id="loginMessage"></div>
-<div class="fine">New applicant? <button class="link-btn" id="switchRegister" type="button">Create a member application</button></div>
-</form>
-<form class="form hidden" id="registerForm">
-<div class="grid">
-<div class="group"><label>Full Name *</label><input class="control" id="regName" required placeholder="Full name"></div>
-<div class="group"><label>Email Address *</label><input class="control" id="regEmail" type="email" autocomplete="email" required placeholder="you@example.com"></div>
-<div class="group"><label>Phone Number</label><input class="control" id="regPhone" type="tel" placeholder="+91 ..."></div>
-<div class="group"><label>City</label><input class="control" id="regCity" placeholder="City"></div>
-<div class="group"><label>Date of Birth</label><input class="control" id="regDob" type="date"></div>
-<div class="group"><label>Membership Category *</label><select class="control" id="regCategory" required><option value="">Select category</option><option>Director</option><option>President</option><option>Vice-President</option><option>Secretary</option><option>Joint-Secretary</option><option>Treasurer</option><option>Joint-Treasurer</option><option>Public Relation Officer</option><option>Program Coordinator</option><option>Promoter</option><option>Media Person</option><option>Regional Head (Deoria)</option><option>Regional Head (Aligarh)</option><option>Regional Head (Seemanchal)</option><option>Membership Coordinator</option><option>Fundraiser</option><option>Legal Representative</option><option>General Member</option></select><div class="hint">This is your requested category. Final designation is verified and assigned by ASWF administration.</div></div>
-<div class="group full"><label>Address</label><textarea class="control" id="regAddress" placeholder="Address (optional)"></textarea></div>
-<div class="group full"><label>Why would you like to join ASWF?</label><textarea class="control" id="regMessage" placeholder="Tell us briefly about your interest in ASWF."></textarea></div>
-<div class="group"><label>Password *</label><div class="password"><input class="control" id="regPassword" type="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters"><button class="toggle-pass" type="button" data-target="regPassword">Show</button></div></div>
-<div class="group"><label>Confirm Password *</label><div class="password"><input class="control" id="regConfirm" type="password" autocomplete="new-password" minlength="8" required placeholder="Repeat password"><button class="toggle-pass" type="button" data-target="regConfirm">Show</button></div></div>
-</div>
-<button class="btn btn-gold" id="registerButton" type="submit">Submit Membership Application</button>
-<div class="message" id="registerMessage"></div>
-<div class="fine">Already registered? <button class="link-btn" id="switchLogin" type="button">Return to sign in</button></div>
-</form>
-<div class="status" id="statusScreen"><div class="status-icon" id="statusIcon">✓</div><h3 id="statusTitle">Membership status</h3><p id="statusText"></p><div class="status-card" id="statusCard"></div><div class="status-actions"><button class="btn btn-light" id="refreshStatus" type="button">Refresh Status</button><button class="btn btn-primary" id="logoutButton" type="button">Sign Out</button></div></div>
-</div>
-</section>
-</div>
+
+<header class="site-header">
+    <a href="../index.html" class="brand" style="text-decoration:none;color:inherit;">
+        <img src="../assets/logo.jpg" alt="ASWF Logo">
+        <div class="brand-text">
+            <strong>Ayesha Social Welfare Foundation</strong>
+            <span>From Injustice to Empowerment</span>
+        </div>
+    </a>
+
+    <a href="../index.html" class="header-link">Back to Website</a>
+</header>
+
+<main class="page">
+
+    <!-- AUTH SCREEN -->
+    <section id="authScreen">
+
+        <div class="hero">
+            <div class="eyebrow">Private Member Portal</div>
+
+            <h1>ASWF Membership, managed with purpose.</h1>
+
+            <p>
+                The official member portal of Ayesha Social Welfare Foundation.
+                Submit your membership application, wait for verification by the
+                Foundation, and access your member dashboard once approved.
+            </p>
+
+            <div class="hero-badge">
+                🔒 Secure member access
+            </div>
+        </div>
+
+        <div class="auth-grid">
+
+            <!-- LOGIN -->
+            <section class="card">
+
+                <div class="card-header">
+                    <h2>Member Login</h2>
+                    <p>
+                        Already registered? Sign in using the email address and
+                        password associated with your ASWF membership account.
+                    </p>
+                </div>
+
+                <div id="loginMessage"></div>
+
+                <form id="loginForm">
+
+                    <div class="field" style="margin-bottom:16px;">
+                        <label for="loginEmail">
+                            Email Address <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            autocomplete="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+                    <div class="field" style="margin-bottom:18px;">
+                        <label for="loginPassword">
+                            Password <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="loginButton"
+                    >
+                        Sign In
+                    </button>
+
+                </form>
+
+                <p class="form-note">
+                    Access is available only to registered accounts. Membership
+                    approval is handled by authorised ASWF administrators.
+                </p>
+
+            </section>
+
+            <!-- REGISTRATION -->
+            <section class="card">
+
+                <div class="card-header">
+                    <h2>New Member Registration</h2>
+                    <p>
+                        Create your account and submit your membership application
+                        for review by ASWF.
+                    </p>
+                </div>
+
+                <div id="registerMessage"></div>
+
+                <form id="registerForm">
+
+                    <div class="form-grid">
+
+                        <div class="field full">
+                            <label for="fullName">
+                                Full Name <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="registerEmail">
+                                Email Address <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="+91..."
+                                autocomplete="tel"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="city">
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                placeholder="Your city"
+                                autocomplete="address-level2"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="dob">
+                                Date of Birth
+                            </label>
+
+                            <input
+                                type="date"
+                                id="dob"
+                            >
+                        </div>
+
+                        <div class="field full">
+                            <label for="address">
+                                Address
+                            </label>
+
+                            <textarea
+                                id="address"
+                                placeholder="Your address"
+                                autocomplete="street-address"
+                            ></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label for="category">
+                                Requested Membership Type
+                                <span class="required">*</span>
+                            </label>
+
+                            <select id="category" required>
+                                <option value="">Select membership type</option>
+                                <option value="General Member">General Member</option>
+                                <option value="Student Member">Student Member</option>
+                                <option value="Volunteer Member">Volunteer Member</option>
+                                <option value="Professional Member">Professional Member</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="registerPassword">
+                                Password <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                placeholder="Minimum 6 characters"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+                        </div>
+
+                        <div class="field full">
+                            <label for="applicationMessage">
+                                Why would you like to join ASWF?
+                            </label>
+
+                            <textarea
+                                id="applicationMessage"
+                                placeholder="Tell us briefly about your interest in ASWF..."
+                            ></textarea>
+                        </div>
+
+                        <div class="field full">
+                            <button
+                                type="submit"
+                                class="btn btn-gold"
+                                id="registerButton"
+                            >
+                                Submit Membership Application
+                            </button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <p class="form-note">
+                    Your application will initially remain <strong>Pending</strong>.
+                    An authorised ASWF administrator must approve your membership
+                    before member access is granted.
+                </p>
+
+            </section>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOADING -->
+    <section id="loadingScreen" class="card hidden">
+        <div class="loading">
+            Checking your member account...
+        </div>
+    </section>
+
+
+    <!-- MEMBER DASHBOARD -->
+    <section id="dashboardScreen" class="dashboard hidden">
+
+        <div class="card dashboard-top">
+
+            <div class="welcome">
+                <div class="eyebrow" style="color:#9a783b;">
+                    ASWF Member Portal
+                </div>
+
+                <h2 id="welcomeName">
+                    Welcome
+                </h2>
+
+                <p>
+                    Your membership information and account status are shown below.
+                </p>
+            </div>
+
+            <button
+                class="btn btn-danger logout-btn"
+                id="logoutButton"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+
+        <!-- STATUS -->
+        <section class="card">
+
+            <div class="section-title">
+                Membership Status
+            </div>
+
+            <div class="section-subtitle">
+                Your application status is controlled by authorised ASWF administrators.
+            </div>
+
+            <div id="memberStatusBox"></div>
+
+        </section>
+
+
+        <!-- MEMBER ID -->
+        <section class="member-id-card">
+
+            <div class="member-id-label">
+                Official ASWF Member ID
+            </div>
+
+            <div
+                class="member-id"
+                id="memberId"
+            >
+                —
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+        <section class="card">
+
+            <div class="section-title">
+                Member Profile
+            </div>
+
+            <div class="section-subtitle">
+                Your registered information.
+            </div>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+                    <span>Full Name</span>
+                    <strong id="profileName">—</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Email</span>
+                    <strong id="profileEmail">—</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Phone</span>
+                    <strong id="profilePhone">—</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>City</span>
+                    <strong id="profileCity">—</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Membership Type</span>
+                    <strong id="profileType">—</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Application Date</span>
+                    <strong id="profileCreated">—</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Approval Date</span>
+                    <strong id="profileApproved">—</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>Account Status</span>
+                    <strong id="profileStatus">—</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEMBER NOTICE -->
+        <section class="card">
+
+            <div class="section-title">
+                Member Notice
+            </div>
+
+            <div class="notice">
+                ASWF member access is intended for authorised members only.
+                Please keep your login credentials private and do not share your
+                account with another person.
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    ©️ <span id="year"></span> Ayesha Social Welfare Foundation · From Injustice to Empowerment
+</footer>
+
+
 <script>
-const SUPABASE_URL="https://zdvfcyxmrvaosqazicjl.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY="sb_publishable_4w34BGktLYB0E0G0Pb8v63g_XxR4sqq4";
-const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
-const $=id=>document.getElementById(id);
-let currentUser=null;
-function message(id,text,type="info"){const el=$(id);el.textContent=text;el.className="message show "+type}
-function clearMessage(id){$(id).className="message";$(id).textContent=""}
-function setTab(tab){const login=tab==="login";$("loginTab").classList.toggle("active",login);$("registerTab").classList.toggle("active",!login);$("loginForm").classList.toggle("hidden",!login);$("registerForm").classList.toggle("hidden",login);$("heading").textContent=login?"Member Sign In":"Become an ASWF Member";$("subheading").textContent=login?"Use your registered email and password to access the member portal.":"Submit your membership application. Your account remains pending until ASWF administration reviews it.";clearMessage("loginMessage");clearMessage("registerMessage")}
-$("loginTab").onclick=()=>setTab("login");$("registerTab").onclick=()=>setTab("register");$("switchRegister").onclick=()=>setTab("register");$("switchLogin").onclick=()=>setTab("login");
-document.querySelectorAll(".toggle-pass").forEach(btn=>btn.onclick=()=>{const input=$(btn.dataset.target);const show=input.type==="password";input.type=show?"text":"password";btn.textContent=show?"Hide":"Show"});
-function niceError(error){if(!error)return "Something went wrong. Please try again.";const m=String(error.message||error.error_description||error);if(/invalid login credentials/i.test(m))return "Email or password is incorrect.";if(/email not confirmed/i.test(m))return "Please confirm your email address before signing in.";if(/already registered|already been registered|user already exists/i.test(m))return "This email is already registered. Please sign in instead.";if(/password/i.test(m)&&/characters|weak|short/i.test(m))return "Please use a stronger password with at least 8 characters.";return m}
-async function getMember(user){const {data,error}=await db.from("members").select("id,member_id,full_name,email,phone,city,membership_type,status,approved_at,created_at,application_message").eq("id",user.id).maybeSingle();if(error)throw error;return data}
-function showStatus(member){$("loginForm").classList.add("hidden");$("registerForm").classList.add("hidden");document.querySelector(".tabs").style.display="none";$("statusScreen").classList.add("show");$("heading").textContent="Membership Status";$("subheading").textContent="Your ASWF member account status is shown below.";const status=(member?.status||"pending").toLowerCase();const title={pending:"Application under review",approved:"Membership approved",declined:"Application declined",suspended:"Membership suspended"}[status]||"Membership status";const text={pending:"Thank you for applying to Ayesha Social Welfare Foundation. Your application has been received and is awaiting administrative review.",approved:"Your membership has been approved. Your ASWF Member ID is shown below.",declined:"Your application is currently declined. Please contact ASWF administration if you believe this requires review.",suspended:"Your membership is currently suspended. Please contact ASWF administration for clarification."}[status]||"Your current membership status is shown below.";$('statusTitle').textContent=title;$('statusText').textContent=text;$("statusIcon").textContent=status==="approved"?"✓":status==="declined"?"×":status==="suspended"?"!":"…";const badge='<span class="badge '+status+'">'+status+'</span>';$('statusCard').innerHTML='<div class="row"><span>Member ID</span><strong>'+escapeHtml(member?.member_id||"Pending approval")+'</strong></div><div class="row"><span>Name</span><strong>'+escapeHtml(member?.full_name||currentUser?.user_metadata?.full_name||"ASWF Member")+'</strong></div><div class="row"><span>Email</span><strong>'+escapeHtml(member?.email||currentUser?.email||"—")+'</strong></div><div class="row"><span>Designation</span><strong>'+escapeHtml(member?.membership_type||"General Member")+'</strong></div><div class="row"><span>Status</span><strong>'+badge+'</strong></div>'}
-function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
-async function loadCurrentUser(){const {data:{session}}=await db.auth.getSession();if(session?.user){currentUser=session.user;try{const member=await getMember(currentUser);showStatus(member)}catch(e){console.error(e);message("loginMessage",niceError(e),"error")}}}
-$("registerForm").addEventListener("submit",async e=>{e.preventDefault();clearMessage("registerMessage");const name=$("regName").value.trim(),email=$("regEmail").value.trim(),phone=$("regPhone").value.trim(),city=$("regCity").value.trim(),dob=$("regDob").value||null,address=$("regAddress").value.trim(),category=$("regCategory").value,messageText=$("regMessage").value.trim(),password=$("regPassword").value,confirm=$("regConfirm").value;if(password!==confirm){message("registerMessage","Passwords do not match.","error");return}if(password.length<8){message("registerMessage","Password must contain at least 8 characters.","error");return}const b=$("registerButton");b.disabled=true;b.textContent="Submitting…";try{const {data,error}=await db.auth.signUp({email,password,options:{data:{full_name:name}}});if(error)throw error;if(!data.user)throw new Error("Supabase did not return a user account.");const {error:updateError}=await db.from("members").update({full_name:name,email,phone:phone||null,city:city||null,address:address||null,date_of_birth:dob,membership_type:"General Member",application_message:["Requested category: "+category,messageText?"Applicant message: "+messageText:""].filter(Boolean).join("\n\n")||null,updated_at:new Date().toISOString()}).eq("id",data.user.id);if(updateError)throw updateError;currentUser=data.user;message("registerMessage","Application submitted successfully. Your account is pending ASWF administrative approval. Check your email if confirmation is required.","success");$("registerForm").reset();setTimeout(async()=>{try{const member=await getMember(currentUser);showStatus(member)}catch(e){setTab("login")}},900)}catch(error){console.error("ASWF registration error:",error);message("registerMessage",niceError(error),"error")}finally{b.disabled=false;b.textContent="Submit Membership Application"}});
-$("loginForm").addEventListener("submit",async e=>{e.preventDefault();clearMessage("loginMessage");const b=$("loginButton");b.disabled=true;b.textContent="Signing in…";try{const {data,error}=await db.auth.signInWithPassword({email:$("loginEmail").value.trim(),password:$("loginPassword").value});if(error)throw error;currentUser=data.user;const member=await getMember(currentUser);if(!member){throw new Error("Your account is authenticated, but no ASWF member record was found.")}showStatus(member)}catch(error){console.error("ASWF login error:",error);message("loginMessage",niceError(error),"error")}finally{b.disabled=false;b.textContent="Sign In Securely"}});
-$("forgotButton").onclick=async()=>{const email=$("loginEmail").value.trim();if(!email){message("loginMessage","Enter your email address first, then choose Forgot password again.","info");return}try{const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:location.href});if(error)throw error;message("loginMessage","Password reset instructions have been sent if this email is registered.","success")}catch(e){message("loginMessage",niceError(e),"error")}};
-$("refreshStatus").onclick=async()=>{if(!currentUser)return;try{const member=await getMember(currentUser);showStatus(member)}catch(e){alert(niceError(e))}};
-$("logoutButton").onclick=async()=>{await db.auth.signOut();location.reload()};
-db.auth.onAuthStateChange(async(_event,session)=>{if(session?.user){currentUser=session.user;if(["SIGNED_IN","INITIAL_SESSION"].includes(_event)){try{const member=await getMember(currentUser);showStatus(member)}catch(e){console.error(e)}}}});
-loadCurrentUser();
+/* ============================================================
+   ASWF SUPABASE CONFIGURATION
+   ============================================================ */
+
+const SUPABASE_URL =
+    "https://zdvfcyxmrvaosqazicjl.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_4w34BGktLYB0E0G0Pb8v63g_XxR4sqq4";
+
+
+/*
+   Explicit apikey header is included here intentionally.
+   Supabase JS normally sends this automatically, but keeping it
+   explicit makes the browser request configuration unambiguous.
+*/
+
+const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true
+        },
+
+        global: {
+            headers: {
+                apikey: SUPABASE_PUBLISHABLE_KEY
+            }
+        }
+    }
+);
+
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+
+const $ = id => document.getElementById(id);
+
+$("year").textContent = new Date().getFullYear();
+
+
+function escapeHtml(value){
+    if(value === null || value === undefined){
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+function formatDate(value){
+    if(!value){
+        return "—";
+    }
+
+    const date = new Date(value);
+
+    if(Number.isNaN(date.getTime())){
+        return "—";
+    }
+
+    return date.toLocaleDateString("en-IN",{
+        day:"2-digit",
+        month:"short",
+        year:"numeric"
+    });
+}
+
+
+function showMessage(targetId,type,text){
+    const target = $(targetId);
+
+    if(!target){
+        return;
+    }
+
+    target.innerHTML = `
+        <div class="message ${type}">
+            ${escapeHtml(text)}
+        </div>
+    `;
+}
+
+
+function clearMessage(targetId){
+    const target = $(targetId);
+
+    if(target){
+        target.innerHTML = "";
+    }
+}
+
+
+function setButtonLoading(button,loadingText,normalText){
+    if(!button){
+        return;
+    }
+
+    button.disabled = loadingText !== null;
+    button.textContent = loadingText || normalText;
+}
+
+
+/* ============================================================
+   SCREEN CONTROL
+   ============================================================ */
+
+function showAuthScreen(){
+    $("authScreen").classList.remove("hidden");
+    $("loadingScreen").classList.add("hidden");
+    $("dashboardScreen").classList.add("hidden");
+}
+
+
+function showLoadingScreen(){
+    $("authScreen").classList.add("hidden");
+    $("loadingScreen").classList.remove("hidden");
+    $("dashboardScreen").classList.add("hidden");
+}
+
+
+function showDashboardScreen(){
+    $("authScreen").classList.add("hidden");
+    $("loadingScreen").classList.add("hidden");
+    $("dashboardScreen").classList.remove("hidden");
+}
+
+
+/* ============================================================
+   MEMBER DATABASE
+   ============================================================ */
+
+async function getMember(user){
+
+    if(!user || !user.id){
+        return null;
+    }
+
+    const {
+        data,
+        error
+    } = await db
+        .from("members")
+        .select(`
+            id,
+            member_id,
+            full_name,
+            email,
+            phone,
+            city,
+            membership_type,
+            status,
+            approved_at,
+            created_at,
+            application_message
+        `)
+        .eq("id",user.id)
+        .maybeSingle();
+
+    if(error){
+        throw error;
+    }
+
+    return data;
+}
+
+
+/* ============================================================
+   STATUS UI
+   ============================================================ */
+
+function renderMemberStatus(member){
+
+    const status =
+        String(member?.status || "pending").toLowerCase();
+
+    let title = "Application Pending";
+    let description =
+        "Your membership application has been received and is awaiting review.";
+    let cssClass = "pending";
+
+    if(status === "approved"){
+        title = "Membership Approved";
+        description =
+            "Your ASWF membership has been approved. You now have authorised member access.";
+        cssClass = "approved";
+    }
+
+    if(status === "declined"){
+        title = "Application Declined";
+        description =
+            "Your membership application has not been approved at this time.";
+        cssClass = "declined";
+    }
+
+    if(status === "suspended"){
+        title = "Membership Suspended";
+        description =
+            "Your member access has been suspended. Please contact ASWF for further information.";
+        cssClass = "suspended";
+    }
+
+    $("memberStatusBox").innerHTML = `
+        <div class="status-box">
+
+            <div class="status-row">
+                <span class="status-label">Current Status</span>
+
+                <span class="badge ${cssClass}">
+                    ${escapeHtml(status)}
+                </span>
+            </div>
+
+            <div style="
+                margin-top:16px;
+                color:#4b5563;
+                line-height:1.7;
+                font-size:13px;
+            ">
+                <strong style="color:#182333;">
+                    ${escapeHtml(title)}
+                </strong>
+
+                <br>
+
+                ${escapeHtml(description)}
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* ============================================================
+   DASHBOARD
+   ============================================================ */
+
+function renderDashboard(member){
+
+    const name =
+        member.full_name || "ASWF Member";
+
+    $("welcomeName").textContent =
+        "Welcome, " + name;
+
+    $("memberId").textContent =
+        member.member_id || "Pending";
+
+    $("profileName").textContent =
+        member.full_name || "—";
+
+    $("profileEmail").textContent =
+        member.email || "—";
+
+    $("profilePhone").textContent =
+        member.phone || "—";
+
+    $("profileCity").textContent =
+        member.city || "—";
+
+    $("profileType").textContent =
+        member.membership_type || "General Member";
+
+    $("profileCreated").textContent =
+        formatDate(member.created_at);
+
+    $("profileApproved").textContent =
+        formatDate(member.approved_at);
+
+    $("profileStatus").textContent =
+        member.status || "pending";
+
+    renderMemberStatus(member);
+
+    showDashboardScreen();
+}
+
+
+/* ============================================================
+   REGISTRATION
+   ============================================================ */
+
+$("registerForm").addEventListener("submit",async function(event){
+
+    event.preventDefault();
+
+    clearMessage("registerMessage");
+
+    const fullName =
+        $("fullName").value.trim();
+
+    const email =
+        $("registerEmail").value.trim().toLowerCase();
+
+    const phone =
+        $("phone").value.trim();
+
+    const city =
+        $("city").value.trim();
+
+    const dob =
+        $("dob").value || null;
+
+    const address =
+        $("address").value.trim();
+
+    const category =
+        $("category").value;
+
+    const password =
+        $("registerPassword").value;
+
+    const applicationMessage =
+        $("applicationMessage").value.trim();
+
+
+    if(!fullName){
+        showMessage(
+            "registerMessage",
+            "error",
+            "Please enter your full name."
+        );
+        return;
+    }
+
+
+    if(!email){
+        showMessage(
+            "registerMessage",
+            "error",
+            "Please enter your email address."
+        );
+        return;
+    }
+
+
+    if(!category){
+        showMessage(
+            "registerMessage",
+            "error",
+            "Please select a membership type."
+        );
+        return;
+    }
+
+
+    if(password.length < 6){
+        showMessage(
+            "registerMessage",
+            "error",
+            "Password must contain at least 6 characters."
+        );
+        return;
+    }
+
+
+    const button =
+        $("registerButton");
+
+    setButtonLoading(
+        button,
+        "Creating account...",
+        "Submit Membership Application"
+    );
+
+
+    try{
+
+        /*
+           Create Supabase Auth account.
+        */
+
+        const {
+            data,
+            error
+        } = await db.auth.signUp({
+            email,
+            password,
+            options:{
+                data:{
+                    full_name:fullName
+                }
+            }
+        });
+
+
+        if(error){
+            throw error;
+        }
+
+
+        if(!data || !data.user){
+            throw new Error(
+                "Supabase did not return a user account."
+            );
+        }
+
+
+        /*
+           The database trigger creates the initial members row.
+           We now update that row with the applicant's complete details.
+        */
+
+        const applicationText =
+            [
+                "Requested membership type: " + category,
+                applicationMessage
+                    ? "Applicant message: " + applicationMessage
+                    : ""
+            ]
+            .filter(Boolean)
+            .join("\n\n");
+
+
+        const {
+            error:updateError
+        } = await db
+            .from("members")
+            .update({
+                full_name:fullName,
+                email:email,
+                phone:phone || null,
+                city:city || null,
+                address:address || null,
+                date_of_birth:dob,
+                membership_type:"General Member",
+                application_message:
+                    applicationText || null,
+                updated_at:new Date().toISOString()
+            })
+            .eq("id",data.user.id);
+
+
+        if(updateError){
+            throw updateError;
+        }
+
+
+        /*
+           Sign out immediately.
+           The applicant must wait for admin approval.
+        */
+
+        await db.auth.signOut();
+
+
+        $("registerForm").reset();
+
+
+        showMessage(
+            "registerMessage",
+            "success",
+            "Registration successful. Your membership application has been submitted and is now pending ASWF administrator approval."
+        );
+
+
+        /*
+           If email confirmation is enabled, Supabase may require
+           email confirmation before login. We handle that naturally.
+        */
+
+
+    }catch(error){
+
+        console.error(
+            "ASWF registration error:",
+            error
+        );
+
+
+        let message =
+            error?.message ||
+            "Registration failed. Please try again.";
+
+
+        /*
+           Friendlier duplicate-email message.
+        */
+
+        if(
+            /already registered/i.test(message) ||
+            /already exists/i.test(message)
+        ){
+            message =
+                "This email address is already registered. Please use Member Login.";
+        }
+
+
+        showMessage(
+            "registerMessage",
+            "error",
+            message
+        );
+
+
+    }finally{
+
+        setButtonLoading(
+            button,
+            null,
+            "Submit Membership Application"
+        );
+    }
+
+});
+
+
+/* ============================================================
+   LOGIN
+   ============================================================ */
+
+$("loginForm").addEventListener("submit",async function(event){
+
+    event.preventDefault();
+
+    clearMessage("loginMessage");
+
+    const email =
+        $("loginEmail").value.trim().toLowerCase();
+
+    const password =
+        $("loginPassword").value;
+
+
+    if(!email || !password){
+        showMessage(
+            "loginMessage",
+            "error",
+            "Please enter your email and password."
+        );
+        return;
+    }
+
+
+    const button =
+        $("loginButton");
+
+    setButtonLoading(
+        button,
+        "Signing in...",
+        "Sign In"
+    );
+
+
+    try{
+
+        const {
+            data,
+            error
+        } = await db.auth.signInWithPassword({
+            email,
+            password
+        });
+
+
+        if(error){
+            throw error;
+        }
+
+
+        if(!data || !data.user){
+            throw new Error(
+                "Login did not return a user account."
+            );
+        }
+
+
+        showLoadingScreen();
+
+
+        const member =
+            await getMember(data.user);
+
+
+        if(!member){
+
+            await db.auth.signOut();
+
+            showAuthScreen();
+
+            showMessage(
+                "loginMessage",
+                "error",
+                "Your account exists, but a member profile could not be found. Please contact ASWF administration."
+            );
+
+            return;
+        }
+
+
+        renderDashboard(member);
+
+
+    }catch(error){
+
+        console.error(
+            "ASWF login error:",
+            error
+        );
+
+
+        let message =
+            error?.message ||
+            "Login failed. Please check your credentials.";
+
+
+        if(
+            /invalid login credentials/i.test(message)
+        ){
+            message =
+                "Invalid email or password.";
+        }
+
+
+        if(
+            /email not confirmed/i.test(message)
+        ){
+            message =
+                "Please confirm your email address before signing in.";
+        }
+
+
+        showAuthScreen();
+
+
+        showMessage(
+            "loginMessage",
+            "error",
+            message
+        );
+
+
+    }finally{
+
+        setButtonLoading(
+            button,
+            null,
+            "Sign In"
+        );
+    }
+
+});
+
+
+/* ============================================================
+   LOGOUT
+   ============================================================ */
+
+$("logoutButton").addEventListener("click",async function(){
+
+    $("logoutButton").disabled = true;
+    $("logoutButton").textContent = "Logging out...";
+
+
+    try{
+
+        await db.auth.signOut();
+
+    }catch(error){
+
+        console.error(
+            "ASWF logout error:",
+            error
+        );
+
+    }finally{
+
+        showAuthScreen();
+
+        $("loginForm").reset();
+
+        $("logoutButton").disabled = false;
+        $("logoutButton").textContent = "Logout";
+    }
+
+});
+
+
+/* ============================================================
+   AUTH STATE
+   ============================================================ */
+
+db.auth.onAuthStateChange(async function(event,session){
+
+    /*
+       SIGNED_OUT:
+       Show login / registration.
+    */
+
+    if(!session || !session.user){
+
+        showAuthScreen();
+
+        return;
+    }
+
+
+    /*
+       We already have an authenticated user.
+       Load member profile.
+    */
+
+    showLoadingScreen();
+
+
+    try{
+
+        const member =
+            await getMember(session.user);
+
+
+        if(member){
+
+            renderDashboard(member);
+
+        }else{
+
+            showAuthScreen();
+
+            showMessage(
+                "loginMessage",
+                "error",
+                "Your authenticated account does not have a member profile yet. Please contact ASWF administration."
+            );
+        }
+
+
+    }catch(error){
+
+        console.error(
+            "ASWF member profile error:",
+            error
+        );
+
+
+        showAuthScreen();
+
+
+        showMessage(
+            "loginMessage",
+            "error",
+            "Unable to load your member profile. Please try again."
+        );
+    }
+
+});
+
+
+/* ============================================================
+   INITIAL SESSION CHECK
+   ============================================================ */
+
+(async function init(){
+
+    showLoadingScreen();
+
+    try{
+
+        const {
+            data,
+            error
+        } = await db.auth.getSession();
+
+
+        if(error){
+            throw error;
+        }
+
+
+        if(
+            data &&
+            data.session &&
+            data.session.user
+        ){
+
+            const member =
+                await getMember(
+                    data.session.user
+                );
+
+
+            if(member){
+
+                renderDashboard(member);
+
+            }else{
+
+                showAuthScreen();
+
+                showMessage(
+                    "loginMessage",
+                    "error",
+                    "Your account is authenticated, but your ASWF member profile could not be found."
+                );
+            }
+
+        }else{
+
+            showAuthScreen();
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "ASWF portal initialization error:",
+            error
+        );
+
+
+        showAuthScreen();
+
+        /*
+           Do not show an unnecessary error during normal first load.
+        */
+    }
+
+})();
 </script>
+
 </body>
 </html>
